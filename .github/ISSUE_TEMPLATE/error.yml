@@ -1,0 +1,18 @@
+name: "에러났어요"
+description: "😥 이러이러한 에러가 났어요. 고쳐주세요"
+labels: error
+body:
+
+  - type: textarea
+    attributes:
+      label: 설명
+      description: |
+        어디에서 에러가 났나요?
+      placeholder: |
+        여기에서 에러가 난 것 같아요
+  - type: textarea
+    attributes:
+      label: 자세한 내용을 알려주세요
+      description: |
+        다른 문제가 있나요?
+

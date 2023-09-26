@@ -1,0 +1,16 @@
+name: "새 기능이에요"
+description: "🙃 이 기능을 추가할려고 합니다."
+body:
+
+  - type: textarea
+    attributes:
+      label: 새 기능
+      description: |
+        어떤 기능을 추가할 건가요?
+      placeholder: |
+        이런 기능을 추가할게요!
+  - type: textarea
+    attributes:
+      label: 자세한 내용을 알려주세요
+      description: |
+        어떤 문제가 있나요?

@@ -1,0 +1,16 @@
+name: "리팩토링할게요"
+description: "😀 이 코드 리팩토링 할게요!"
+body:
+
+  - type: textarea
+    attributes:
+      label: 리팩토링
+      description: |
+        어떻게 코드를 바꿀 것인가요?
+      placeholder: |
+        이렇게 코드를 바꿀게요
+  - type: textarea
+    attributes:
+      label: 자세한 내용을 알려주세요
+      description: |
+        어떤 문제가 있나요?
