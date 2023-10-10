@@ -29,3 +29,7 @@ jobs:
       - name: yarn Build
         run: |
           yarn run build
+        
+      - name: yarn test
+        run: |
+          yarn run test:ci
