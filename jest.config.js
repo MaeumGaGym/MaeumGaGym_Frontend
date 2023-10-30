@@ -10,6 +10,9 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   testPathIgnorePatterns: ['<rootDir>/src/next-auth'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'mjs', 'cjs', 'jsx', 'json', 'node'],
+  transform: {
+    "^.+\\.(t|j)sx?$": "@swc/jest",
+  },
 }
 
 module.exports = createJestConfig(customJestConfig)
