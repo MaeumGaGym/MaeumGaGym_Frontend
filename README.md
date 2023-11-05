@@ -1,2 +1,2 @@
-# 위윗
-Wewith
+# 마음가짐
+MaeumGaGym

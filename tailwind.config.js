@@ -57,6 +57,72 @@ module.exports = {
       Blue200: '#93C4F5',
       Blue100: '#C4DDF5',
       Blue50: '#E6EEF5',
+      transparent: 'transparent'
+    },
+    fontSize: {
+      headlineLarge: [
+        '64px',
+        {
+          fontWeight: 800,
+          fontHeight: '80px'
+        }
+      ],
+      headlineMedium: [
+        '48px',
+        {
+          fontWeight: 600,
+          fontHeight: '64px'
+        }
+      ],
+      headlineSmall: [
+        '40px',
+        {
+          fontWeight: 500,
+          fontHeight: '52px'
+        }
+      ],
+      titleLarge: [
+        '36px',
+        {
+          fontWeight: 500,
+          fontHeight: '48px'
+        }
+      ],
+      titleMedium: [
+        '24px',
+        {
+          fontWeight: 500,
+          fontHeight: '32px'
+        }
+      ],
+      titleSmall: [
+        '16px',
+        {
+          fontWeight: 500,
+          fontHeight: '24px'
+        }
+      ],
+      bodyLarge: [
+        '20px',
+        {
+          fontWeight: 400,
+          fontHeight: '24px'
+        }
+      ],
+      bodyMedium: [
+        '16px',
+        {
+          fontWeight: 400,
+          fontHeight: '20px'
+        }
+      ],
+      bodySmall: [
+        '14px',
+        {
+          fontWeight: 400,
+          fontHeight: '18px'
+        }
+      ]
     }
   },
   plugins: [],
