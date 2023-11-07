@@ -18,15 +18,15 @@ module.exports = {
       gray100: '#DBDEE5',
       gray50: '#E9EDF5',
       red900: '#330212',
-      red800: '#660425',
-      red700: '#990637',
-      red600: '#CC0849',
-      red500: '#F50A58',
-      red400: '#F53172',
-      red300: '#F56293',
-      red200: '#F593B4',
-      red100: '#F5C4D4',
-      red50: '#F5DCE4',
+      red800: '#661104',
+      red700: '#991A06',
+      red600: '#CC2208',
+      red500: '#F5290A',
+      red400: '#F54B31',
+      red300: '#F57662',
+      red200: '#F5A093',
+      red100: '#F5CBC4',
+      red50: '#F5E8E6',
       yellow900: '#332C02',
       yellow800: '#665904',
       yellow700: '#998506',
@@ -47,17 +47,20 @@ module.exports = {
       green200: '#93F593',
       green100: '#C4F5C4',
       green50: '#E6F5E6',
-      Blue900: '#021B33',
-      Blue800: '#043566',
-      Blue700: '#065099',
-      Blue600: '#086ACC',
-      Blue500: '#0A7FF5',
-      Blue400: '#3193F5',
-      Blue300: '#62ABF5',
-      Blue200: '#93C4F5',
-      Blue100: '#C4DDF5',
-      Blue50: '#E6EEF5',
-      transparent: 'transparent'
+      blue900: '#021B33',
+      blue800: '#043566',
+      blue700: '#065099',
+      blue600: '#086ACC',
+      blue500: '#0A7FF5',
+      blue400: '#3193F5',
+      blue300: '#62ABF5',
+      blue200: '#93C4F5',
+      blue100: '#C4DDF5',
+      blue50: '#E6EEF5',
+      black: "#000000",
+      white: "#FFFFFF",
+      transparent: 'transparent',
+      current: 'currentColor'
     },
     fontSize: {
       headlineLarge: [
@@ -120,6 +123,27 @@ module.exports = {
         '14px',
         {
           fontWeight: 400,
+          fontHeight: '18px'
+        }
+      ],
+      LabelLarge: [
+        '20px',
+        {
+          fontWeight: 500,
+          fontHeight: '24px'
+        }
+      ],
+      LabelMedium: [
+        '16px',
+        {
+          fontWeight: 500,
+          fontHeight: '20px'
+        }
+      ],
+      LabelSmall: [
+        '14px',
+        {
+          fontWeight: 500,
           fontHeight: '18px'
         }
       ]
