@@ -4,6 +4,7 @@ import { iconName } from "@/assets/constants";
 import { MouseEvent, ReactNode } from "react";
 
 interface ButtonProps {
+  className?: string
   kind: keyof typeof ButtonColor;
   iconName?: iconName;
   disabled?: boolean;
@@ -27,33 +28,31 @@ const ButtonColor = {
     disabled: "bg-gray100 text-gray300"
   },
   white: {
-    enabled: "bg-white text-gray600 hover:bg-gray50 hover:text-blue600 active:bg-gray100",
-    disabled: "bg-white text-gray200"
+    enabled: "bg-transparent text-gray600 hover:bg-gray50 hover:text-blue600 active:bg-gray100",
+    disabled: "bg-transparent text-gray200"
   },
   danger: {
     enabled: "bg-red500 text-white hover:bg-red600 active:bg-red700",
     disabled: "bg-gray400 text-gray200"
   },
   danger2: {
-    // 아직 안함
     enabled: "bg-red50 text-red500 hover:bg-red100 hover:text-red600 active:bg-red200",
     disabled: "bg-gray100 text-gray300"
   },
 }
 
 const Button = ({
+  className,
   kind,
   iconName,
   disabled,
   children,
-  width,
-  height,
   onClick = () => { }
 }: ButtonProps) => {
   const color = ButtonColor[kind][disabled ? "disabled" : "enabled"];
 
   return (
-    <button className={`w-${width ? `[${width}px]` : 'fit'} h-${height ? `[${height}px]` : 'fit'} px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color}`}
+    <button className={`w-fit h-fit px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color} ${className ?? ''}`}
       onClick={onClick}
       disabled={disabled}
     >
