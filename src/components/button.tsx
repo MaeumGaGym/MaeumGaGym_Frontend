@@ -1,6 +1,6 @@
 'use client'
 import Icon from "@/assets/Icon";
-import { iconName } from "@/assets/constants";
+import { iconName } from "@/assets/Icon/constants";
 import { MouseEvent, ReactNode } from "react";
 
 interface ButtonProps {
@@ -9,36 +9,40 @@ interface ButtonProps {
   iconName?: iconName;
   disabled?: boolean;
   children: ReactNode;
-  width?: number;
-  height?: number;
+  fontSize?: keyof typeof FontSize;
   onClick?: (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
 }
 
 const ButtonColor = {
   primary: {
-    enabled: "bg-blue500 text-white hover:bg-blue600 active:bg-blue700",
+    enabled: "transition-all bg-blue500 text-white hover:bg-blue600 active:bg-blue700",
     disabled: "bg-gray400 text-gray200"
   },
   primary2: {
-    enabled: "bg-blue50 text-blue500 hover:bg-blue100 hover:text-blue600 active:bg-blue200",
+    enabled: "transition-all bg-blue50 text-blue500 hover:bg-blue100 hover:text-blue600 active:bg-blue200",
     disabled: "bg-gray100 text-gray300"
   },
   silver: {
-    enabled: "bg-gray50 text-gray800 hover:bg-gray100 active:bg-gray-200",
+    enabled: "transition-all bg-gray50 text-gray800 hover:bg-gray100 active:bg-gray-200",
     disabled: "bg-gray100 text-gray300"
   },
   white: {
-    enabled: "bg-transparent text-gray600 hover:bg-gray50 hover:text-blue600 active:bg-gray100",
+    enabled: "transition-all bg-transparent text-gray600 hover:bg-gray50 hover:text-blue600 active:bg-gray100",
     disabled: "bg-transparent text-gray200"
   },
   danger: {
-    enabled: "bg-red500 text-white hover:bg-red600 active:bg-red700",
+    enabled: "transition-all bg-red500 text-white hover:bg-red600 active:bg-red700",
     disabled: "bg-gray400 text-gray200"
   },
   danger2: {
-    enabled: "bg-red50 text-red500 hover:bg-red100 hover:text-red600 active:bg-red200",
+    enabled: "transition-all bg-red50 text-red500 hover:bg-red100 hover:text-red600 active:bg-red200",
     disabled: "bg-gray100 text-gray300"
   },
+}
+
+const FontSize = {
+  large: 'text-labelLarge',
+  small: 'text-labelSmall',
 }
 
 const Button = ({
@@ -47,17 +51,19 @@ const Button = ({
   iconName,
   disabled,
   children,
+  fontSize,
   onClick = () => { }
 }: ButtonProps) => {
   const color = ButtonColor[kind][disabled ? "disabled" : "enabled"];
+  const font = FontSize[fontSize ?? 'large']
 
   return (
-    <button className={`w-fit h-fit px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color} ${className ?? ''}`}
+    <button className={`select-none w-fit h-fit px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color} ${className ?? ''}`}
       onClick={onClick}
       disabled={disabled}
     >
       {iconName && <Icon icon={iconName} color="currentColor" />}
-      <span className="text-LabelLarge">{children}</span>
+      <span className={`${font}`}>{children}</span>
     </button>
   )
 }

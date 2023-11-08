@@ -1,3 +1,4 @@
+import Header from '@/components/header'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 
@@ -13,7 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="[&_*]:font-['Pretendard']">{children}</body>
+      <body className="[&_*]:font-['Pretendard']">
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

@@ -126,21 +126,21 @@ module.exports = {
           fontHeight: '18px'
         }
       ],
-      LabelLarge: [
+      labelLarge: [
         '20px',
         {
           fontWeight: 500,
           fontHeight: '24px'
         }
       ],
-      LabelMedium: [
+      labelMedium: [
         '16px',
         {
           fontWeight: 500,
           fontHeight: '20px'
         }
       ],
-      LabelSmall: [
+      labelSmall: [
         '14px',
         {
           fontWeight: 500,
