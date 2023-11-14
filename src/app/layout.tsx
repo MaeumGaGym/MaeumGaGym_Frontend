@@ -1,3 +1,4 @@
+import Footer from '@/components/footer'
 import Header from '@/components/header'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
@@ -17,6 +18,7 @@ export default function RootLayout({
       <body className="[&_*]:font-['Pretendard']">
         <Header />
         {children}
+        <Footer/>
       </body>
     </html>
   )

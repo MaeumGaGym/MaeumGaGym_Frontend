@@ -52,7 +52,7 @@ const Button = ({
   disabled,
   children,
   fontSize,
-  onClick = () => { }
+  onClick = () => {}
 }: ButtonProps) => {
   const color = ButtonColor[kind][disabled ? "disabled" : "enabled"];
   const font = FontSize[fontSize ?? 'large']

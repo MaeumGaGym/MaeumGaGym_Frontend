@@ -67,84 +67,84 @@ module.exports = {
         '64px',
         {
           fontWeight: 800,
-          fontHeight: '80px'
+          lineHeight: '80px'
         }
       ],
       headlineMedium: [
         '48px',
         {
           fontWeight: 600,
-          fontHeight: '64px'
+          lineHeight: '64px'
         }
       ],
       headlineSmall: [
         '40px',
         {
           fontWeight: 500,
-          fontHeight: '52px'
+          lineHeight: '52px'
         }
       ],
       titleLarge: [
         '36px',
         {
           fontWeight: 500,
-          fontHeight: '48px'
+          lineHeight: '48px'
         }
       ],
       titleMedium: [
         '24px',
         {
           fontWeight: 500,
-          fontHeight: '32px'
+          lineHeight: '32px'
         }
       ],
       titleSmall: [
         '16px',
         {
           fontWeight: 500,
-          fontHeight: '24px'
+          lineHeight: '24px'
         }
       ],
       bodyLarge: [
         '20px',
         {
           fontWeight: 400,
-          fontHeight: '24px'
+          lineHeight: '24px'
         }
       ],
       bodyMedium: [
         '16px',
         {
           fontWeight: 400,
-          fontHeight: '20px'
+          lineHeight: '20px',
         }
       ],
       bodySmall: [
         '14px',
         {
           fontWeight: 400,
-          fontHeight: '18px'
+          lineHeight: '18px'
         }
       ],
       labelLarge: [
         '20px',
         {
           fontWeight: 500,
-          fontHeight: '24px'
+          lineHeight: '24px'
         }
       ],
       labelMedium: [
         '16px',
         {
           fontWeight: 500,
-          fontHeight: '20px'
+          lineHeight: '20px'
         }
       ],
       labelSmall: [
         '14px',
         {
           fontWeight: 500,
-          fontHeight: '18px'
+          lineHeight: '18px'
         }
       ]
     }
