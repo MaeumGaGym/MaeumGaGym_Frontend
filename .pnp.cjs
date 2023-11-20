@@ -39,6 +39,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:20.6.2"],\
             ["@types/react", "npm:18.2.21"],\
             ["@types/react-dom", "npm:18.2.7"],\
+            ["@types/redux-logger", "npm:3.0.12"],\
             ["@types/testing-library__jest-dom", "npm:6.0.0"],\
             ["autoprefixer", "virtual:e74acb837ee3ead9333c7b0affbd5de89ceb95eed946b736b3ed2eda48a7c4171485bd61383cd5a81ef679417461bf52d53a5ce113d5035cb7c5e0b694d02376#npm:10.4.16"],\
             ["axios", "npm:1.5.1"],\
@@ -54,6 +55,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:e74acb837ee3ead9333c7b0affbd5de89ceb95eed946b736b3ed2eda48a7c4171485bd61383cd5a81ef679417461bf52d53a5ce113d5035cb7c5e0b694d02376#npm:18.2.0"],\
             ["react-redux", "virtual:e74acb837ee3ead9333c7b0affbd5de89ceb95eed946b736b3ed2eda48a7c4171485bd61383cd5a81ef679417461bf52d53a5ce113d5035cb7c5e0b694d02376#npm:8.1.3"],\
             ["redux", "npm:4.2.1"],\
+            ["redux-logger", "npm:3.0.6"],\
             ["tailwindcss", "npm:3.3.4"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"]\
           ],\
@@ -2126,6 +2128,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/redux-logger", [\
+        ["npm:3.0.12", {\
+          "packageLocation": "./.yarn/cache/@types-redux-logger-npm-3.0.12-48c6059bab-fbe1ab82e8.zip/node_modules/@types/redux-logger/",\
+          "packageDependencies": [\
+            ["@types/redux-logger", "npm:3.0.12"],\
+            ["redux", "npm:4.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/scheduler", [\
         ["npm:0.16.4", {\
           "packageLocation": "./.yarn/cache/@types-scheduler-npm-0.16.4-aba8785e94-a57b0f10da.zip/node_modules/@types/scheduler/",\
@@ -3446,6 +3458,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/babel-plugin-macros",\
             "babel-plugin-macros"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["deep-diff", [\
+        ["npm:0.3.8", {\
+          "packageLocation": "./.yarn/cache/deep-diff-npm-0.3.8-a2a66d74dd-8a0fb6cbe4.zip/node_modules/deep-diff/",\
+          "packageDependencies": [\
+            ["deep-diff", "npm:0.3.8"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -6481,6 +6502,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:20.6.2"],\
             ["@types/react", "npm:18.2.21"],\
             ["@types/react-dom", "npm:18.2.7"],\
+            ["@types/redux-logger", "npm:3.0.12"],\
             ["@types/testing-library__jest-dom", "npm:6.0.0"],\
             ["autoprefixer", "virtual:e74acb837ee3ead9333c7b0affbd5de89ceb95eed946b736b3ed2eda48a7c4171485bd61383cd5a81ef679417461bf52d53a5ce113d5035cb7c5e0b694d02376#npm:10.4.16"],\
             ["axios", "npm:1.5.1"],\
@@ -6496,6 +6518,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:e74acb837ee3ead9333c7b0affbd5de89ceb95eed946b736b3ed2eda48a7c4171485bd61383cd5a81ef679417461bf52d53a5ce113d5035cb7c5e0b694d02376#npm:18.2.0"],\
             ["react-redux", "virtual:e74acb837ee3ead9333c7b0affbd5de89ceb95eed946b736b3ed2eda48a7c4171485bd61383cd5a81ef679417461bf52d53a5ce113d5035cb7c5e0b694d02376#npm:8.1.3"],\
             ["redux", "npm:4.2.1"],\
+            ["redux-logger", "npm:3.0.6"],\
             ["tailwindcss", "npm:3.3.4"],\
             ["typescript", "patch:typescript@npm%3A5.2.2#~builtin<compat/typescript>::version=5.2.2&hash=f3b441"]\
           ],\
@@ -7721,6 +7744,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["redux", "npm:4.2.1"],\
             ["@babel/runtime", "npm:7.23.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["redux-logger", [\
+        ["npm:3.0.6", {\
+          "packageLocation": "./.yarn/cache/redux-logger-npm-3.0.6-4c0c652262-c40f63c44c.zip/node_modules/redux-logger/",\
+          "packageDependencies": [\
+            ["redux-logger", "npm:3.0.6"],\
+            ["deep-diff", "npm:0.3.8"]\
           ],\
           "linkType": "HARD"\
         }]\
