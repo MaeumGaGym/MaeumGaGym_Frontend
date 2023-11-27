@@ -2,7 +2,7 @@ import Footer from '@/components/footer'
 import Header from '@/components/header'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
-import wrapper from '@/store'
+import ReduxProvider from '@/store/provider'
 
 export const metadata: Metadata = {
   title: '마음가짐',
@@ -18,11 +18,11 @@ const RootLayout = ({
     <html lang="en">
       <body className="[&_*]:font-['Pretendard']">
         <Header />
-        {children}
+        <ReduxProvider>{children}</ReduxProvider>
         <Footer/>
       </body>
     </html>
   )
 }
 
-export default wrapper.withRedux(RootLayout);
+export default RootLayout;
