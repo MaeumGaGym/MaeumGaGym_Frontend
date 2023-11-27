@@ -2,7 +2,9 @@ import Footer from '@/components/footer'
 import Header from '@/components/header'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
-import ReduxProvider from '@/store/provider'
+import React from 'react'
+import QueryProvider from '@/utils/query/provider'
+import ReduxProvider from '@/utils/store/provider'
 
 export const metadata: Metadata = {
   title: '마음가짐',
@@ -17,9 +19,13 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className="[&_*]:font-['Pretendard']">
-        <Header />
-        <ReduxProvider>{children}</ReduxProvider>
-        <Footer/>
+        <QueryProvider>
+          <ReduxProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ReduxProvider>
+        </QueryProvider>
       </body>
     </html>
   )

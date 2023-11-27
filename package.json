@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
-    "@tanstack/react-query": "^5.7.0",
+    "@tanstack/react-query": "^5.8.7",
+    "@tanstack/react-query-devtools": "^5.8.7",
+    "@tanstack/react-query-next-experimental": "^5.8.7",
     "@types/node": "20.6.2",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",

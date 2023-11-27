@@ -1183,18 +1183,50 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.4.3":
-  version: 5.4.3
-  resolution: "@tanstack/query-core@npm:5.4.3"
-  checksum: 961701ed2978da4fc7862896bdd75a3333f71fdae568809896d6578a88609e6f5527eea363d68893110654f47a2876d3f0f54f1f594a64271eea4e37f2325f03
+"@tanstack/query-core@npm:5.8.7":
+  version: 5.8.7
+  resolution: "@tanstack/query-core@npm:5.8.7"
+  checksum: ed6c0966ab7593d6dd36e6663ca5d7f73049fb0df0f3f1a3a78539f06e7ab583a5b4104c454025e90fa4bd447d87b74518d03166e88ac4cfa6fca850a01cbf4f
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:^5.7.0":
-  version: 5.7.0
-  resolution: "@tanstack/react-query@npm:5.7.0"
+"@tanstack/query-devtools@npm:5.8.4":
+  version: 5.8.4
+  resolution: "@tanstack/query-devtools@npm:5.8.4"
+  checksum: 9f28304a593f67caa2d72a16feb4a92c9095f7fb392765e7a6173b948449d707a4305b6c8c1ce27abad7e0d2e280b3991ddd4277d8d16e9a9cac12cd794aff8f
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-devtools@npm:^5.8.7":
+  version: 5.8.7
+  resolution: "@tanstack/react-query-devtools@npm:5.8.7"
   dependencies:
-    "@tanstack/query-core": 5.4.3
+    "@tanstack/query-devtools": 5.8.4
+  peerDependencies:
+    "@tanstack/react-query": ^5.8.7
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 710691ee7df1df9c21b677fe8fc3d519b7c8c07f5aaae40ada31730db13406d6fede78f9938f50e11492ce0dba5e32df4eda1c4b5970d916efc14cf80f9446f0
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query-next-experimental@npm:^5.8.7":
+  version: 5.8.7
+  resolution: "@tanstack/react-query-next-experimental@npm:5.8.7"
+  peerDependencies:
+    "@tanstack/react-query": ^5.8.7
+    next: ^13 || ^14
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 8d5dafe620aea238bcf3804c96749017d8973e0aea650c95f8147d232e45e28481f1b84b990f9416efc2dc91852d4edef5684bec8b1325bc51b0cca410cecb4a
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.8.7":
+  version: 5.8.7
+  resolution: "@tanstack/react-query@npm:5.8.7"
+  dependencies:
+    "@tanstack/query-core": 5.8.7
   peerDependencies:
     react: ^18.0.0
     react-dom: ^18.0.0
@@ -1204,7 +1236,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: fa8c766d27d048b738eac96e4f7f1d93419469cba757898a718be77396d9aa9ac9d0ce377d2fb417db3b6bdcf69851ff80a7f83b4c844d24ad867776f664d2ac
+  checksum: 033e50d4a521117a6268fed944adfc107010a58d0533551f85e6e4daf7cbcd6acd49da55ea7003bd8c86a4af0e9a11adcd327e562807b9fb3db664395a0bb2e6
   languageName: node
   linkType: hard
 
@@ -5067,7 +5099,9 @@ __metadata:
     "@reduxjs/toolkit": ^1.9.7
     "@swc/core": ^1.3.93
     "@swc/jest": ^0.2.29
-    "@tanstack/react-query": ^5.7.0
+    "@tanstack/react-query": ^5.8.7
+    "@tanstack/react-query-devtools": ^5.8.7
+    "@tanstack/react-query-next-experimental": ^5.8.7
     "@testing-library/jest-dom": ^6.1.3
     "@testing-library/react": ^14.0.0
     "@testing-library/user-event": ^14.5.1
