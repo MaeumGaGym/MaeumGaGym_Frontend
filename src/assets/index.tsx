@@ -22,3 +22,5 @@ export * from "./Arm";
 export * from "./Flag";
 export * from "./Timer";
 export * from "./Clock";
+export * from "./Play";
+export * from "./Alarm";
