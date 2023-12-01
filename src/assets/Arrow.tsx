@@ -28,7 +28,7 @@ export const Arrow = ({
       onClick={onClick}
       className={`cursor-pointer ${rotate[direction]} ${className}`}
     >
-      <path d="M20 11.0001V13.0001H8.00003L13.5 18.5001L12.08 19.9201L4.16003 12.0001L12.08 4.08008L13.5 5.50008L8.00003 11.0001H20Z" fill="currentColor" />
+      <path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   )
 }

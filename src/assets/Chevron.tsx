@@ -28,7 +28,7 @@ export const Chevron = ({
       onClick={onClick}
       className={`cursor-pointer ${rotate[direction]} ${className}`}
     >
-      <path d="M15.41 16.58L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.58Z" fill="currentColor" />
+<path d="M14 6L8 12L14 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   )
 }

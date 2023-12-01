@@ -1,7 +1,6 @@
 export * from "./Arrow";
 export * from "./Chevron";
 export * from "./Eye";
-export * from "./EyeOff";
 export * from "./Close";
 export * from "./CheckCircle";
 export * from "./CheckCircleOutline";
@@ -20,3 +19,6 @@ export * from "./Pose";
 export * from "./Cart";
 export * from "./Pickle";
 export * from "./Arm";
+export * from "./Flag";
+export * from "./Timer";
+export * from "./Clock";
