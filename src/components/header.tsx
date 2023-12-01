@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import Button from "@/components/button";
-import Logo from "@/assets/image/HeaderLogo.svg"
+import Logo from "@/assets/HeaderLogo.svg"
 import { useRouter } from "next/navigation";
 
 const Header = () => {

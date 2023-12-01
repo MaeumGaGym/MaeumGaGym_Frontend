@@ -1,12 +1,10 @@
-'use client'
-import Icon from "@/assets/Icon";
-import { iconName } from "@/assets/Icon/constants";
+"use client"
 import { MouseEvent, ReactNode } from "react";
 
 interface ButtonProps {
   className?: string
   kind: keyof typeof ButtonColor;
-  iconName?: iconName;
+  icon?: ReactNode;
   disabled?: boolean;
   children: ReactNode;
   fontSize?: keyof typeof FontSize;
@@ -48,7 +46,7 @@ const FontSize = {
 const Button = ({
   className,
   kind,
-  iconName,
+  icon,
   disabled,
   children,
   fontSize,
@@ -56,13 +54,12 @@ const Button = ({
 }: ButtonProps) => {
   const color = ButtonColor[kind][disabled ? "disabled" : "enabled"];
   const font = FontSize[fontSize ?? 'large']
-
   return (
     <button className={`select-none w-fit h-fit px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color} ${className ?? ''}`}
       onClick={onClick}
       disabled={disabled}
     >
-      {iconName && <Icon icon={iconName} color="currentColor" />}
+      {icon}
       <span className={`${font}`}>{children}</span>
     </button>
   )
