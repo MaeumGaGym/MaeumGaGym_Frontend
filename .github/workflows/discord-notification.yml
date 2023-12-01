@@ -9,7 +9,8 @@ jobs:
     - name: Discord Webhook Action
       uses: sarisia/actions-status-discord@v1
       with:
-        title: "**Who ate the Nutella?**"
+        title: 🔀 Pull Request 🔀
+        description: "**Who ate the Nutella?**"
         content: "<@1154312086965465119>"
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
         color: 000000
