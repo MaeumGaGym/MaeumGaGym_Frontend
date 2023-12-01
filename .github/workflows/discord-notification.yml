@@ -1,0 +1,16 @@
+name: Discord Notification
+on:
+  pull_request:
+    branches: [ "main", "develop" ]
+jobs:
+  message:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Discord Webhook Action
+      uses: sarisia/actions-status-discord@v1
+      with:
+        title: "**Who ate the Nutella?**"
+        content: "<@1154312086965465119>"
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        color: 000000
+        image: "https://cdn.discordapp.com/attachments/969189609928011846/1180047531040849950/ezgif.com-video-to-gif.gif?ex=657bffe7&is=65698ae7&hm=7c1e99ab841f33770d0700a67d29f42a72a8baba7e65c41d36c99427130c7552&"
