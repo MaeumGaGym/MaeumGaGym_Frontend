@@ -19,7 +19,7 @@ export const Close = ({
       onClick={onClick}
       className={`cursor-pointer ${className}`}
     >
-      <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   )
 }
