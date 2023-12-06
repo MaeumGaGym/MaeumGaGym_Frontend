@@ -19,7 +19,7 @@ export const Trash = ({
       onClick={onClick}
       className={`cursor-pointer ${className}`}
     >
-      <path d="M5 6H6M19 6H18M6 6L8 20H16L18 6M6 6H9M18 6H15M15 6L14 4H10L9 6M15 6H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M5 6H6M19 6H18M6 6L8 20H16L18 6M6 6H9M18 6H15M15 6L14 4H10L9 6M15 6H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   )
 }

@@ -19,7 +19,7 @@ export const Add = ({
       onClick={onClick}
       className={`cursor-pointer ${className}`}
     >
-      <path d="M12 4V12M12 20V12M12 12H20M12 12H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M12 4V12M12 20V12M12 12H20M12 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
   )
 }
