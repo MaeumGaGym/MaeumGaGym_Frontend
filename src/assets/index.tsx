@@ -34,3 +34,4 @@ export * from "./Tag";
 export * from "./Search";
 export * from "./Edit";
 export * from "./Bell";
+export * from "./Setting";

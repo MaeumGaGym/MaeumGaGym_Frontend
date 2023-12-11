@@ -16,7 +16,7 @@ export const Arrow = ({
   direction = "left",
   size = 24,
   onClick,
-  className
+  className = ""
 }: PropsType) => {
   return (
     <svg
@@ -26,9 +26,9 @@ export const Arrow = ({
       viewBox="0 0 24 24"
       fill="none"
       onClick={onClick}
-      className={`cursor-pointer ${rotate[direction]} ${className}`}
+      className={`${rotate[direction]} ${onClick ? "cursor-pointer" : ""} ${className}`}
     >
-      <path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }

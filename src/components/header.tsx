@@ -1,6 +1,6 @@
 'use client'
 import Image from "next/image";
-import Button from "@/components/button";
+import Button from "@/components/Button";
 import Logo from "@/assets/HeaderLogo.svg"
 import { useRouter } from "next/navigation";
 

@@ -6,7 +6,7 @@ interface ButtonProps {
   kind: keyof typeof ButtonColor;
   icon?: ReactNode;
   disabled?: boolean;
-  children: ReactNode;
+  children?: ReactNode;
   fontSize?: keyof typeof FontSize;
   onClick?: (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void;
 }
@@ -36,6 +36,10 @@ const ButtonColor = {
     enabled: "transition-all bg-red50 text-red500 hover:bg-red100 hover:text-red600 active:bg-red200",
     disabled: "bg-gray100 text-gray300"
   },
+  silverDark: {
+    enabled: "transition-all bg-gray800 text-white hover:bg-gray900 hover:text-white active:bg-gray900",
+    disabled: "bg-gray800 text-gray600"
+  }
 }
 
 const FontSize = {
@@ -55,12 +59,12 @@ const Button = ({
   const color = ButtonColor[kind][disabled ? "disabled" : "enabled"];
   const font = FontSize[fontSize ?? 'large']
   return (
-    <button className={`select-none w-fit h-fit px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color} ${className ?? ''}`}
+    <button className={`select-none w-fit h-12 px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color} ${className ?? ''}`}
       onClick={onClick}
       disabled={disabled}
     >
       {icon}
-      <span className={`${font}`}>{children}</span>
+      {children && <span className={`${font}`}>{children}</span>}
     </button>
   )
 }

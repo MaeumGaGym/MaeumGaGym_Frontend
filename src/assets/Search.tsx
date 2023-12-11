@@ -7,7 +7,7 @@ interface PropsType {
 export const Search = ({
   size = 24,
   onClick,
-  className
+  className = ""
 }: PropsType) => {
   return (
     <svg
@@ -17,9 +17,9 @@ export const Search = ({
       viewBox="0 0 24 24"
       fill="none"
       onClick={onClick}
-      className={`cursor-pointer ${className}`}
+      className={`${onClick ? "cursor-pointer" : ""} ${className}`}
     >
-      <path d="M19 19L15.2426 15.2426M11 17C7.68629 17 5 14.3137 5 11C5 7.68629 7.68629 5 11 5C14.3137 5 17 7.68629 17 11C17 14.3137 14.3137 17 11 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M19 19L15.2426 15.2426M11 17C7.68629 17 5 14.3137 5 11C5 7.68629 7.68629 5 11 5C14.3137 5 17 7.68629 17 11C17 14.3137 14.3137 17 11 17Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
