@@ -8,14 +8,12 @@ const QueryProvider = ({ children }: { children: React.ReactNode }) => {
   const [client] = useState<QueryClient>(new QueryClient())
 
   return (
-    <>
-      <QueryClientProvider client={client}>
-        <ReactQueryStreamedHydration>
-          {children}
-        </ReactQueryStreamedHydration>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </>
+    <QueryClientProvider client={client}>
+      <ReactQueryStreamedHydration>
+        {children}
+      </ReactQueryStreamedHydration>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }
 
