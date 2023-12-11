@@ -1,10 +1,10 @@
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
-import '@/styles/globals.css'
-import type { Metadata } from 'next'
-import React from 'react'
-import QueryProvider from '@/utils/query/Provider'
-import ReduxProvider from '@/utils/store/Provider'
+import React from 'react';
+import type { Metadata } from 'next';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import QueryProvider from '@/utils/query/Provider';
+import ReduxProvider from '@/utils/store/Provider';
+import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   title: '마음가짐',
@@ -17,7 +17,7 @@ const RootLayout = ({
   children: React.ReactNode
 }) => {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className="[&_*]:font-['Pretendard']">
         <QueryProvider>
           <ReduxProvider>
