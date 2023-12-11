@@ -1,10 +1,10 @@
-import Footer from '@/components/footer'
-import Header from '@/components/header'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import React from 'react'
-import QueryProvider from '@/utils/query/provider'
-import ReduxProvider from '@/utils/store/provider'
+import QueryProvider from '@/utils/query/Provider'
+import ReduxProvider from '@/utils/store/Provider'
 
 export const metadata: Metadata = {
   title: '마음가짐',

@@ -8,7 +8,7 @@ interface PropsType {
 export const Eye = ({
   size = 24,
   onClick,
-  className,
+  className = "",
   isClose
 }: PropsType) => {
   return (
@@ -19,7 +19,7 @@ export const Eye = ({
       viewBox="0 0 24 24"
       fill="none"
       onClick={onClick}
-      className={`cursor-pointer ${className}`}
+      className={`${onClick ? "cursor-pointer" : ""} ${className}`}
     >
       {
         isClose ?
