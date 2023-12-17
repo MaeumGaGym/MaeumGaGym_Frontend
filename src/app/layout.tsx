@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import QueryProvider from '@/utils/query/Provider';
 import ReduxProvider from '@/utils/store/Provider';
+import Toaster from '@/utils/toast/Toaster';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ const RootLayout = ({
             <Header />
             {children}
             <Footer />
+            <Toaster />
           </ReduxProvider>
         </QueryProvider>
       </body>
