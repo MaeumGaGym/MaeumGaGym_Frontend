@@ -5,6 +5,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/assets/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/utils/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     colors: {
@@ -13,12 +14,13 @@ module.exports = {
       gray700: '#494A4C',
       gray600: '#616366',
       gray500: '#7A7C80',
-      gray400: '#929499',
-      gray300: '#AAADB2',
-      gray200: '#C2C6CC',
-      gray100: '#DBDEE5',
-      gray50: '#E9EDF5',
-      red900: '#330212',
+      gray400: '#939599',
+      gray300: '#ADAFB2',
+      gray200: '#C6C8CC',
+      gray100: '#E4E6EB',
+      gray50: '#F0F2F5',
+      gray25: '#FAFAFA',
+      red900: '#330902',
       red800: '#661104',
       red700: '#991A06',
       red600: '#CC2208',
@@ -125,6 +127,13 @@ module.exports = {
         {
           fontWeight: 400,
           lineHeight: '18px'
+        }
+      ],
+      bodyTiny: [
+        '12px',
+        {
+          fontWeight: 400,
+          lineHeight: '16px'
         }
       ],
       labelLarge: [
