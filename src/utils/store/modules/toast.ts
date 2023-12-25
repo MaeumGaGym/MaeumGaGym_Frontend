@@ -31,9 +31,9 @@ export const showToastAsync = createAsyncThunk<void, createToastType>(
     }
     
     await new Promise((resolve) => setTimeout(resolve, duration));
-    dispatch(patchToast({...payload, isVisible: false }));
+    // dispatch(patchToast({...payload, isVisible: false }));
     
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
     dispatch(deleteToast({ id }));
   })
 
