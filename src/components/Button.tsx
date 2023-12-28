@@ -47,14 +47,12 @@ const FontSize = {
   small: 'text-labelSmall',
 }
 
-const Button = ({ className, kind, icon, disabled, children, fontSize, onClick = () => {} }: ButtonProps) => {
+const Button = ({ className, kind, icon, disabled, children, fontSize, onClick = () => { } }: ButtonProps) => {
   const color = ButtonColor[kind][disabled ? 'disabled' : 'enabled']
   const font = FontSize[fontSize ?? 'large']
   return (
     <button
-      className={`select-none w-fit h-12 px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color} ${
-        className ?? ''
-      }`}
+      className={`select-none w-fit h-12 px-3 py-2 gap-2 flex items-center justify-center ${children ? 'rounded-lg' : 'rounded-full'} ${color} ${className ?? ''}`}
       onClick={onClick}
       disabled={disabled}
     >

@@ -4,7 +4,7 @@ interface PropsType {
   className?: string
 }
 
-export const Metronome = ({ size = 24, onClick, className = '' }: PropsType) => {
+export const Basket = ({ size = 24, onClick, className = '' }: PropsType) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,8 +15,12 @@ export const Metronome = ({ size = 24, onClick, className = '' }: PropsType) => 
       onClick={onClick}
       className={`${onClick ? 'cursor-pointer' : ''} ${className}`}
     >
-      <path
-        d="M5.25 16L4 20H20L18.75 16M5.25 16L9 4H15L18.75 16M5.25 16H12M18.75 16H12M12 16L20 7"
+      <path d="M3 10L5 21H19L21 10H3Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <path d="M8 13C8 7 8 4 12 4C16 4 16 7 16 13"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"

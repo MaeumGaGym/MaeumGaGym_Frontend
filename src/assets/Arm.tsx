@@ -29,6 +29,13 @@ export const Arm = ({ size = 24, onClick, className = '', isFill }: PropsType) =
             strokeLinecap="round"
             strokeLinejoin="round"
           />
+          <path
+            d="M17.0003 7.5C16.5003 8.5 14.5 10.5 10.5 7.5C8.88985 6.29239 9.5 3.5 11.4999 1.5"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </>
       ) : (
         <path
