@@ -1,7 +1,6 @@
 'use client'
 
 const Footer = () => {
-  
   return (
     <footer className="w-full h-[360px] bg-gray800 px-[360px] py-[48px] flex flex-col justify-between">
       <div className="flex">
@@ -22,7 +21,8 @@ const Footer = () => {
             <li>이용약관</li>
           </ul>
           <p className="text-bodySmall text-gray500">
-            대표자: 박준하 | 개인정보보호책임자: 김현석<br/>
+            대표자: 박준하 | 개인정보보호책임자: 김현석
+            <br />
             이메일: abcd1234@gmail.com | 주소: 대전광역시 유성구 가정북로 76
           </p>
           <span className="text-bodySmall text-gray500">©MAEUMGAGYM. ALL RIGHT RESERVED</span>
@@ -37,4 +37,4 @@ const Footer = () => {
   )
 }
 
-export default Footer;
+export default Footer
