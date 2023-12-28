@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import toastReducer from "./toast";
+import toastReducer from './toast'
 
 const rootReducer = combineReducers({
   // 정의한 리듀서 모듈들을 결합

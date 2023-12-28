@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import QueryProvider from '@/utils/query/Provider'
 import ReduxProvider from '@/utils/store/Provider'
+import Toaster from '@/utils/toast/Toaster'
 import '@/styles/globals.css'
-import Toaster from '@/utils/toast/Toaster';
 
 export const metadata: Metadata = {
   title: '마음가짐',

@@ -1,34 +1,33 @@
-import store, { RootState } from './../store';
-import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 
-export type ToastmessageType = 'success' | 'error' | 'loading';
+export type ToastmessageType = 'success' | 'error' | 'loading'
 
 interface ToastStateType {
-  id: string;
-  message: string;
-  type: ToastmessageType;
-  duration: number;
+  id: string
+  message: string
+  type: ToastmessageType
+  duration: number
 }
 
-const initialState: ToastStateType[] = [];
+const initialState: ToastStateType[] = []
 
 export const showToastAsync = createAsyncThunk<void, ToastStateType>(
-  "toast/showToastAsync",
+  'toast/showToastAsync',
   async (payload, { dispatch, getState }) => {
-    const { id } = payload;
-    const { toast: toastData } = getState() as { toast: ToastStateType[] };
-    const key = toastData.map((value) => value.id);
+    const { id } = payload
+    const { toast: toastData } = getState() as { toast: ToastStateType[] }
+    const key = toastData.map((value) => value.id)
 
     if (key.includes(id)) {
-      dispatch(patchToast(payload));
+      dispatch(patchToast(payload))
     } else {
-      dispatch(createToast(payload));
+      dispatch(createToast(payload))
     }
   })
 
 const toastReducer = createSlice({
-  name: "toast",
+  name: 'toast',
   initialState,
   reducers: {
     createToast: (state, action: PayloadAction<ToastStateType>) => {
@@ -37,11 +36,11 @@ const toastReducer = createSlice({
         message: action.payload.message,
         type: action.payload.type,
         duration: action.payload.duration
-      });
+      })
     },
     deleteToast: (state, action: PayloadAction<{ id: string }>) => {
       const key = state.map((value) => value.id)
-      const toastIndex = key.indexOf(action.payload.id);
+      const toastIndex = key.indexOf(action.payload.id)
       return state.filter((_, index) => index != toastIndex)
     },
     patchToast: (state, action: PayloadAction<ToastStateType>) => {
@@ -50,5 +49,5 @@ const toastReducer = createSlice({
   }
 })
 
-export default toastReducer.reducer;
-export const { createToast, deleteToast, patchToast } = toastReducer.actions;
+export default toastReducer.reducer
+export const { createToast, deleteToast, patchToast } = toastReducer.actions
