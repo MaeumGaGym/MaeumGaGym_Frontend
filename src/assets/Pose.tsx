@@ -39,6 +39,20 @@ export const Pose = ({ size = 24, onClick, className = '', isFill }: PropsType) 
             strokeLinecap="round"
             strokeLinejoin="round"
           />
+          <path
+            d="M8.5 12.5C11.5 12.5 11 11.5 12 10.5C13 11.5 12.5 12.5 15.5 12.5"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4 15C4.72426 15.3621 6.31404 15.921 8 16.356M20 15C18.6667 15.6667 14.4 17 12 17C10.9037 17 9.41782 16.7218 8 16.356M8 16.356C8 16.356 16 18 16 21C16 22 15.5 23.5 12 23.5"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
         </>
       ) : (
         <path

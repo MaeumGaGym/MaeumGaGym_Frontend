@@ -18,7 +18,12 @@ export const Alarm = ({ size = 24, onClick, className = '', isClose }: PropsType
     >
       {isClose ? (
         <>
-          <path d="M3 2L21 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path
+            d="M3 2L21 20"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
