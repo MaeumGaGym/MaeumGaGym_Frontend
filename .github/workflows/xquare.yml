@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  build:
+  deploy:
     permissions:
       id-token: write
       contents: read
