@@ -2,6 +2,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 import QueryProvider from '@/utils/query/Provider'
 import ReduxProvider from '@/utils/store/Provider'
+import Toaster from '@/utils/toast/Toaster'
 import '@/styles/globals.css'
 import Header from '@/components/Header'
 
@@ -18,6 +19,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <ReduxProvider>
             <Header />
             {children}
+            <Toaster />
           </ReduxProvider>
         </QueryProvider>
       </body>
