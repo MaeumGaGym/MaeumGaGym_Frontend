@@ -1,10 +1,9 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import Footer from '@/components/Footer'
-import Header from '@/components/Header'
 import QueryProvider from '@/utils/query/Provider'
 import ReduxProvider from '@/utils/store/Provider'
 import '@/styles/globals.css'
+import Header from '@/components/Header'
 
 export const metadata: Metadata = {
   title: '마음가짐',
@@ -19,7 +18,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <ReduxProvider>
             <Header />
             {children}
-            <Footer />
           </ReduxProvider>
         </QueryProvider>
       </body>
