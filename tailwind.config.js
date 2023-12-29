@@ -5,7 +5,7 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/assets/**/*.{js,ts,jsx,tsx,mdx}',
-    "./src/utils/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/utils/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   darkMode: 'class',
   theme: {
@@ -134,8 +134,8 @@ module.exports = {
         '12px',
         {
           fontWeight: 400,
-          lineHeight: '16px'
-        }
+          lineHeight: '16px',
+        },
       ],
       labelLarge: [
         '20px',
@@ -158,6 +158,11 @@ module.exports = {
           lineHeight: '18px',
         },
       ],
+    },
+    screens: {
+      sm: { min: '280px', max: '719px' },
+      md: { min: '720px', max: '1419px' },
+      lg: { min: '1420px', max: '1920px' },
     },
   },
   plugins: [],

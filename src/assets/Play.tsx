@@ -2,16 +2,17 @@ interface PropsType {
   size?: number
   onClick?: () => void
   className?: string
+  filled?: boolean
 }
 
-export const Play = ({ size = 24, onClick, className = '' }: PropsType) => {
+export const Play = ({ size = 24, onClick, className = '', filled }: PropsType) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       viewBox="0 0 24 24"
-      fill="none"
+      fill={filled ? 'currentColor' : 'none'}
       onClick={onClick}
       className={`${onClick ? 'cursor-pointer' : ''} ${className}`}
     >
