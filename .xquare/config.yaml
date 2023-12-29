@@ -1,0 +1,5 @@
+config:
+  name: maeumgagym-frontend
+  prefix: "/maeumgagym-frontend"
+  service_type: fe
+  port: 3000

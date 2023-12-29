@@ -16,7 +16,7 @@ export const Search = ({ size = 24, onClick, className = '' }: PropsType) => {
       className={`${onClick ? 'cursor-pointer' : ''} ${className}`}
     >
       <path
-        d="M19 19L15.2426 15.2426M11 17C7.68629 17 5 14.3137 5 11C5 7.68629 7.68629 5 11 5C14.3137 5 17 7.68629 17 11C17 14.3137 14.3137 17 11 17Z"
+        d="M20 20L15.7059 15.7059M10.8571 17.7143C7.07005 17.7143 4 14.6442 4 10.8571C4 7.07005 7.07005 4 10.8571 4C14.6442 4 17.7143 7.07005 17.7143 10.8571C17.7143 14.6442 14.6442 17.7143 10.8571 17.7143Z"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
