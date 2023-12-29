@@ -1,6 +1,6 @@
 'use client'
 
-import { Dots, Heart, Message, Play, Share, Stop } from '@/assets'
+import { Dots, Heart, Message, Pause, Play, Share } from '@/assets'
 import Hls from 'hls.js'
 import { useEffect, useRef, useState } from 'react'
 import './animation.css'
@@ -39,12 +39,12 @@ const VideoPlayer = ({ src }: { src: string }) => {
       <video ref={videoRef} className="w-full h-full object-cover rounded-[8px]" autoPlay loop />
       {pause ? (
         <div className="absolute w-[80px] h-[80px] bg-[rgba(0,0,0,0.4)] top-[calc(50%-40px)] left-[calc(50%-40px)] rounded-full flex justify-center items-center animate-[showUp_0.5s_ease-out_forwards]">
-          <Stop className="text-white" />
+          <Pause className="text-white" />
         </div>
       ) : undefined}
       {!pause ? (
         <div className="absolute w-[80px] h-[80px] bg-[rgba(0,0,0,0.4)] top-[calc(50%-40px)] left-[calc(50%-40px)] rounded-full flex justify-center items-center animate-[showUp_0.5s_ease-out_forwards]">
-          <Play filled className="text-white" />
+          <Play isFill className="text-white" />
         </div>
       ) : undefined}
       <Content />
