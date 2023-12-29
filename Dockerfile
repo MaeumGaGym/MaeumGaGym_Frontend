@@ -6,7 +6,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /usr/src/app
 
 # Install dependencies based on the preferred package manager
-COPY package.json yarn.lock ./
+COPY .pnp.cjs package.json yarn.lock ./
 RUN yarn --frozen-lockfile --production;
 RUN rm -rf ./.next/cache
 
@@ -14,6 +14,7 @@ RUN rm -rf ./.next/cache
 FROM base AS builder
 WORKDIR /usr/src/app
 COPY --from=deps /usr/src/app/.yarn ./yarn
+COPY --from=deps /usr/src/app/.pnp.cjs ./.pnp.cjs
 COPY . .
 RUN yarn build
 
