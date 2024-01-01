@@ -39,9 +39,9 @@ const Content = () => {
       <div className="w-full flex flex-col gap-[8px] z-10 relative">
         <span className="text-titleMedium text-white">상쾌한 날씨의 오늘</span>
         <span
-          className={`transition-all duration-300 cursor-pointer text-bodyMedium overflow-hidden text-white text-ellipsis w-full ${
-            !more && 'whitespace-nowrap'
-          } ${checkMaxHeight() && 'overflow-scroll'}`}
+          className={`transition-all duration-300 cursor-pointer text-bodyMedium text-white text-ellipsis w-full ${
+            !more ? 'whitespace-nowrap overflow-hidden' : 'overflow-scroll'
+          }`}
           style={{
             height: more ? `${checkMaxHeight() ? 280 : maxTextRef.current?.scrollHeight}px` : '20px',
             maxHeight: '280px',

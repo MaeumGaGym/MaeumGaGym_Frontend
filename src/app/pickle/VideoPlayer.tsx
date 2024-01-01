@@ -29,19 +29,27 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
   }, [pause])
 
   useEffect(() => {
+    const handleCanPlayThrough = () => {
+      if (videoRef.current) {
+        videoRef.current.play()
+        videoRef.current.muted = true
+        setPause(false)
+        videoRef.current.removeEventListener('canplaythrough', handleCanPlayThrough)
+      }
+    }
+
     if (Hls.isSupported() && videoRef.current) {
       const hls = new Hls()
       hls.loadSource(src)
       hls.attachMedia(videoRef.current)
+      videoRef.current.muted = true
+      videoRef.current.addEventListener('canplaythrough', handleCanPlayThrough)
+    }
+
+    return () => {
+      videoRef.current?.removeEventListener('canplaythrough', handleCanPlayThrough)
     }
   }, [src])
-
-  useEffect(() => {
-    if (videoRef.current && videoRef.current.paused) {
-      setPause(false)
-      videoRef.current.play()
-    }
-  }, [])
 
   return (
     <div
@@ -54,7 +62,6 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
         ref={videoRef}
         className="w-full h-full object-cover lg:rounded-[8px] md:rounded-[8px] z-10 absolute"
         loop
-        autoPlay
       />
       {pause ? (
         <div className="absolute w-[80px] h-[80px] bg-[rgba(0,0,0,0.4)] top-[calc(50%-40px)] left-[calc(50%-40px)] rounded-full flex justify-center items-center animate-[showUp_0.5s_ease-out_forwards] z-20">
