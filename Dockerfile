@@ -15,7 +15,7 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/.yarn ./yarn
 COPY --from=deps /app/.pnp.cjs ./.pnp.cjs
-COPY . .
+COPY ./ ./
 RUN yarn build
 
 # Production image, copy all the files and run next
