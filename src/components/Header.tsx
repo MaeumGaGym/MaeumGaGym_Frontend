@@ -23,7 +23,7 @@ const Header = () => {
           <Image src={Logo} alt="logo image" width={42} height={42} priority />
           <span className="text-[20px] font-bold leading-[24px] text-gray800 dark:text-gray100">마음가짐</span>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 sm:hidden">
           <Button kind="white" fontSize="small" onClick={() => router.push('/selfcare')}>
             자기관리
           </Button>
