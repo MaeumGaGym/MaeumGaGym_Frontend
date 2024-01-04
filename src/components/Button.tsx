@@ -25,7 +25,8 @@ const ButtonColor = {
     disabled: 'bg-gray100 text-gray300',
   },
   white: {
-    enabled: 'transition-all bg-transparent text-gray600 hover:bg-gray50 hover:text-blue600 active:bg-gray100',
+    enabled:
+      'transition-all bg-transparent text-gray600 dark:text-gray200 hover:bg-gray50 dark:hover:bg-gray800 hover:text-blue600 dark:hover:text-blue500 active:bg-gray100',
     disabled: 'bg-transparent text-gray200',
   },
   danger: {
@@ -47,14 +48,12 @@ const FontSize = {
   small: 'text-labelSmall',
 }
 
-const Button = ({ className, kind, icon, disabled, children, fontSize, onClick = () => {} }: ButtonProps) => {
+const Button = ({ className, kind, icon, disabled, children, fontSize, onClick = () => { } }: ButtonProps) => {
   const color = ButtonColor[kind][disabled ? 'disabled' : 'enabled']
   const font = FontSize[fontSize ?? 'large']
   return (
     <button
-      className={`select-none w-fit h-12 px-3 py-2 gap-2 flex items-center justify-center rounded-lg ${color} ${
-        className ?? ''
-      }`}
+      className={`select-none w-fit h-12 px-3 py-2 gap-2 flex items-center justify-center ${children ? 'rounded-lg' : 'rounded-full'} ${color} ${className ?? ''}`}
       onClick={onClick}
       disabled={disabled}
     >
