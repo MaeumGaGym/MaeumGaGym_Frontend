@@ -5,8 +5,8 @@ on:
     branches:
       - develop
     paths:
-      - service/user/**
-      - packages/**
+      - "service/user/**"
+      - "packages/**"
     
 
 jobs:
@@ -46,4 +46,4 @@ jobs:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           config_file_path: service/${{ env.SERVICE_NAME }}/.xquare/config.yaml
           yarn_docker_build: true
-          workspace: "@service/${{ env.SERVIC
+          yarn_workspace: "@service/${{ env.SERVICE_NAME }}"
