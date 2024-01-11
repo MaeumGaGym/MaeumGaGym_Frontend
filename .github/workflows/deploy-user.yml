@@ -1,9 +1,13 @@
-name: Build and Deployment
+name: Deployment user
 
 on:
   push:
     branches:
       - develop
+    paths:
+      - service/user/**
+      - packages/**
+    
 
 jobs:
   deploy:
@@ -11,6 +15,9 @@ jobs:
       id-token: write
       contents: read
 
+    env:
+      SERVICE_NAME: user
+      
     runs-on: ubuntu-latest
 
     steps:
@@ -37,5 +44,6 @@ jobs:
           environment: stag
           access_key: ${{ secrets.ACCESS_KEY }}
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          config_file_path: service/${{ env.SERVICE_NAME }}/.xquare/config.yaml
           yarn_docker_build: true
-          yarn_workspace: .
+          workspace: "@service/${{ env.SERVIC
