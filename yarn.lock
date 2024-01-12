@@ -479,6 +479,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@package/ui@workspace:^, @package/ui@workspace:packages/ui":
+  version: 0.0.0-use.local
+  resolution: "@package/ui@workspace:packages/ui"
+  dependencies:
+    "@types/node": ^20.11.0
+    "@types/react": ^18
+    "@types/react-dom": ^18
+    "@types/rimraf": ^4.0.5
+    autoprefixer: ^10.4.16
+    next: ^14.0.4
+    postcss: ^8.4.33
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    rimraf: ^5.0.5
+    tailwindcss: ^3.4.1
+    typescript: ^5.3.3
+  languageName: unknown
+  linkType: soft
+
 "@pkgjs/parseargs@npm:^0.11.0":
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
@@ -517,6 +536,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@service/user@workspace:service/user"
   dependencies:
+    "@package/ui": "workspace:^"
     "@reduxjs/toolkit": 1.9.7
     "@tanstack/react-query": ^5.17.9
     "@tanstack/react-query-devtools": ^5.17.9
@@ -627,6 +647,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^20.11.0":
+  version: 20.11.0
+  resolution: "@types/node@npm:20.11.0"
+  dependencies:
+    undici-types: ~5.26.4
+  checksum: 1bd6890db7e0404d11c33d28f46f19f73256f0ba35d19f0ef2a0faba09f366f188915fb9338eebebcc472075c1c4941e17c7002786aa69afa44980737846b200
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*":
   version: 15.7.11
   resolution: "@types/prop-types@npm:15.7.11"
@@ -634,7 +663,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.2.18":
+"@types/react-dom@npm:^18, @types/react-dom@npm:^18.2.18":
   version: 18.2.18
   resolution: "@types/react-dom@npm:18.2.18"
   dependencies:
@@ -643,7 +672,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.2.47":
+"@types/react@npm:*, @types/react@npm:^18, @types/react@npm:^18.2.47":
   version: 18.2.47
   resolution: "@types/react@npm:18.2.47"
   dependencies:
@@ -660,6 +689,15 @@ __metadata:
   dependencies:
     redux: "npm:^4.0.0"
   checksum: fbe1ab82e81686c46758cd133c0af42cf848072d4c2335011dadee106054f96c1688a68f1431600eb392d936366fa338d3f532403e8b694940474ce5269b68df
+  languageName: node
+  linkType: hard
+
+"@types/rimraf@npm:^4.0.5":
+  version: 4.0.5
+  resolution: "@types/rimraf@npm:4.0.5"
+  dependencies:
+    rimraf: "*"
+  checksum: 8c7201ff0ea89c4917d5010b22113e906930da65b6506ff4b45f99bde39099dc5195f095206fde8b84bc364cf801ee5eaf594c2676d3f3dd0e468344ab316187
   languageName: node
   linkType: hard
 
@@ -2162,7 +2200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.2.2, glob@npm:^10.3.10":
+"glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.3.7":
   version: 10.3.10
   resolution: "glob@npm:10.3.10"
   dependencies:
@@ -3607,7 +3645,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18":
+"react-dom@npm:^18, react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
   dependencies:
@@ -3665,7 +3703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18":
+"react@npm:^18, react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
   dependencies:
@@ -3842,6 +3880,17 @@ __metadata:
   version: 1.0.4
   resolution: "reusify@npm:1.0.4"
   checksum: c3076ebcc22a6bc252cb0b9c77561795256c22b757f40c0d8110b1300723f15ec0fc8685e8d4ea6d7666f36c79ccc793b1939c748bf36f18f542744a4e379fcc
+  languageName: node
+  linkType: hard
+
+"rimraf@npm:*, rimraf@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "rimraf@npm:5.0.5"
+  dependencies:
+    glob: ^10.3.7
+  bin:
+    rimraf: dist/esm/bin.mjs
+  checksum: d66eef829b2e23b16445f34e73d75c7b7cf4cbc8834b04720def1c8f298eb0753c3d76df77325fad79d0a2c60470525d95f89c2475283ad985fd7441c32732d1
   languageName: node
   linkType: hard
 
