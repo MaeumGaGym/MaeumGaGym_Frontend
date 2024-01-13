@@ -10,6 +10,7 @@ MaeumGaGym
 | ⚓️ | 새 기능 | Introduce new features |
 | 💉 | 성능 개선 | Improve performance |
 | 🗒️ | 문서 추가/문서 수정 | Add or update documentation |
+| 📝 | 코드/파일 추가 | Add code or files |
 | 🚫 | 코드/파일 삭제 | Remove code or files |
 | 🥚 | 버그 수정 | Fix a bug |
 | 🍗 | 코드 리팩토링 | Refactor code |
