@@ -605,7 +605,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/ui/",\
           "packageDependencies": [\
             ["@package/ui", "workspace:packages/ui"],\
-            ["@types/node", "npm:20.11.0"],\
+            ["@types/node", "npm:20.10.8"],\
             ["@types/react", "npm:18.2.47"],\
             ["@types/react-dom", "npm:18.2.18"],\
             ["@types/rimraf", "npm:4.0.5"],\
@@ -702,6 +702,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["hls.js", "npm:1.5.0"],\
             ["next", "virtual:67727585e421fe0e6d4a12c24853c999457e5a1b8205f6ca68926a325a00fa295a9569cf0c3f487267b828865d0dde3db3e5d76530d0b0be9e5450be90a4cbb3#npm:14.0.4"],\
             ["postcss", "npm:8.4.33"],\
+            ["prettier", "npm:3.2.2"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:67727585e421fe0e6d4a12c24853c999457e5a1b8205f6ca68926a325a00fa295a9569cf0c3f487267b828865d0dde3db3e5d76530d0b0be9e5450be90a4cbb3#npm:18.2.0"],\
             ["react-redux", "virtual:b051cd14c0c5a1a9e9910d74e3b0c08391353efd7586bed284d3481c2858519460d02da98de8e7824575005027da3d1e1ce02022da666741fd4649deb0c3a425#npm:8.1.3"],\
@@ -847,14 +848,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-node-npm-20.10.8-99e3cc8ac5-ce9b7ee545.zip/node_modules/@types/node/",\
           "packageDependencies": [\
             ["@types/node", "npm:20.10.8"],\
-            ["undici-types", "npm:5.26.5"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:20.11.0", {\
-          "packageLocation": "./.yarn/cache/@types-node-npm-20.11.0-cb757f0c2a-1bd6890db7.zip/node_modules/@types/node/",\
-          "packageDependencies": [\
-            ["@types/node", "npm:20.11.0"],\
             ["undici-types", "npm:5.26.5"]\
           ],\
           "linkType": "HARD"\
@@ -2349,7 +2342,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prettier", null],\
             ["eslint", "npm:8.56.0"],\
             ["eslint-config-prettier", "virtual:b051cd14c0c5a1a9e9910d74e3b0c08391353efd7586bed284d3481c2858519460d02da98de8e7824575005027da3d1e1ce02022da666741fd4649deb0c3a425#npm:9.1.0"],\
-            ["prettier", null],\
+            ["prettier", "npm:3.2.2"],\
             ["prettier-linter-helpers", "npm:1.0.0"],\
             ["synckit", "npm:0.8.8"]\
           ],\
