@@ -1,10 +1,9 @@
-'use client'
 import Image from 'next/image'
-import Button from '@/components/Button'
+import { Button } from './Button'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-const Header = () => {
+export const Header = () => {
   const router = useRouter()
   const pathName = usePathname()
   useEffect(() => {
@@ -48,5 +47,3 @@ const Header = () => {
     </header>
   )
 }
-
-export default Header

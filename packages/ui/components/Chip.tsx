@@ -1,4 +1,3 @@
-'use client'
 import { MouseEvent, ReactNode } from 'react'
 
 interface ChipProps {
@@ -15,7 +14,7 @@ const ChipColor = {
   transparent: 'bg-transparent',
 }
 
-const Chip = ({ className, kind = 'normal', icon, children }: ChipProps) => {
+export const Chip = ({ className, kind = 'normal', icon, children }: ChipProps) => {
   const color = ChipColor[kind]
   return (
     <div className={`select-none w-fit h-9 px-4 py-2 gap-2 flex items-center justify-center rounded-full ${color} text-blue500 ${className ?? ''}`}>
@@ -24,5 +23,3 @@ const Chip = ({ className, kind = 'normal', icon, children }: ChipProps) => {
     </div>
   )
 }
-
-export default Chip

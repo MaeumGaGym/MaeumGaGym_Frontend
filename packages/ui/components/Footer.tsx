@@ -1,6 +1,4 @@
-'use client'
-
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="transition-all w-full lg:h-[360px] h-[440px] bg-gray800 lg:px-[360px] md:px-[120px] sm:px-[40px] py-[48px] flex flex-col justify-between">
       <div className="flex">
@@ -40,5 +38,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer
