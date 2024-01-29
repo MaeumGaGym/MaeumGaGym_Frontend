@@ -4,6 +4,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "allowJs": true,
+    "sourceMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -13,6 +14,6 @@
     "composite": true,
     "jsx": "preserve"
   },
-  "include": ["index.tsx", "**/*.ts", "**/*.tsx"],
+  "include": ["index.tsx", "**/*.ts", "**/*.tsx", "@types", "assets/**/*.png"],
   "exclude": ["node_modules", "dist"]
 }

@@ -1,4 +1,4 @@
-import { Dots, Heart, Message, Share } from '@/assets'
+import { Dots, Heart, Message, Share } from '@package/ui'
 
 const SideBar = () => {
   return (

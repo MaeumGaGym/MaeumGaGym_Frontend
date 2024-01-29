@@ -1,3 +1,4 @@
+'use client'
 import { MouseEvent, ReactNode } from 'react'
 
 interface ButtonProps {
@@ -47,7 +48,7 @@ const FontSize = {
   small: 'text-labelSmall',
 }
 
-export const Button = ({ className, kind, icon, disabled, children, fontSize, onClick = () => { } }: ButtonProps) => {
+export const Button = ({ className, kind, icon, disabled, children, fontSize, onClick = () => {} }: ButtonProps) => {
   const color = ButtonColor[kind][disabled ? 'disabled' : 'enabled']
   const font = FontSize[fontSize ?? 'large']
   return (

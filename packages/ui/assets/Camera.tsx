@@ -23,7 +23,7 @@ export const Camera = ({ size = 24, onClick, className = '' }: PropsType) => {
         strokeLinejoin="round"
       />
       <path
-        d="M12 9C14.2091 9 16 10.7909 16 13C16 15.2091 14.2091 17 12 17C9.79086 17 8 15.2091 8 13C8 10.7909 9.79086 9 12 9Z"
+        d="M8 13C8 15.2092 9.79086 17 12 17C14.2091 17 16 15.2092 16 13C16 10.7909 14.2091 9.00002 12 9.00002C9.79086 9.00002 8 10.7909 8 13Z"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"

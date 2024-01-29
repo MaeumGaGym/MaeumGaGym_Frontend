@@ -6,6 +6,8 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/assets/**/*.{js,ts,jsx,tsx,mdx}',
     './src/utils/**/*.{js,ts,jsx,tsx,mdx}',
+    "../../packages/ui/components/**/*.{js,ts,jsx,tsx}",
+    "../../packages/ui/assets/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
   theme: {

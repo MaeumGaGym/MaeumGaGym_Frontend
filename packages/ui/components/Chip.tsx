@@ -1,3 +1,4 @@
+'use client'
 import { MouseEvent, ReactNode } from 'react'
 
 interface ChipProps {

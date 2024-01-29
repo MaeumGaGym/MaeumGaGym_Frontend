@@ -1,5 +1,7 @@
+'use client'
 import Image from 'next/image'
 import { Button } from './Button'
+import { HeaderLogo } from '../assets'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
@@ -18,7 +20,7 @@ export const Header = () => {
     <header className="transition-all flex w-auto h-[60px] items-center justify-between lg:px-[170px] md:px-[64px] sm:px-[20px] bg-white dark:bg-gray900">
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-[2px] cursor-pointer" onClick={() => router.push('/')}>
-          <Image src={require('@/assets/HeaderLogo.png')} alt="logo image" width={42} height={42} priority />
+          <Image src={HeaderLogo} alt="logo image" width={42} height={42} priority />
           <span className="text-[20px] font-bold leading-[24px] text-gray800 dark:text-gray100">마음가짐</span>
         </div>
         <div className="flex items-center gap-3 sm:hidden">
