@@ -1,4 +1,5 @@
-import Footer from '@/components/Footer'
+'use client'
+import { Footer } from '@package/ui'
 
 const Home = () => {
   return (
