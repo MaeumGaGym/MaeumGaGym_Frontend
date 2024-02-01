@@ -9,11 +9,8 @@ instance.interceptors.request.use(
   async function (config) {
     const accessToken = localStorage.getItem('access_token')
     if (accessToken) {
-      //@ts-ignore
-      config.headers = {
-        Authorization: `Bearer ${accessToken}`,
-        'X-Not-Using-Xquare-Auth': 'true',
-      }
+      config.headers['Authorization'] = `Bearer ${accessToken}`
+      config.headers['X-Not-Using-Xquare-Auth'] = 'true'
     }
     return config
   },

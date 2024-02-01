@@ -1,6 +1,6 @@
 'use client'
 
-import { Pause, Play } from '@/assets'
+import { Pause, Play } from '@package/ui'
 import Hls from 'hls.js'
 import { useEffect, useRef, useState } from 'react'
 import Content from './Content'

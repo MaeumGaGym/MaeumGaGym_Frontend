@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import HeaderLogo from '@/assets/HeaderLogo.png'
+import { HeaderLogo } from '@package/ui'
 import { useRef, useState } from 'react'
 
 const Content = () => {
