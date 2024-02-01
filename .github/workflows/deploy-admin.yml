@@ -1,11 +1,11 @@
-name: Deployment user
+name: Deployment admin
 
 on:
   push:
     branches:
       - develop
     paths:
-      - "service/user/**"
+      - "service/admin/**"
       - "packages/**"
     
 
@@ -16,7 +16,7 @@ jobs:
       contents: read
 
     env:
-      SERVICE_NAME: user
+      SERVICE_NAME: admin
       
     runs-on: ubuntu-latest
 
@@ -28,7 +28,7 @@ jobs:
         uses: team-xquare/xquare-deployment-action@master
         with:
           environment: stag
-          access_key: ${{ secrets.USER_ACCESS_KEY }}
+          access_key: ${{ secrets.ADMIN_ACCESS_KEY }}
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           base_url: service/${{ env.SERVICE_NAME }}
           config_file_path: service/${{ env.SERVICE_NAME }}/.xquare/config.yaml
