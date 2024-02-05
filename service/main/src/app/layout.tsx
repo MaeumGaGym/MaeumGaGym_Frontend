@@ -4,7 +4,8 @@ import QueryProvider from '@/utils/query/Provider'
 import ReduxProvider from '@/utils/store/Provider'
 import Toaster from '@/utils/toast/Toaster'
 import '@/styles/globals.css'
-import { Header } from '@package/ui'
+import { Footer } from '@package/ui'
+import { Header } from '@/components/Header'
 
 export const metadata: Metadata = {
   title: '마음가짐',
@@ -19,6 +20,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <ReduxProvider>
             <Header />
             {children}
+            <Footer />
             <Toaster />
           </ReduxProvider>
         </QueryProvider>
