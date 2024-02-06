@@ -1,5 +1,6 @@
 'use client'
 
+import { Close } from '@package/ui'
 import { useRouter } from 'next/navigation'
 
 export const Modal = ({ children }: { children: React.ReactNode }) => {
@@ -9,7 +10,13 @@ export const Modal = ({ children }: { children: React.ReactNode }) => {
       className="fixed z-20 top-0 left-0 w-full h-[100dvh] flex justify-center items-center bg-[rgba(0,0,0,0.24)]"
       onClick={() => router.back()}
     >
-      <div>{children}</div>
+      <div
+        className="rounded-[24px] w-[480px] bg-white flex flex-col overflow-hidden relative"
+        onClick={e => e.stopPropagation()}
+      >
+        <Close className="absolute top-[40px] right-[40px]" onClick={() => router.back()} />
+        {children}
+      </div>
     </div>
   )
 }
