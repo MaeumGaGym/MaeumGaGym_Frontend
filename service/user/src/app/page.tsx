@@ -6,12 +6,12 @@ import pickleTestImage from '../assets/pickleTestImage.png'
 const Home = () => {
   return (
     <div>
-      <div className="h-[300px] w-full relative">
-        <div className="h-[300px] w-full blur-[120px] border-b-gray100 border-b relative">
-          <div className="absolute top-[100px] left-[270px] w-[180px] h-[180px] bg-blue500"></div>
-          <div className="absolute top-[40px] right-[270px] w-[180px] h-[180px] bg-blue200"></div>
+      <div className="h-[360px] w-full relative">
+        <div className="h-full w-full blur-[120px] border-b-gray100 border-b relative">
+          <div className="absolute top-[160px] left-[270px] w-[180px] h-[180px] bg-blue500"></div>
+          <div className="absolute top-[100px] right-[270px] w-[180px] h-[180px] bg-blue200"></div>
         </div>
-        <div className="left-[360px] top-[110px] absolute">
+        <div className="left-[360px] top-[170px] absolute">
           <span className="text-blue500 text-titleSmall">오늘의 동기부여</span>
           <p className="text-gray900 text-labelLarge mt-3 mb-6 w-[510px]">
             “그것은 완벽에 관한 것이 아닙니다, 그것은 노력에 관한 것입니다. 매일매일 노력을 기울인다면 그곳에서 변화가
@@ -46,7 +46,11 @@ const Home = () => {
                   <Timer className="text-gray400" />
                   <span className="text-gray400 text-titleLarge">30:26</span>
                 </div>
-                <Button kind="primary" className="w-10 h-10" icon={<Play size={20} className="text-white" isFill />} />
+                <Button
+                  kind="primary"
+                  className="h-fit px-2.5 py-2.5"
+                  icon={<Play size={20} className="text-white" isFill />}
+                />
               </div>
             </div>
             <div className="border border-gray100 rounded-2xl py-10 px-6 flex flex-col justify-between w-60 h-60">
@@ -79,7 +83,9 @@ const Home = () => {
                   <span className="text-black text-titleMedium">오늘의 루틴</span>
                   <span className="text-black text-bodyMedium">대충 루틴 이름</span>
                 </div>
-                <Button kind="primary2">루틴으로 이동</Button>
+                <Button kind="primary2" fontSize="small" className="h-fit">
+                  루틴으로 이동
+                </Button>
               </div>
               <div className="flex flex-col gap-4">
                 <div className="flex justify-between items-center">
@@ -100,7 +106,9 @@ const Home = () => {
                   <span className="text-black text-titleMedium">오늘의 식단</span>
                   <span className="text-black text-bodyMedium">2개의 식단</span>
                 </div>
-                <Button kind="primary2">루틴으로 이동</Button>
+                <Button kind="primary2" fontSize="small" className="h-fit">
+                  루틴으로 이동
+                </Button>
               </div>
               <div className="flex flex-col gap-[13px] pb-2">
                 <div className="flex justify-between items-center">
@@ -127,7 +135,7 @@ const Home = () => {
                 <Pickle className="text-blue500" />
                 <span className="text-black text-titleMedium">피클</span>
               </div>
-              <Button kind="primary2" fontSize="small">
+              <Button kind="primary2" fontSize="small" className="h-fit">
                 더보기
               </Button>
             </div>
