@@ -74,35 +74,35 @@ module.exports = {
       headlineMedium: [
         '48px',
         {
-          fontWeight: 600,
+          fontWeight: 700,
           lineHeight: '64px',
         },
       ],
       headlineSmall: [
         '40px',
         {
-          fontWeight: 500,
+          fontWeight: 600,
           lineHeight: '52px',
         },
       ],
       titleLarge: [
         '36px',
         {
-          fontWeight: 500,
+          fontWeight: 600,
           lineHeight: '48px',
         },
       ],
       titleMedium: [
         '24px',
         {
-          fontWeight: 500,
+          fontWeight: 600,
           lineHeight: '32px',
         },
       ],
       titleSmall: [
         '16px',
         {
-          fontWeight: 500,
+          fontWeight: 600,
           lineHeight: '24px',
         },
       ],
@@ -157,9 +157,9 @@ module.exports = {
       ],
     },
     screens: {
-      sm: { min: '280px', max: '719px' },
+      sm: { max: '719px' },
       md: { min: '720px', max: '1419px' },
-      lg: { min: '1420px', max: '1920px' },
+      lg: { min: '1420px' },
     },
   },
   plugins: [],
