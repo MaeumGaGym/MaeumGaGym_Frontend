@@ -1,12 +1,13 @@
 import axios, { AxiosError } from 'axios'
 
 export const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: '/maeumgagym',
   timeout: 10000,
+  withCredentials: true,
 })
 
 instance.interceptors.request.use(
-  async function (config) {
+  async config => {
     const accessToken = localStorage.getItem('access_token')
     if (accessToken) {
       config.headers['Authorization'] = `Bearer ${accessToken}`
@@ -14,7 +15,7 @@ instance.interceptors.request.use(
     }
     return config
   },
-  function (error: AxiosError) {
+  (error: AxiosError) => {
     return Promise.reject(error)
   }
 )
