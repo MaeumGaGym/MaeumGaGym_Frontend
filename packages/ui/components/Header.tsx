@@ -23,25 +23,25 @@ export const Header = () => {
           <span className="text-[20px] font-bold leading-[24px] text-gray800 dark:text-gray100">마음가짐</span>
         </div>
         <div className="flex items-center gap-3 sm:hidden">
-          <Button kind="white" fontSize="small" onClick={() => router.push('/selfcare')}>
+          <Button kind="white" fontSize="small" className="h-[42px]" onClick={() => router.push('/selfcare')}>
             자기관리
           </Button>
-          <Button kind="white" fontSize="small" onClick={() => router.push('/pose')}>
+          <Button kind="white" fontSize="small" className="h-[42px]" onClick={() => router.push('/pose')}>
             운동자세
           </Button>
-          <Button kind="white" fontSize="small" onClick={() => router.push('/pickle')}>
+          <Button kind="white" fontSize="small" className="h-[42px]" onClick={() => router.push('/pickle')}>
             피클
           </Button>
-          <Button kind="white" fontSize="small" onClick={() => router.push('/shop')}>
+          <Button kind="white" fontSize="small" className="h-[42px]" onClick={() => router.push('/shop')}>
             마켓
           </Button>
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <Button kind="white" fontSize="small">
-          로그인
+        <Button kind="white" className="h-[42px]" fontSize="small">
+          마이페이지
         </Button>
-        <Button kind="primary" fontSize="small">
+        <Button kind="primary" className="h-fit" fontSize="small">
           문의하기
         </Button>
       </div>
