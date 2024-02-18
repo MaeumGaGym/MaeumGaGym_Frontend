@@ -61,6 +61,98 @@ const Calendar = () => {
           <div className="w-full px-2 py-1 text-gray500 bg-gray50 rounded">2+</div>
         </div>
       </div>
+      <div className="flex flex-col flex-1 text-bodySmall [&>div]:border-t [&>div]:border-gray50">
+        <div className="flex">
+          <span className="flex flex-1 h-12 items-center px-3.5 text-gray600">일</span>
+          <span className="flex flex-1 h-12 items-center px-3.5 text-gray600">월</span>
+          <span className="flex flex-1 h-12 items-center px-3.5 text-gray600">화</span>
+          <span className="flex flex-1 h-12 items-center px-3.5 text-gray600">수</span>
+          <span className="flex flex-1 h-12 items-center px-3.5 text-gray600">목</span>
+          <span className="flex flex-1 h-12 items-center px-3.5 text-gray600">금</span>
+          <span className="flex flex-1 h-12 items-center px-3.5 text-gray600">토</span>
+        </div>
+        <div className="flex flex-col relative">
+          <div className="flex">
+            <div className="pt-2 px-2 pb-0.5 flex flex-1">
+              <div className="w-6 h-6 flex justify-center items-center text-red200">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1">
+              <div className="w-6 h-6 flex justify-center items-center text-gray200">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1">
+              <div className="w-6 h-6 flex justify-center items-center text-red500">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1">
+              <div className="w-6 h-6 flex justify-center items-center text-black">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1">
+              <div className="w-6 h-6 flex justify-center items-center text-white bg-blue500 rounded-full">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1">
+              <div className="w-6 h-6 flex justify-center items-center text-white bg-blue500 rounded-full">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1">
+              <div className="w-6 h-6 flex justify-center items-center text-white bg-blue500 rounded-full">26</div>
+            </div>
+          </div>
+          <div className="grid grid-cols-[repeat(7,_1fr_16px)] grid-rows-3 px-2 h-[92px] gap-y-0.5">
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+          </div>
+          <div className="absolute flex w-full">
+            <Button kind="white" className="flex-1 h-[126px] rounded-xl opacity-35" />
+            <Button kind="white" className="flex-1 h-[126px] rounded-xl opacity-35" />
+            <Button kind="white" className="flex-1 h-[126px] rounded-xl opacity-35" />
+            <Button kind="white" className="flex-1 h-[126px] rounded-xl opacity-35" />
+            <Button kind="white" className="flex-1 h-[126px] rounded-xl opacity-35" />
+            <Button kind="white" className="flex-1 h-[126px] rounded-xl opacity-35" />
+            <Button kind="white" className="flex-1 h-[126px] rounded-xl opacity-35" />
+          </div>
+        </div>
+        <div className="flex flex-col relative">
+          <div className="flex">
+            <div className="pt-2 px-2 pb-0.5 flex flex-1 h-[126px] hover:bg-gray200 rounded-xl">
+              <div className="w-6 h-6 flex justify-center items-center text-red200">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1 h-[126px]">
+              <div className="w-6 h-6 flex justify-center items-center text-gray200">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1 h-[126px]">
+              <div className="w-6 h-6 flex justify-center items-center text-red500">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1 h-[126px]">
+              <div className="w-6 h-6 flex justify-center items-center text-black">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1 h-[126px]">
+              <div className="w-6 h-6 flex justify-center items-center text-white bg-blue500 rounded-full">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1 h-[126px]">
+              <div className="w-6 h-6 flex justify-center items-center text-white bg-blue500 rounded-full">26</div>
+            </div>
+            <div className="pt-2 px-2 pb-0.5 flex flex-1 h-[126px]">
+              <div className="w-6 h-6 flex justify-center items-center text-white bg-blue500 rounded-full">26</div>
+            </div>
+          </div>
+          <div className="absolute top-[34px] w-full grid grid-cols-[repeat(7,_1fr_16px)] grid-rows-3 px-2 h-[92px] gap-y-0.5 pointer-events-none">
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+            <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded">하체 운동</div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
