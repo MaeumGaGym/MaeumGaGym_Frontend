@@ -10,6 +10,8 @@ const Timer = () => {
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [isInput, setIsInput] = useState<boolean>(false)
 
+  const minInputRef = useRef<HTMLInputElement>(null)
+
   useEffect(() => {
     timerId.current = setInterval(() => {
       setMin(parseInt(time.current / 60))
@@ -56,6 +58,12 @@ const Timer = () => {
     }
   }, [inputRef])
 
+  useEffect(() => {
+    if (min > 99) setMin(99)
+    if (sec > 59) setSec(59)
+    if (isInput && minInputRef.current) minInputRef.current.focus()
+  }, [isInput])
+
   return (
     <div className="border border-gray100 rounded-2xl px-10 flex justify-between items-center flex-1">
       <div className="flex gap-6 items-center">
@@ -66,18 +74,21 @@ const Timer = () => {
               min="0"
               max="99"
               type="number"
-              className="border-none outline-none text-gray400 text-titleLarge"
+              className="border-none outline-none text-gray400 text-titleLarge [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               value={min}
+              ref={minInputRef}
               onChange={e => setMin(Number(e.target.value))}
+              onKeyDown={e => e.key === 'Enter' && setIsInput(false)}
             />
             <p className="text-gray400 text-titleLarge">:</p>
             <input
               min="0"
               max="59"
               type="number"
-              className="border-none outline-none text-gray400 text-titleLarge"
+              className="border-none outline-none text-gray400 text-titleLarge [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               value={sec}
               onChange={e => setSec(Number(e.target.value))}
+              onKeyDown={e => e.key === 'Enter' && setIsInput(false)}
             />
           </div>
         ) : (
