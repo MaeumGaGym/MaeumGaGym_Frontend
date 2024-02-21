@@ -13,6 +13,9 @@ const Timer = () => {
   const minInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
+    const time = localStorage.getItem('timerTime')
+    setMin(Math.floor(parseInt(time || '0') / 60))
+    setSec(parseInt(time || '0') % 60)
     timerId.current = setInterval(() => {
       setMin(parseInt(time.current / 60))
       setSec(time.current % 60)
@@ -63,6 +66,10 @@ const Timer = () => {
     if (sec > 59) setSec(59)
     if (isInput && minInputRef.current) minInputRef.current.focus()
   }, [isInput])
+
+  useEffect(() => {
+    if (isRunning) localStorage.setItem('timerTime', (min * 60 + sec).toString())
+  }, [min, sec])
 
   return (
     <div className="border border-gray100 rounded-2xl px-10 flex justify-between items-center flex-1">
