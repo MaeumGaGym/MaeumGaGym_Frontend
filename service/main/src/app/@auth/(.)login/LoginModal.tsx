@@ -1,8 +1,7 @@
-'use client'
-
 import { login } from '@/apis/auth/login'
 import { AppleLogo, GoogleLogo, KakaoLogo, WhiteLogo } from '@package/ui'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
 const client_id = '351198443684-t8bku3tho9qei0ho6t4nh15b8v7ftaug.apps.googleusercontent.com'
@@ -10,19 +9,25 @@ const response_type = 'token'
 const redirect_uri = 'http://localhost:3000/signin/google'
 const scope = 'https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile'
 
-export const LoginModal = () => {
+export const LoginModal = ({ nextStep }: { nextStep: () => void }) => {
   useEffect(() => {
     localStorage.setItem('access_token', '')
-    const loginWithToken = (e: { origin: string; data: string }) => {
+    const loginWithToken = async (e: { origin: string; data: string }) => {
       if (e.origin === 'http://localhost:3000' && typeof e.data === 'string') {
         console.log(e.data)
         localStorage.setItem('access_token', e.data)
-        login(e.data)
+        if (await login(e.data)) {
+          const router = useRouter()
+          router.push('https://maeumgagym-user-stag.xquare.app/')
+        } else {
+          nextStep()
+        }
         window.removeEventListener('message', e => loginWithToken(e))
       }
     }
     window.addEventListener('message', e => loginWithToken(e))
   }, [])
+
   return (
     <>
       <div className="h-[240px] w-full flex justify-center items-center bg-blue500">
