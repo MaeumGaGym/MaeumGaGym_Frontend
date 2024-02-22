@@ -1,8 +1,8 @@
 import { instance } from '../axios'
 
-export const login = async (token: string) => {
+export const signup = async (token: string, name: string) => {
   return await instance
-    .get(`/google/login?access_token=${token}`)
+    .get(`/google/signup?access_token=${token}`, { data: { nickname: name } })
     .then(res => 1)
     .catch(e => {
       console.error(
