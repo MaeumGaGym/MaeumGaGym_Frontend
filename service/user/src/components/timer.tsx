@@ -36,7 +36,7 @@ const Timer = () => {
     if (isRunning) {
       time.current = hour * 60 * 60 + min * 60 + sec
       timerId.current = setInterval(() => {
-        setHour(Math.floor(time.current || 0) / (60 * 60))
+        setHour(Math.floor((time.current || 0) / (60 * 60)))
         setMin(Math.floor((time.current || 0) / 60) % 60)
         setSec((time.current || 0) % 60)
         if (time.current) time.current -= 1
