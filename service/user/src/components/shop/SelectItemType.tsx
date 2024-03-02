@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 const itemTypeArr = [
   { title: '쉐이크', type: 'shaek' },
@@ -43,7 +43,6 @@ interface SelectItemTypeProps {
 }
 
 const SelectItemType = ({ type, setType }: SelectItemTypeProps) => {
-  
   useEffect(() => {
     setType(itemTypeArr[0].type)
   }, [])

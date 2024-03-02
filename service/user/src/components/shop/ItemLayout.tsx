@@ -32,7 +32,7 @@ const ItemLayout = ({ title, items, isRank = false, isDetail, type, setType }: I
       </div>
       {isDetail ? (
         <div className="flex gap-y-6 flex-col">
-          {typeof type !== undefined && setType && <SelectItemType type={type} setType={setType} />}
+          {setType && <SelectItemType type={type || ''} setType={setType} />}
           <div className="flex gap-y-11 gap-x-[4px] px-5 flex-wrap">
             {items.map((v, idx) => (
               <DetailItem v={v} key={`${v.title}-${v.price}-${idx}`} />

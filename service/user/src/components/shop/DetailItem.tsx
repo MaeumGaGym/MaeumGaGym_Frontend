@@ -1,7 +1,6 @@
-import { Star, HalfStar } from '@package/ui'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import ShowStar from './showStar'
+import ShowStar from './ShowStar'
 
 export interface DetailItemType {
   id: string
