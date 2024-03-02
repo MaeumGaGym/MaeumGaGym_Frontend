@@ -1,13 +1,15 @@
 import { Timer as TimerIcon, Button, Play, Pause } from '@package/ui'
-import { useRef, useEffect, useMemo, useState } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 const Timer = () => {
   const [hour, setHour] = useState<number>(0)
   const [min, setMin] = useState<number>(0)
   const [sec, setSec] = useState<number>(0)
   const inputRef = useRef(null)
-  const time = useRef<number>(0)
-  const timerId = useRef(null)
+  const time = useRef<number | null>(0)
+  // TODO: 타입 수정 (any -> 수정 필요)
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  const timerId = useRef<any>(null)
   const [isRunning, setIsRunning] = useState<boolean>(false)
   const [isInput, setIsInput] = useState<boolean>(false)
 
@@ -18,19 +20,10 @@ const Timer = () => {
     setHour(Math.floor(parseInt(time || '0') / (60 * 60)))
     setMin(Math.floor((parseInt(time || '0') / 60) % 60))
     setSec(parseInt(time || '0') % 60)
-
-    timerId.current = setInterval(() => {
-      setHour(Math.floor(parseInt(time.current || '0') / (60 * 60)))
-      setMin(Math.floor((parseInt(time.current || '0') / 60) % 60))
-      setSec(time.current % 60)
-      time.current -= 1
-    }, 1000)
-
-    return () => clearInterval(timerId.current)
   }, [])
 
   useEffect(() => {
-    if (time.current <= 0) {
+    if (time.current && time.current <= 0) {
       clearInterval(timerId.current)
     }
   }, [sec])
@@ -43,10 +36,10 @@ const Timer = () => {
     if (isRunning) {
       time.current = hour * 60 * 60 + min * 60 + sec
       timerId.current = setInterval(() => {
-        setHour(Math.floor(parseInt(time.current || '0') / (60 * 60)))
-        setMin(Math.floor(parseInt(time.current || '0') / 60) % 60)
-        setSec(time.current % 60)
-        time.current -= 1
+        setHour(Math.floor(time.current || 0) / (60 * 60))
+        setMin(Math.floor((time.current || 0) / 60) % 60)
+        setSec((time.current || 0) % 60)
+        if (time.current) time.current -= 1
       }, 1000)
     } else {
       clearInterval(timerId.current)
@@ -54,8 +47,8 @@ const Timer = () => {
   }, [isRunning])
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (inputRef.current && !inputRef.current.contains(event.target)) {
+    function handleClickOutside(event: MouseEvent) {
+      if (inputRef.current && !(inputRef.current as HTMLElement).contains(event.target as Node)) {
         setIsInput(false)
       }
     }
@@ -74,9 +67,8 @@ const Timer = () => {
   }, [isInput])
 
   useEffect(() => {
-    console.log(hour, min, sec, isRunning)
     if (isRunning) localStorage.setItem('timerTime', (hour * 60 * 60 + min * 60 + sec).toString())
-  }, [hour, min, sec])
+  }, [sec])
 
   return (
     <div className="border border-gray100 rounded-2xl px-10 flex justify-between items-center flex-1">
