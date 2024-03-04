@@ -108,3 +108,12 @@ img {
     url('/fonts/woff2/Pretendard-Thin.woff2') format('woff2'),
     url('/fonts/woff/Pretendard-Thin.woff') format('woff');
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
