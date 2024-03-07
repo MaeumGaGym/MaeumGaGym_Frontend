@@ -16,10 +16,18 @@ const Timer = () => {
   const hourInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    const time = localStorage.getItem('timerTime')
-    setHour(Math.floor(parseInt(time || '0') / (60 * 60)))
-    setMin(Math.floor((parseInt(time || '0') / 60) % 60))
-    setSec(parseInt(time || '0') % 60)
+    const time = getLocalStorage()
+    setIsRunning(time.isRunning)
+    if (time.isRunning) {
+      const now = new Date()
+      const remain = Number(time.remainingTime ?? 0) - Math.floor((now.getTime() - time.startTime) / 1000)
+      if (remain < 0) {
+        setIsRunning(false)
+      }
+      setTime(remain)
+    } else {
+      setTime(Number(time.remainingTime ?? 0))
+    }
   }, [])
 
   useEffect(() => {
@@ -29,6 +37,7 @@ const Timer = () => {
   }, [sec])
 
   const ToggleTimer = () => {
+    onSave()
     setIsRunning(!isRunning)
   }
 
@@ -36,9 +45,7 @@ const Timer = () => {
     if (isRunning) {
       time.current = hour * 60 * 60 + min * 60 + sec
       timerId.current = setInterval(() => {
-        setHour(Math.floor((time.current || 0) / (60 * 60)))
-        setMin(Math.floor((time.current || 0) / 60) % 60)
-        setSec((time.current || 0) % 60)
+        setTime(time.current)
         if (time.current) time.current -= 1
       }, 1000)
     } else {
@@ -60,15 +67,51 @@ const Timer = () => {
   }, [inputRef])
 
   useEffect(() => {
-    if (hour > 99) setHour(99)
-    if (min > 99) setMin(99)
-    if (sec > 59) setSec(59)
+    if (isInput) setIsRunning(false)
     if (isInput && hourInputRef.current) hourInputRef.current.focus()
+    if (hour || min || sec) onSave()
   }, [isInput])
 
-  useEffect(() => {
-    if (isRunning) localStorage.setItem('timerTime', (hour * 60 * 60 + min * 60 + sec).toString())
-  }, [sec])
+  const setTime = (setleftTime: number | null) => {
+    if (setleftTime === null || setleftTime < 0) {
+      setleftTime = 0
+    }
+    setHour(Math.floor((setleftTime || 0) / (60 * 60)))
+    setMin(Math.floor((setleftTime || 0) / 60) % 60)
+    setSec((setleftTime || 0) % 60)
+  }
+
+  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    if (name === 'hour') {
+      if (Number(value) > 99) setHour(99)
+      else setHour(Number(value))
+    } else if (name === 'min') {
+      if (Number(value) > 59) setMin(59)
+      else setMin(Number(value))
+    } else {
+      if (Number(value) > 59) setSec(59)
+      else setSec(Number(value))
+    }
+  }
+
+  const onSave = () => {
+    const now = new Date()
+    localStorage.setItem(
+      'timerTime',
+      JSON.stringify({
+        remainingTime: (hour * 60 * 60 + min * 60 + sec).toString(),
+        startTime: now.getTime(),
+        isRunning: !isRunning,
+      })
+    )
+  }
+  const getLocalStorage = () => {
+    const time: { remainingTime: number; startTime: number; isRunning: boolean } = JSON.parse(
+      localStorage.getItem('timerTime') ?? '{ remainingTime: 0, startTime: 0, isRunning: false }'
+    )
+    return time
+  }
 
   return (
     <div className="border border-gray100 rounded-2xl px-10 flex justify-between items-center flex-1">
@@ -77,33 +120,45 @@ const Timer = () => {
         {isInput ? (
           <div className="flex gap-3" ref={inputRef}>
             <input
-              min="0"
-              max="99"
-              type="number"
-              className="border-none outline-none text-gray400 text-titleLarge [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              minLength={0}
+              maxLength={2}
+              type="text"
+              className="border-none outline-none text-gray400 text-titleLarge w-[44px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               value={hour}
               ref={hourInputRef}
-              onChange={e => setHour(Number(e.target.value))}
+              onChange={onChangeInput}
+              name="hour"
+              onInput={e => {
+                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+              }}
               onKeyDown={e => e.key === 'Enter' && setIsInput(false)}
             />
             <p className="text-gray400 text-titleLarge">:</p>
             <input
-              min="0"
-              max="99"
-              type="number"
-              className="border-none outline-none text-gray400 text-titleLarge [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              minLength={0}
+              maxLength={2}
+              type="text"
+              className="border-none outline-none text-gray400 text-titleLarge w-[44px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               value={min}
-              onChange={e => setMin(Number(e.target.value))}
+              onChange={onChangeInput}
+              name="min"
+              onInput={e => {
+                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+              }}
               onKeyDown={e => e.key === 'Enter' && setIsInput(false)}
             />
             <p className="text-gray400 text-titleLarge">:</p>
             <input
-              min="0"
-              max="59"
-              type="number"
-              className="border-none outline-none text-gray400 text-titleLarge [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              minLength={0}
+              maxLength={2}
+              type="text"
+              className="border-none outline-none text-gray400 text-titleLarge w-[44px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               value={sec}
-              onChange={e => setSec(Number(e.target.value))}
+              onChange={onChangeInput}
+              name="sec"
+              onInput={e => {
+                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+              }}
               onKeyDown={e => e.key === 'Enter' && setIsInput(false)}
             />
           </div>
