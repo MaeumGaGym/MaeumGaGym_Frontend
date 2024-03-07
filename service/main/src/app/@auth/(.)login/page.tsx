@@ -5,6 +5,7 @@ import { LoginModal } from './LoginModal'
 import { useEffect, useState } from 'react'
 import { TermsModal } from './TermsModal'
 import { InfoModal } from './InfoModal'
+import { useRouter } from 'next/navigation'
 
 interface registerProps {
   terms: {
@@ -22,7 +23,13 @@ export default function AuthModal() {
   })
   const [step, setStep] = useState<'auth' | 'terms' | 'info' | 'final'>('terms')
 
-  useEffect(() => {}, [step])
+  const router = useRouter()
+
+  useEffect(() => {
+    if (step === 'final') {
+      router.push('https://maeumgagym-user-stag.xquare.app/token?=asdf')
+    }
+  }, [step])
 
   return (
     <Modal>

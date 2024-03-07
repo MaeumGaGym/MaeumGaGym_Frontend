@@ -545,7 +545,7 @@ __metadata:
     "@reduxjs/toolkit": 1.9.7
     "@tanstack/react-query": ^5.17.9
     "@tanstack/react-query-devtools": ^5.17.9
-    "@tanstack/react-query-next-experimental": ^5.17.9
+    "@tanstack/react-query-next-experimental": ^5.18.0
     "@types/node": ^20.10.8
     "@types/react": ^18.2.47
     "@types/react-dom": ^18.2.18
@@ -582,7 +582,7 @@ __metadata:
     "@reduxjs/toolkit": 1.9.7
     "@tanstack/react-query": ^5.17.9
     "@tanstack/react-query-devtools": ^5.17.9
-    "@tanstack/react-query-next-experimental": ^5.17.9
+    "@tanstack/react-query-next-experimental": ^5.18.0
     "@types/node": ^20.10.8
     "@types/react": ^18.2.47
     "@types/react-dom": ^18.2.18
@@ -619,7 +619,7 @@ __metadata:
     "@reduxjs/toolkit": 1.9.7
     "@tanstack/react-query": ^5.17.9
     "@tanstack/react-query-devtools": ^5.17.9
-    "@tanstack/react-query-next-experimental": ^5.17.9
+    "@tanstack/react-query-next-experimental": ^5.18.0
     "@types/node": ^20.10.8
     "@types/react": ^18.2.47
     "@types/react-dom": ^18.2.18
@@ -683,14 +683,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-next-experimental@npm:^5.17.9":
-  version: 5.17.9
-  resolution: "@tanstack/react-query-next-experimental@npm:5.17.9"
+"@tanstack/react-query-next-experimental@npm:^5.18.0":
+  version: 5.24.7
+  resolution: "@tanstack/react-query-next-experimental@npm:5.24.7"
   peerDependencies:
-    "@tanstack/react-query": ^5.17.9
+    "@tanstack/react-query": ^5.24.7
     next: ^13 || ^14
     react: ^18.0.0
-  checksum: 2b3ef25d74d5b7acdd4933a79f5a5c6a405b306002a4376c9350b7eb71162c05cef705974113d8a3f5e861f7ffcd21dfbad5609cc6ee5969f43bc7e84f285c72
+  checksum: 4edc685a0b62b3d9c35d08666c8b191f208a4449441c048d5d9ae810c95d5d2a39f7db8df9a15ce680011e6408e28c98bc87a304c6a75683e8fc5ec4d68ad513
   languageName: node
   linkType: hard
 
