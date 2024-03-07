@@ -2,11 +2,6 @@ import { Timer as TimerIcon, Button, Play, Pause } from '@package/ui'
 import { useRef, useEffect, useState } from 'react'
 
 const Timer = () => {
-  // 로컬에 남은 시간, 시작시간(숫자로), 실핼중 여부 저장
-  // 불러올 때, 남은 시간을 시간, 분, 초로 나눠서 저장
-  // 저장할 때, 남은 시간을 계산해서 저장, 현재 시간을 저장
-  // 저장하는 경우, 인풋 값이 save 된 경우, 타이머 시작, 종료 시
-  // remainingTime, startTime, isRunning 객체로 저장할 예정
   const [hour, setHour] = useState<number>(0)
   const [min, setMin] = useState<number>(0)
   const [sec, setSec] = useState<number>(0)
