@@ -16,7 +16,7 @@ export const Header = () => {
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <Button kind="white" fontSize="small" onClick={() => router.push('/login', { scroll: false })}>
+        <Button kind="white" fontSize="small" onClick={() => router.push('/signin', { scroll: false })}>
           로그인
         </Button>
         <Button kind="primary" fontSize="small">

@@ -1,8 +1,12 @@
 import { instance } from '../axios'
 
 export const signup = async (token: string, name: string) => {
-  return await instance
-    .get(`/google/signup?access_token=${token}`, { data: { nickname: name } })
+  return await instance({
+    method: 'GET',
+    url: `/google/signup?access_token=${token}`,
+    data: { nickname: name },
+    withCredentials: true,
+  })
     .then(res => 1)
     .catch(e => {
       console.error(

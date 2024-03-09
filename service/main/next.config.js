@@ -11,8 +11,12 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: '/google/login',
+        destination: 'https://stag-server.xquare.app/maeumgagym/google/login',
+      },
+      {
         source: '/:path*',
-        destination: 'https://stag-server.xquare.app/:path*',
+        destination: 'https://stag-server.xquare.app/maeumgagym/:path*',
       },
     ]
   },

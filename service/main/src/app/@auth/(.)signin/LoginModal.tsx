@@ -4,12 +4,15 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-const client_id = '351198443684-t8bku3tho9qei0ho6t4nh15b8v7ftaug.apps.googleusercontent.com'
+//accounts.google.com/o/oauth2/v2/auth?client_id=9435200486-cqvufkdfa44kuv50i0c52bco46o2big1.apps.googleusercontent.com&redirect_uri=https://prod-xaure.app/maeumgagym/google/login&response_type=token&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile
+
+const client_id = '9435200486-cqvufkdfa44kuv50i0c52bco46o2big1.apps.googleusercontent.com'
 const response_type = 'token'
-const redirect_uri = 'http://localhost:3000/signin/google'
+const redirect_uri = 'http://localhost:3000/google/login'
 const scope = 'https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile'
 
-export const LoginModal = ({ nextStep }: { nextStep: () => void }) => {
+export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setData: (v: string) => void }) => {
+  const router = useRouter()
   useEffect(() => {
     localStorage.setItem('access_token', '')
     const loginWithToken = async (e: { origin: string; data: string }) => {
@@ -17,9 +20,10 @@ export const LoginModal = ({ nextStep }: { nextStep: () => void }) => {
         console.log(e.data)
         localStorage.setItem('access_token', e.data)
         if (await login(e.data)) {
-          const router = useRouter()
-          router.push('https://maeumgagym-user-stag.xquare.app/')
+          // router.push('https://maeumgagym-user-stag.xquare.app/')
+          console.log('success!')
         } else {
+          setData(e.data)
           nextStep()
         }
         window.removeEventListener('message', e => loginWithToken(e))

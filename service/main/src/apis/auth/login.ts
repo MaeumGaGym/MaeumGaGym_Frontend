@@ -2,7 +2,7 @@ import { instance } from '../axios'
 
 export const login = async (token: string) => {
   return await instance
-    .get(`/google/login?access_token=${token}`)
+    .get(`google/login?access_token=${token}`)
     .then(res => 1)
     .catch(e => {
       console.error(

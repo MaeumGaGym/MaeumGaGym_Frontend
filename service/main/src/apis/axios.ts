@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 
 export const instance = axios.create({
-  baseURL: '/maeumgagym',
+  baseURL: '/',
   timeout: 10000,
   withCredentials: true,
 })
