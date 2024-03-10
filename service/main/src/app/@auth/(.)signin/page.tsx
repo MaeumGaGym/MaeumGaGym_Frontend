@@ -29,14 +29,17 @@ export default function AuthModal() {
   const router = useRouter()
 
   useEffect(() => {
+    const doSignup = async () => {
+      if (await signup(registerData.token, registerData.info.nickname)) {
+        router.push(`/signin`)
+      } else {
+        router.refresh()
+        setStep('auth')
+      }
+    }
     if (step === 'final') {
       console.log(`nickname : ${registerData.info.nickname}, token : ${registerData.token}`)
-      signup(registerData.token, registerData.info.nickname)
-        .then(res => {
-          console.log(`signup response : ${res}`)
-          // router.push(`https://maeumgagym-user-stag.xquare.app/token?=${res}`)
-        })
-        .catch(err => console.log(err))
+      doSignup()
     }
   }, [step])
 

@@ -20,16 +20,21 @@ export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setDat
         localStorage.setItem('access_token', e.data)
         if (await login(e.data)) {
           const RF_TOKEN = getCookie('RF-TOKEN') || undefined
-          router.push(`https://maeumgagym-user-stag.xquare.app/?refresh=${RF_TOKEN}&token=${e.data}`)
+          window.removeEventListener('message', loginWithToken)
           console.log('success!')
+          router.push(`https://maeumgagym-user-stag.xquare.app/?refresh=${RF_TOKEN}&token=${e.data}`)
         } else {
           setData(e.data)
+          window.removeEventListener('message', loginWithToken)
           nextStep()
         }
-        window.removeEventListener('message', e => loginWithToken(e))
+        window.removeEventListener('message', loginWithToken)
       }
     }
     window.addEventListener('message', e => loginWithToken(e))
+    return () => {
+      window.removeEventListener('message', loginWithToken)
+    }
   }, [])
 
   return (

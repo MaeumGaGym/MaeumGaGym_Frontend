@@ -2,7 +2,7 @@ import { instance } from '../axios'
 
 export const signup = async (token: string, name: string) => {
   return await instance({
-    method: 'GET',
+    method: 'POST',
     url: `/google/signup?access_token=${token}`,
     data: { nickname: name },
     withCredentials: true,
