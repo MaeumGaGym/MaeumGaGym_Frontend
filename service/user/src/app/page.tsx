@@ -1,7 +1,8 @@
 'use client'
-import { Footer, Pickle, Button, Run, Timer, Play, CalculatorIcon, TimerIcon, Chevron } from '@package/ui'
+import { Footer, Pickle, Button, Run, CalculatorIcon, TimerIcon, Chevron } from '@package/ui'
 import Image from 'next/image'
 import pickleTestImage from '../assets/pickleTestImage.png'
+import Timer from '@/components/timer'
 
 const Home = () => {
   return (
@@ -43,17 +44,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              <div className="border border-gray100 rounded-2xl px-10 flex justify-between items-center flex-1">
-                <div className="flex gap-6 items-center">
-                  <Timer className="text-gray400" />
-                  <span className="text-gray400 text-titleLarge">30:26</span>
-                </div>
-                <Button
-                  kind="primary"
-                  className="h-fit px-2.5 py-2.5"
-                  icon={<Play size={20} className="text-white" isFill />}
-                />
-              </div>
+              <Timer />
             </div>
             <div className="flex gap-6">
               <div className="border border-gray100 rounded-2xl py-10 px-6 flex flex-col justify-between w-60 h-60 sm:flex-1 md:flex-1">
