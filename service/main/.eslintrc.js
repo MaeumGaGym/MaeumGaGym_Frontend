@@ -15,5 +15,6 @@ module.exports = {
     'prettier/prettier': 0,
     'react-hooks/exhaustive-deps': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    'no-useless-escape': 'off',
   },
 }
