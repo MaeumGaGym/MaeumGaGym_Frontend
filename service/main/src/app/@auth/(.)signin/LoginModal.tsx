@@ -1,10 +1,9 @@
 import { login } from '@/apis/auth/login'
+import { getCookie } from '@/utils'
 import { AppleLogo, GoogleLogo, KakaoLogo, WhiteLogo } from '@package/ui'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-
-//accounts.google.com/o/oauth2/v2/auth?client_id=9435200486-cqvufkdfa44kuv50i0c52bco46o2big1.apps.googleusercontent.com&redirect_uri=https://prod-xaure.app/maeumgagym/google/login&response_type=token&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile
 
 const client_id = '9435200486-cqvufkdfa44kuv50i0c52bco46o2big1.apps.googleusercontent.com'
 const response_type = 'token'
@@ -20,7 +19,8 @@ export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setDat
         console.log(e.data)
         localStorage.setItem('access_token', e.data)
         if (await login(e.data)) {
-          // router.push('https://maeumgagym-user-stag.xquare.app/')
+          const RF_TOKEN = getCookie('RF-TOKEN') || undefined
+          router.push(`https://maeumgagym-user-stag.xquare.app/?refresh=${RF_TOKEN}&token=${e.data}`)
           console.log('success!')
         } else {
           setData(e.data)
