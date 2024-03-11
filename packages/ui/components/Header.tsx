@@ -16,7 +16,7 @@ export const Header = () => {
   }, [pathName])
 
   return (
-    <header className="transition-all flex w-full h-[60px] items-center justify-between lg:px-[170px] md:px-[64px] sm:px-[20px] bg-white dark:bg-gray900 border-b border-gray100 fixed z-10">
+    <header className="transition-all flex w-full h-[60px] items-center justify-between lg:px-[170px] md:px-[64px] sm:px-[20px] bg-white dark:bg-gray900 border-b border-gray100 fixed z-50">
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-[2px] cursor-pointer" onClick={() => router.push('/')}>
           <Image src={HeaderLogo} alt="logo image" width={42} height={42} priority />
