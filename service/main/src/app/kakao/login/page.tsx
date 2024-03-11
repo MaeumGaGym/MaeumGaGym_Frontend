@@ -2,15 +2,15 @@
 
 import { useEffect } from 'react'
 
-export default function GoogleLogin() {
+export default function KakaoLogin() {
   let url = ''
   useEffect(() => {
     url = window.location.href
     if (url) {
       opener?.postMessage({
-        token: url.match(/access_token=([^&]*)/)?.[1],
-        type: 'google',
-      }, 'https://maeumgagym-main-stag.xquare.app')
+        token: url.match(/code=([^&]*)/)?.[1],
+        type: 'kakao',
+      }, 'http://localhost:3000')
       window.close()
     }
   }, [])
