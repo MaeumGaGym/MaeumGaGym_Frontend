@@ -7,7 +7,7 @@ export default function GoogleLogin() {
   useEffect(() => {
     url = window.location.href
     if (url) {
-      opener?.postMessage(url.match(/access_token=([^&]*)/)?.[1], 'http://localhost:3000')
+      opener?.postMessage(url.match(/access_token=([^&]*)/)?.[1], 'https://maeumgagym-main-stag.xquare.app')
       window.close()
     }
   }, [])
