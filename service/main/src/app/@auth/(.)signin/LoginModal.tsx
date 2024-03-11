@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 
 const client_id = '9435200486-cqvufkdfa44kuv50i0c52bco46o2big1.apps.googleusercontent.com'
 const response_type = 'token'
-const redirect_uri = 'http://localhost:3000/google/login'
+const redirect_uri = 'https://maeumgagym-main-stag.xquare.app/google/login'
 const scope = 'https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile'
 
 export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setData: (v: string) => void }) => {
@@ -15,7 +15,7 @@ export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setDat
   useEffect(() => {
     localStorage.setItem('access_token', '')
     const loginWithToken = async (e: { origin: string; data: string }) => {
-      if (e.origin === 'http://localhost:3000' && typeof e.data === 'string') {
+      if (e.origin === 'https://maeumgagym-main-stag.xquare.app' && typeof e.data === 'string') {
         console.log(e.data)
         localStorage.setItem('access_token', e.data)
         if (await login(e.data)) {
