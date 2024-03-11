@@ -10,6 +10,6 @@ export const setCookie = (name: string, value: string) => {
   document.cookie = `${name}=${value}`
 }
 
-export const cleanCookie = (name: string) => {
+export const cleanCookie = () => {
   document.cookie = ''
 }
