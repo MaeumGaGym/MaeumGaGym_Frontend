@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/yarn,nextjs,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=yarn,nextjs,react
 
+.env
+
 ### NextJS ###
 # dependencies
 /node_modules
