@@ -3,7 +3,7 @@
 import { isLocal } from '@/utils'
 import { useEffect } from 'react'
 
-export default function GoogleLogin() {
+export default function KakaoLogin() {
   let url = ''
   const origin = isLocal() ? 'http://localhost:3000' : 'https://maeumgagym-main-stag.xquare.app'
   useEffect(() => {
@@ -11,8 +11,8 @@ export default function GoogleLogin() {
     if (url) {
       opener?.postMessage(
         {
-          token: url.match(/access_token=([^&]*)/)?.[1],
-          type: 'google',
+          token: url.match(/code=([^&]*)/)?.[1],
+          type: 'kakao',
         },
         origin
       )
