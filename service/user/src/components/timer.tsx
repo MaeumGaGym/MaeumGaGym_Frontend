@@ -108,7 +108,7 @@ const Timer = () => {
   }
   const getLocalStorage = () => {
     const time: { remainingTime: number; startTime: number; isRunning: boolean } = JSON.parse(
-      localStorage.getItem('timerTime') ?? '{ remainingTime: 0, startTime: 0, isRunning: false }'
+      localStorage.getItem('timerTime') ?? `{ "remainingTime": 0, "startTime": 0, "isRunning": false }`
     )
     return time
   }

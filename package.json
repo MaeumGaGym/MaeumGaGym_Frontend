@@ -9,7 +9,9 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "build:user": "yarn workspace @service/user build"
+    "build:user": "yarn workspace @service/user build",
+    "build:main": "yarn workspace @service/main build",
+    "build:admin": "yarn workspace @service/admin build"
   },
   "devDependencies": {
     "prettier": "^3.2.2",
