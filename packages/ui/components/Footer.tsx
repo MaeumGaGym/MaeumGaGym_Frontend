@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const Footer = () => {
   return (
     <footer className="transition-all w-full lg:h-[360px] h-[440px] bg-gray800 lg:px-[360px] md:px-[120px] sm:px-[40px] py-[48px] flex flex-col justify-between">
@@ -19,7 +21,7 @@ export const Footer = () => {
         <div className="flex flex-col gap-[18px]">
           <ul className="flex items-center gap-2 text-labelSmall text-gray300 [&_li]:flex [&_li]:items-center [&_li]:gap-2 [&_li]:after:content-[''] [&_li]:after:inline-block [&_li]:after:h-[16px] [&_li]:after:w-[1px] [&_li]:after:rounded-full [&_li]:after:bg-gray300 [&_li:last-child]:after:hidden">
             <li className="text-[20px] font-bold text-gray100 leading-6">마음가짐</li>
-            <li className="cursor-pointer">개인정보처리방침</li>
+            <li className="cursor-pointer"><Link href="/privacy">개인정보처리방침</Link></li>
             <li className="cursor-pointer">이용약관</li>
           </ul>
           <p className="text-bodySmall text-gray500">
