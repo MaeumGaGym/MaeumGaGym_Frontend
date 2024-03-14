@@ -34,3 +34,10 @@ jobs:
           config_file_path: service/${{ env.SERVICE_NAME }}/.xquare/config.yaml
           yarn_docker_build: true
           yarn_workspace: "@service/${{ env.SERVICE_NAME }}"
+          buildargs: |
+            NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
+            NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+            NEXT_PUBLIC_GOOGLE_REDIRECT_URI=${{ secrets.NEXT_PUBLIC_GOOGLE_REDIRECT_URI }}
+            NEXT_PUBLIC_GOOGLE_SCOPE=${{ secrets.NEXT_PUBLIC_GOOGLE_SCOPE }}
+            NEXT_PUBLIC_KAKAO_CLIENT_ID=${{ secrets.NEXT_PUBLIC_KAKAO_CLIENT_ID }}
+            NEXT_PUBLIC_KAKAO_REDIRECT_URI=${{ secrets.NEXT_PUBLIC_KAKAO_REDIRECT_URI }}
