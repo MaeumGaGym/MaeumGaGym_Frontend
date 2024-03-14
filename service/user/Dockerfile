@@ -9,11 +9,6 @@ RUN yarn install --immutable
 
 COPY packs ./
 
-RUN yarn workspace @service/user build
-
-FROM node:20.10.0-alpine AS runner
-WORKDIR /app
-
 ARG NEXT_PUBLIC_BASE_URL
 ENV NEXT_PUBLIC_BASE_URL ${NEXT_PUBLIC_BASE_URL}
 
@@ -33,6 +28,11 @@ ARG NEXT_PUBLIC_KAKAO_REDIRECT_URI
 ENV NEXT_PUBLIC_KAKAO_REDIRECT_URI ${NEXT_PUBLIC_KAKAO_REDIRECT_URI}
 
 ENV NODE_ENV production
+
+RUN yarn workspace @service/user build
+
+FROM node:20.10.0-alpine AS runner
+WORKDIR /app
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
