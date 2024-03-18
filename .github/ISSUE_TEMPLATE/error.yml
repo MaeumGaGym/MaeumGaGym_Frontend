@@ -1,18 +1,24 @@
-name: "에러났어요"
-description: "😥 이러이러한 에러가 났어요. 고쳐주세요"
-labels: error
+name: "Error"
+description: "지금 여기서 에러가 발생하고 있습니다. 🩻"
+labels: 에러
 body:
-
+  - type: textarea
+    attributes:
+      label: UI
+      description: |
+        [이미지/영상 추가] 이부분에서 제가 에러를 발견했습니다.📸🎥
+      placeholder: |
+        여기에 파일을 드래그하거나 클릭하여 업로드하세요.
   - type: textarea
     attributes:
       label: 설명
       description: |
-        어디에서 에러가 났나요?
+        에러가 난 부분을 알려주세요
       placeholder: |
-        여기에서 에러가 난 것 같아요
+        여기가 잘못된 것 같아요.
   - type: textarea
     attributes:
-      label: 자세한 내용을 알려주세요
+      label: 추가사항
       description: |
-        다른 문제가 있나요?
+        더 문제가 있을까요?
 
