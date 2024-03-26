@@ -22,7 +22,7 @@ interface T_Routine {
   date: string
 }
 
-const changeKoToUTC = (date: Date) => {
+const changeUTCToKo = (date: Date) => {
   const offset = 1000 * 60 * 60 * 9
   return new Date(date.getTime() + offset)
 }
@@ -37,8 +37,8 @@ const Calendar = () => {
   const [routines, setRoutines] = useState<Array<T_Routine>>()
 
   const getData = async () => {
-    setPurposes(await monthPurposes(changeKoToUTC(nowDate).toISOString().slice(0, 10)))
-    setRoutines(await monthRoutines(changeKoToUTC(nowDate).toISOString().slice(0, 10)))
+    setPurposes(await monthPurposes(changeUTCToKo(nowDate).toISOString().slice(0, 10)))
+    setRoutines(await monthRoutines(changeUTCToKo(nowDate).toISOString().slice(0, 10)))
   }
 
   useEffect(() => {
@@ -98,7 +98,7 @@ const Calendar = () => {
                     {day.getDate()}
                   </div>
                   {routines?.map((routine: T_Routine) => {
-                    if (routine.date === changeKoToUTC(day).toISOString().slice(0, 10))
+                    if (routine.date === changeUTCToKo(day).toISOString().slice(0, 10))
                       return (
                         <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">
                           {routine.routine_name}
@@ -106,7 +106,7 @@ const Calendar = () => {
                       )
                   })}
                   {purposes?.map((purpose: T_Purpose) => {
-                    if (isIncludeTime(new Date(purpose.startDate), new Date(purpose.endDate), changeKoToUTC(day))) {
+                    if (isIncludeTime(new Date(purpose.startDate), new Date(purpose.endDate), changeUTCToKo(day))) {
                       return (
                         <div className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">{purpose.title}</div>
                       )
