@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 
 export const instance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: 'https://stag-server.xquare.app/maeumgagym',
   timeout: 30000,
 })
 

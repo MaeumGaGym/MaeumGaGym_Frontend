@@ -38,7 +38,7 @@ function PoseSearchModal({ onClick }: any) {
   }
   return (
     <div
-      // onClick={onClick}
+      onClick={onClick}
       className="fixed w-screen h-screen top-0 left-0 z-30 bg-gray500 bg-opacity-25 flex justify-center items-center"
     >
       <div className="w-[640px] h-[540px] bg-white py-[12px] flex-col flex gap-2 rounded-2xl">

@@ -1,12 +1,13 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { PoseCard } from '@/components/poseCard'
 import PoseSearchModal from './PoseSearchModal'
-import { instance } from '@/apis/axios'
+import { getPoses } from '@/apis/pose/getPoses'
 import Image from 'next/image'
 import { Filter, Footer, Search } from '@package/ui'
 import tentaiveBannerIcon from '../../assets/tentativeBannerIcon.png'
+import { getCookie } from '@/utils'
+import router from 'next/router'
 
 interface Pose {
   id: string
@@ -22,15 +23,26 @@ interface Pose {
 }
 
 const Poses = () => {
-  const [poses, setPoses] = useState<Pose[]>([])
+  const [poseList, setPoseList] = useState<Pose[]>([])
   const [visible, setVisible] = useState<boolean>(false)
-  const [csrfToken, setCsrfToken] = useState<any | null>(null)
 
   const modalVisible = () => {
     setVisible(!visible)
   }
 
   const bodyCategory: string[] = ['전체', '가슴', '어깨', '팔', '복근', '등', '하체']
+
+  const getPoseData = async () => {
+    // const RF_TOKEN = getCookie('RF-TOKEN') || 'undefined'
+    const ACCESS_TOKEN = getCookie('access_token') || 'undefined'
+    setPoseList(await getPoses(ACCESS_TOKEN))
+  }
+
+  useEffect(() => {
+    getPoseData()
+  }, [])
+
+  console.log(poseList)
 
   return (
     <div>
@@ -86,14 +98,17 @@ const Poses = () => {
             </div>
           </div>
           <div className="w-full flex-wrap gap-x-[11px] gap-y-[32px]">
-            {poses.map((pose: Pose) => (
-              <PoseCard
-                key={pose.id}
-                exerciseName={pose.exact_name}
-                category={pose.simple_part}
-                src={pose.pose_images}
-              />
-            ))}
+            {poseList
+              ? poseList.map((pose: Pose) => (
+                  <PoseCard
+                    key={pose.id}
+                    exerciseName={pose.exact_name}
+                    category={pose.simple_part}
+                    src={pose.pose_images}
+                    onClick={() => router.push(`/poses/${pose.id}`)}
+                  />
+                ))
+              : null}
           </div>
         </div>
         <div className="w-full max-w-[166px] flex h-[48px]" />

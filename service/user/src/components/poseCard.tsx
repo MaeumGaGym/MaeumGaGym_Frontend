@@ -5,10 +5,11 @@ interface poseProps {
   exerciseName: string
   category: string
   src: string[]
+  onClick?: () => void
 }
-export const PoseCard = ({ exerciseName, category, src }: poseProps) => {
+export const PoseCard = ({ exerciseName, category, src, onClick }: poseProps) => {
   return (
-    <div className="gap-x-2 w-[162px] gap-[8px] flex flex-col">
+    <div onClick={onClick} className="gap-x-2 w-[162px] gap-[8px] flex flex-col">
       <div className="rounded-lg h-[162px] w-[162px] p-9px bg-gray25 flex items-center justify-center">
         <Image height={144} width={144} src={src.join('')} alt={exerciseName} />
       </div>
