@@ -2,6 +2,7 @@ import { Button, Chevron } from '@package/ui'
 import { useCalendar } from '@/hooks/useClandar'
 import { monthPurposes } from '@/apis/timeline/monthPurpose'
 import { useEffect, useState } from 'react'
+import { monthRoutineHistorys } from '@/apis/timeline/monthRoutineHistory'
 import { monthRoutines } from '@/apis/timeline/monthRoutine'
 
 interface T_Purpose {
@@ -11,7 +12,7 @@ interface T_Purpose {
   endDate: string
 }
 
-interface T_Routine {
+interface T_RoutineHistory {
   id: number
   routine_name: string
   exercise_info_list: {
@@ -20,6 +21,42 @@ interface T_Routine {
     sets: number
   }[]
   date: string
+}
+
+type DayOfWeeks = 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY'
+
+interface T_Routine {
+  userInfo: {
+    nickname: string
+    profileImage: string
+  }
+  routineList: [
+    {
+      id: number
+      routineName: string
+      exerciseInfoList: {
+        exerciseName: string
+        repetitions: number
+        sets: number
+      }[]
+      dayOfWeeks: Array<DayOfWeeks>
+      routineStatus: {
+        archived: boolean
+        shared: boolean
+      }
+      completed: boolean
+    },
+  ]
+}
+
+const isSameDay = (today: number, routineDay: Array<DayOfWeeks>) => {
+  const days: Array<DayOfWeeks> = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY']
+  return routineDay.includes(days[today])
+}
+
+const isPast = (time: Date) => {
+  const now = new Date()
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0) > time
 }
 
 const changeUTCToKo = (date: Date) => {
@@ -34,18 +71,18 @@ const isIncludeTime = (startTime: Date, endTime: Date, today: Date) => {
 const Calendar = () => {
   const { weekCalendarList, changeMonth, nowDate, isToday } = useCalendar()
   const [purposes, setPurposes] = useState<Array<T_Purpose>>()
-  const [routines, setRoutines] = useState<Array<T_Routine>>()
+  const [routineHistorys, setRoutineHistorys] = useState<Array<T_RoutineHistory>>()
+  const [routines, setRoutines] = useState<T_Routine>()
 
   const getData = async () => {
     setPurposes(await monthPurposes(changeUTCToKo(nowDate).toISOString().slice(0, 10)))
-    setRoutines(await monthRoutines(changeUTCToKo(nowDate).toISOString().slice(0, 10)))
+    setRoutineHistorys(await monthRoutineHistorys(changeUTCToKo(weekCalendarList[0][0]).toISOString().slice(0, 10)))
+    setRoutines(await monthRoutines())
   }
 
   useEffect(() => {
     getData()
   }, [nowDate])
-
-  useEffect(() => {}, [purposes])
 
   return (
     <div className="flex flex-col gap-8 flex-1 w-[1200px]">
@@ -97,7 +134,15 @@ const Calendar = () => {
                   >
                     {day.getDate()}
                   </div>
-                  {routines?.map((routine: T_Routine) => {
+                  {routines?.routineList.map(routine => {
+                    if (!isPast(day) && isSameDay(day.getDay(), routine.dayOfWeeks))
+                      return (
+                        <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">
+                          {routine.routineName}
+                        </div>
+                      )
+                  })}
+                  {routineHistorys?.map((routine: T_RoutineHistory) => {
                     if (routine.date === changeUTCToKo(day).toISOString().slice(0, 10))
                       return (
                         <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">
@@ -112,8 +157,6 @@ const Calendar = () => {
                       )
                     }
                   })}
-                  {/* <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">하체 운동</div> */}
-                  {/* <div className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">일기 쓰기</div> */}
                 </div>
               ))}
             </div>

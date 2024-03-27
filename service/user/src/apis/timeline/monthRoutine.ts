@@ -1,74 +1,73 @@
 import { instance } from '../axios'
 
+type DayOfWeeks = 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY'
+
 interface T_Routine {
-  id: number
-  routine_name: string
-  exercise_info_list: {
-    exercise_name: string
-    repetitions: number
-    sets: number
-  }[]
-  date: string
+  userInfo: {
+    nickname: string
+    profileImage: string
+  }
+  routineList: [
+    {
+      id: number
+      routineName: string
+      exerciseInfoList: {
+        exerciseName: string
+        repetitions: number
+        sets: number
+      }[]
+      dayOfWeeks: Array<DayOfWeeks>
+      routineStatus: {
+        archived: boolean
+        shared: boolean
+      }
+      completed: boolean
+    },
+  ]
 }
 
-export const monthRoutines = async (date: string) => {
+export const monthRoutines = async () => {
   return await instance
-    .get<Array<T_Routine>>(`routines/histories/${date}`)
+    .get<T_Routine>('routines/me/all')
     .then(res => res.data)
-    .catch((e): Array<T_Routine> => {
-      console.error(
-        `%cAxios Error%c ${e.message}%c\n%O`,
-        'background:rgb(148,71,68);padding:4px 8px;border-radius:8px;font-weight:900;font-size:18px;',
-        'padding:40px 0;',
-        '',
-        e
-      )
-      // 이하는 더미데이터를 보내는 코드 입니다
-      return [
-        {
-          id: 123456789,
-          routine_name: '팔 운동',
-          exercise_info_list: [
-            {
-              exercise_name: '무슨 팔 운동',
-              repetitions: 20,
-              sets: 3,
-            },
-            {
-              exercise_name: '어떤 팔 운동',
-              repetitions: 20,
-              sets: 4,
-            },
-            {
-              exercise_name: '그런 팔 운동',
-              repetitions: 15,
-              sets: 5,
-            },
-          ],
-          date: '2024-03-24',
+    .catch((e): T_Routine => {
+      console.error(e)
+
+      // 이하는 더미데이터를 보내는 코드입니다
+      return {
+        userInfo: {
+          nickname: '박지민',
+          profileImage: 'fileURL',
         },
-        {
-          id: 987654321,
-          routine_name: '다리 운동',
-          exercise_info_list: [
-            {
-              exercise_name: '무슨 다리 운동',
-              repetitions: 20,
-              sets: 3,
+        routineList: [
+          {
+            id: 1,
+            routineName: '등 운동',
+            exerciseInfoList: [
+              {
+                exerciseName: '어떤 등 운동',
+                repetitions: 20,
+                sets: 3,
+              },
+              {
+                exerciseName: '그런 등 운동',
+                repetitions: 15,
+                sets: 5,
+              },
+              {
+                exerciseName: '저쩌구 등 운동',
+                repetitions: 20,
+                sets: 5,
+              },
+            ],
+            dayOfWeeks: ['MONDAY'],
+            routineStatus: {
+              archived: true,
+              shared: true,
             },
-            {
-              exercise_name: '어떤 다리 운동',
-              repetitions: 20,
-              sets: 4,
-            },
-            {
-              exercise_name: '그런 다리 운동',
-              repetitions: 15,
-              sets: 5,
-            },
-          ],
-          date: '2024-03-23',
-        },
-      ]
+            completed: false,
+          },
+        ],
+      }
     })
 }
