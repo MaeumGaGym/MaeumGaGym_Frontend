@@ -8,6 +8,7 @@ import { Filter, Footer, Search } from '@package/ui'
 import tentaiveBannerIcon from '../../assets/tentativeBannerIcon.png'
 import { getCookie } from '@/utils'
 import router from 'next/router'
+import PoseExplain from './PoseExplain'
 
 interface Pose {
   id: string
@@ -75,7 +76,7 @@ const Poses = () => {
           <div className="px-[4px] justify-between flex w-full items-center select-none">
             <div className="gap-2 items-center flex">
               <p className="text-labelLarge text-black">전체</p>
-              <p className="text-labelLarge text-blue500">16{/* 더미값 */}</p>
+              <p className="text-labelLarge text-blue500">16</p>
             </div>
             <div className="items-center flex gap-2">
               <Filter size={16} className="text-gray900" />
