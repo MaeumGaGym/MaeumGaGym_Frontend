@@ -75,9 +75,11 @@ const Calendar = () => {
   const [routines, setRoutines] = useState<T_Routine>()
 
   const getData = async () => {
-    setPurposes(await monthPurposes(changeUTCToKo(nowDate).toISOString().slice(0, 10)))
-    setRoutineHistorys(await monthRoutineHistorys(changeUTCToKo(weekCalendarList[0][0]).toISOString().slice(0, 10)))
-    setRoutines(await monthRoutines())
+    monthPurposes(changeUTCToKo(nowDate).toISOString().slice(0, 10)).then(res => setPurposes(res))
+    monthRoutineHistorys(changeUTCToKo(weekCalendarList[0][0]).toISOString().slice(0, 10)).then(res =>
+      setRoutineHistorys(res)
+    )
+    monthRoutines().then(res => setRoutines(res))
   }
 
   useEffect(() => {
@@ -134,7 +136,7 @@ const Calendar = () => {
                   >
                     {day.getDate()}
                   </div>
-                  {routines?.routineList.map(routine => {
+                  {routines?.routineList?.map(routine => {
                     if (!isPast(day) && isSameDay(day.getDay(), routine.dayOfWeeks))
                       return (
                         <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">
@@ -142,21 +144,29 @@ const Calendar = () => {
                         </div>
                       )
                   })}
-                  {routineHistorys?.map((routine: T_RoutineHistory) => {
-                    if (routine.date === changeUTCToKo(day).toISOString().slice(0, 10))
-                      return (
-                        <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">
-                          {routine.routine_name}
-                        </div>
-                      )
-                  })}
-                  {purposes?.map((purpose: T_Purpose) => {
-                    if (isIncludeTime(new Date(purpose.startDate), new Date(purpose.endDate), changeUTCToKo(day))) {
-                      return (
-                        <div className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">{purpose.title}</div>
-                      )
-                    }
-                  })}
+                  {(() => {
+                    return routineHistorys?.length
+                  })() &&
+                    routineHistorys?.map((routine: T_RoutineHistory) => {
+                      if (routine.date === changeUTCToKo(day).toISOString().slice(0, 10))
+                        return (
+                          <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">
+                            {routine.routine_name}
+                          </div>
+                        )
+                    })}
+                  {(() => {
+                    return purposes?.length
+                  })() &&
+                    purposes?.map((purpose: T_Purpose) => {
+                      if (isIncludeTime(new Date(purpose.startDate), new Date(purpose.endDate), changeUTCToKo(day))) {
+                        return (
+                          <div className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">
+                            {purpose.title}
+                          </div>
+                        )
+                      }
+                    })}
                 </div>
               ))}
             </div>

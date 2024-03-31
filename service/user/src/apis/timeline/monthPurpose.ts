@@ -9,9 +9,9 @@ interface T_Purpose {
 
 export const monthPurposes = async (date: string) => {
   return await instance
-    .get<Array<T_Purpose>>(`purposes/${date}`)
+    .get<Array<T_Purpose>>(`purposes/month/${date}`)
     .then(res => res.data)
-    .catch(e => {
+    .catch((e): Array<T_Purpose> => {
       console.error(
         `%cAxios Error%c ${e.message}%c\n%O`,
         'background:rgb(148,71,68);padding:4px 8px;border-radius:8px;font-weight:900;font-size:18px;',
