@@ -16,7 +16,14 @@ interface T_RoutineHistory {
   id: number
   routine_name: string
   exercise_info_list: {
-    exercise_name: string
+    pose: {
+      id: number
+      need_machine: boolean
+      name: string
+      simple_part: string[]
+      exact_part: string[]
+      thumbnail: string
+    }
     repetitions: number
     sets: number
   }[]
@@ -25,28 +32,34 @@ interface T_RoutineHistory {
 
 type DayOfWeeks = 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY'
 
-interface T_Routine {
+type T_AllRoutine = {
   userInfo: {
     nickname: string
     profileImage: string
   }
-  routineList: [
-    {
+  routineList: Array<T_Routine>
+}
+
+interface T_Routine {
+  id: number
+  routine_name: string
+  exercise_info_response_list: {
+    pose: {
       id: number
-      routineName: string
-      exerciseInfoList: {
-        exerciseName: string
-        repetitions: number
-        sets: number
-      }[]
-      dayOfWeeks: Array<DayOfWeeks>
-      routineStatus: {
-        archived: boolean
-        shared: boolean
-      }
-      completed: boolean
-    },
-  ]
+      need_machine: boolean
+      name: string
+      simple_part: string[]
+      exact_part: string[]
+      thumbnail: string
+    }
+    repetitions: number
+    sets: number
+  }[]
+  day_of_weeks: DayOfWeeks[]
+  routine_status: {
+    is_archived: boolean
+    is_shared: boolean
+  }
 }
 
 const isSameDay = (today: number, routineDay: Array<DayOfWeeks>) => {
@@ -72,7 +85,7 @@ const Calendar = () => {
   const { weekCalendarList, changeMonth, nowDate, isToday } = useCalendar()
   const [purposes, setPurposes] = useState<Array<T_Purpose>>()
   const [routineHistorys, setRoutineHistorys] = useState<Array<T_RoutineHistory>>()
-  const [routines, setRoutines] = useState<T_Routine>()
+  const [routines, setRoutines] = useState<T_AllRoutine>()
 
   const getData = async () => {
     monthPurposes(changeUTCToKo(nowDate).toISOString().slice(0, 10)).then(res => setPurposes(res))
@@ -80,6 +93,55 @@ const Calendar = () => {
       setRoutineHistorys(res)
     )
     monthRoutines().then(res => setRoutines(res))
+  }
+
+  const renderRoutineItem = (routine: T_Routine, day: Date) => {
+    if (!isPast(day) && isSameDay(day.getDay(), routine.day_of_weeks)) {
+      return <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">{routine.routine_name}</div>
+    }
+    return null
+  }
+
+  const renderHistoryItem = (routine: T_RoutineHistory, day: Date) => {
+    if (routine.date === changeUTCToKo(day).toISOString().slice(0, 10)) {
+      return <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">{routine.routine_name}</div>
+    }
+    return null
+  }
+
+  const renderPurposeItem = (purpose: T_Purpose, day: Date) => {
+    if (isIncludeTime(new Date(purpose.startDate), new Date(purpose.endDate), changeUTCToKo(day))) {
+      return <div className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">{purpose.title}</div>
+    }
+    return null
+  }
+
+  const renderItem = (day: Date) => {
+    let items = []
+
+    if (routines?.routineList?.length) {
+      items.push(...routines.routineList.map(routine => renderRoutineItem(routine, day)))
+    }
+
+    if (routineHistorys?.length) {
+      items.push(...routineHistorys.map(routine => renderHistoryItem(routine, day)))
+    }
+
+    if (purposes?.length) {
+      items.push(...purposes.map(purpose => renderPurposeItem(purpose, day)))
+    }
+
+    items = items.filter(item => item)
+
+    if (items.length > 3) {
+      return [
+        items[0],
+        items[1],
+        <div className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">{`+${items.length - 2}`}</div>,
+      ]
+    }
+
+    return items
   }
 
   useEffect(() => {
@@ -136,37 +198,7 @@ const Calendar = () => {
                   >
                     {day.getDate()}
                   </div>
-                  {routines?.routineList?.map(routine => {
-                    if (!isPast(day) && isSameDay(day.getDay(), routine.dayOfWeeks))
-                      return (
-                        <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">
-                          {routine.routineName}
-                        </div>
-                      )
-                  })}
-                  {(() => {
-                    return routineHistorys?.length
-                  })() &&
-                    routineHistorys?.map((routine: T_RoutineHistory) => {
-                      if (routine.date === changeUTCToKo(day).toISOString().slice(0, 10))
-                        return (
-                          <div className="w-full px-2 py-1 text-blue500 bg-gray50 rounded truncate">
-                            {routine.routine_name}
-                          </div>
-                        )
-                    })}
-                  {(() => {
-                    return purposes?.length
-                  })() &&
-                    purposes?.map((purpose: T_Purpose) => {
-                      if (isIncludeTime(new Date(purpose.startDate), new Date(purpose.endDate), changeUTCToKo(day))) {
-                        return (
-                          <div className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">
-                            {purpose.title}
-                          </div>
-                        )
-                      }
-                    })}
+                  {renderItem(day)}
                 </div>
               ))}
             </div>
