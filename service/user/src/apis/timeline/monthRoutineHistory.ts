@@ -4,7 +4,14 @@ interface T_Routine {
   id: number
   routine_name: string
   exercise_info_list: {
-    exercise_name: string
+    pose: {
+      id: number
+      need_machine: boolean
+      name: string
+      simple_part: string[]
+      exact_part: string[]
+      thumbnail: string
+    }
     repetitions: number
     sets: number
   }[]
@@ -30,17 +37,38 @@ export const monthRoutineHistorys = async (date: string) => {
           routine_name: '팔 운동',
           exercise_info_list: [
             {
-              exercise_name: '무슨 팔 운동',
+              pose: {
+                id: 1,
+                need_machine: false,
+                name: '멋진 팔 운동',
+                simple_part: ['팔'],
+                exact_part: ['이두'],
+                thumbnail: '썸네일',
+              },
               repetitions: 20,
               sets: 3,
             },
             {
-              exercise_name: '어떤 팔 운동',
+              pose: {
+                id: 1,
+                need_machine: false,
+                name: '잘생긴 팔 운동',
+                simple_part: ['팔'],
+                exact_part: ['대두'],
+                thumbnail: '썸네일',
+              },
               repetitions: 20,
               sets: 4,
             },
             {
-              exercise_name: '그런 팔 운동',
+              pose: {
+                id: 1,
+                need_machine: false,
+                name: '섹시한 팔 운동',
+                simple_part: ['팔'],
+                exact_part: ['삼두'],
+                thumbnail: '썸네일',
+              },
               repetitions: 15,
               sets: 5,
             },
@@ -52,17 +80,38 @@ export const monthRoutineHistorys = async (date: string) => {
           routine_name: '다리 운동',
           exercise_info_list: [
             {
-              exercise_name: '무슨 다리 운동',
+              pose: {
+                id: 1,
+                need_machine: false,
+                name: '멋진 다리 운동',
+                simple_part: ['다리'],
+                exact_part: ['종아리'],
+                thumbnail: '썸네일',
+              },
               repetitions: 20,
               sets: 3,
             },
             {
-              exercise_name: '어떤 다리 운동',
+              pose: {
+                id: 1,
+                need_machine: false,
+                name: '잘생긴 다리 운동',
+                simple_part: ['다리'],
+                exact_part: ['종아리'],
+                thumbnail: '썸네일',
+              },
               repetitions: 20,
               sets: 4,
             },
             {
-              exercise_name: '그런 다리 운동',
+              pose: {
+                id: 1,
+                need_machine: false,
+                name: '섹시한 다리 운동',
+                simple_part: ['다리'],
+                exact_part: ['종아리'],
+                thumbnail: '썸네일',
+              },
               repetitions: 15,
               sets: 5,
             },
