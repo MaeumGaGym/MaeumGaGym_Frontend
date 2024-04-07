@@ -1,6 +1,6 @@
 import { instance } from '../axios'
 
-export type loginCategory = 'google' | 'kakao'
+export type loginCategory = 'google' | 'kakao' | 'apple'
 
 export const login = async (category: loginCategory, token: string) => {
   return await instance
@@ -14,6 +14,6 @@ export const login = async (category: loginCategory, token: string) => {
         '',
         e,
       )
-      return 0
+      return
     })
 }

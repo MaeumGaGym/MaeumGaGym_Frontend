@@ -20,6 +20,9 @@ instance.interceptors.request.use(
   }
 )
 
-instance.interceptors.response.use(undefined, function (error) {
-  throw error
-})
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  }, function (error) {
+    throw error
+  })
