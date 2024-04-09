@@ -25,7 +25,8 @@ export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setDat
     if (loginData) {
       const RF_TOKEN = getCookie('RF-TOKEN') || undefined
       console.log('success!')
-      router.push(`https://maeumgagym-user-stag.xquare.app/?refresh=${RF_TOKEN}&token=${data.token}`)
+      // 토큰이 정상적으로 오는지 확인하기 위한 조치
+      // router.push(`https://maeumgagym-user-stag.xquare.app/?refresh=${RF_TOKEN}&token=${data.token}`)
     } else {
       setData(data.token)
       nextStep()
