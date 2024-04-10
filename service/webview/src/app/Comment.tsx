@@ -1,5 +1,8 @@
 'use client'
 
+import CommentInput from '@/components/commentInput'
+import ChatMore from '@/components/chatMore'
+import { useInput } from '@/hooks/useInput'
 import { Close, Dots } from '@package/ui'
 import { useEffect, useState } from 'react'
 
@@ -56,38 +59,48 @@ const replydummy: Array<ReplyPropsType> = [
   },
 ]
 
+interface OpenMoreType {
+  open: boolean
+  isMine: boolean
+}
+
 const Comments = ({ isOpen, setIsClose }: PropsType) => {
+  const [openMore, setOpenMore] = useState<OpenMoreType>({ open: false, isMine: false })
+
+  const handleOpenMore = (isMine?: boolean) => {
+    if (isMine == null) {
+      setOpenMore({ open: !openMore.open, isMine: openMore.isMine })
+    } else {
+      setOpenMore({ open: !openMore.open, isMine: isMine })
+    }
+  }
+
   return (
-    <div className="flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] h-2/3 z-30">
-      <div className="flex items-end justify-center h-[15px]">
-        <div className="w-16 h-[5px] rounded-sm bg-gray700"></div>
-      </div>
-      <div className="flex items-center justify-center px-5 py-3 border-b-[1px] border-gray800">
-        <div className="flex justify-between w-full">
-          <div className="flex gap-[14px] items-center">
-            <span className="text-titleMedium">댓글</span>
-            <span className="text-gray300">3.4천</span>
+    <>
+      <div className="flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] h-2/3 z-30 rounded-t-[10px]">
+        <div className="flex items-end justify-center h-[15px]">
+          <div className="w-16 h-[5px] rounded-sm bg-gray700"></div>
+        </div>
+        <div className="flex items-center justify-center px-5 py-3 border-b-[1px] border-gray800">
+          <div className="flex justify-between w-full">
+            <div className="flex gap-[14px] items-center">
+              <span className="text-titleMedium">댓글</span>
+              <span className="text-gray300">3.4천</span>
+            </div>
+            <Close onClick={setIsClose} />
           </div>
-          <Close onClick={setIsClose} />
         </div>
-      </div>
-      <div className="pt-3 overflow-scroll scrollbar-none grow">
-        <div className="flex px-5 flex-col ">
-          {commentdummy.map(comment => (
-            <Comment data={comment} key={comment.id} />
-          ))}
+        <div className="pt-3 overflow-scroll scrollbar-none grow">
+          <div className="flex px-5 flex-col ">
+            {commentdummy.map(comment => (
+              <Comment data={comment} key={comment.id} handleOpenMore={handleOpenMore} isMine />
+            ))}
+          </div>
         </div>
+        <CommentInput placeholder="댓글 추가..." buttonText="게시" profile_image={''} />
       </div>
-      <div className="flex gap-[18px] px-3 py-5 items-center">
-        <div className="w-10 h-10 bg-white rounded-full basis-10 shrink-0">
-          {/* <Image src={profile_image} alt="profileImg" width={40} height={40} className="rounded-50%" /> */}
-        </div>
-        <input
-          placeholder="댓글 추가..."
-          className="h-8 outline-none bg-transparent placeholder:text-gray400 py-[6px] w-full"
-        />
-      </div>
-    </div>
+      {openMore.open && <ChatMore setIsClose={handleOpenMore} isMine={openMore.isMine} />}
+    </>
   )
 }
 
@@ -100,8 +113,12 @@ const Comment = ({
     user_response: { nickname, profile_image },
     created_at,
   },
+  handleOpenMore,
+  isMine,
 }: {
   data: CommentPropsType
+  isMine: boolean
+  handleOpenMore: (b: boolean) => void
 }) => {
   const [openReply, setOpenReply] = useState<boolean>(false)
   const replys = replydummy.filter((reply: ReplyPropsType) => reply.parent_comment_id === id)
@@ -130,11 +147,17 @@ const Comment = ({
                 </div>
               )}
             </div>
-            <div className="cursor-pointer">
+            <div
+              className="cursor-pointer"
+              onClick={() => {
+                handleOpenMore(isMine)
+              }}
+            >
               <Dots />
             </div>
           </div>
-          {openReply && replys.map(reply => <Reply data={reply} />)}
+          {openReply &&
+            replys.map(reply => <Reply data={reply} key={reply.id} handleOpenMore={handleOpenMore} isMine={false} />)}
         </div>
       </div>
     </>
@@ -148,8 +171,12 @@ const Reply = ({
     content,
     created_at,
   },
+  handleOpenMore,
+  isMine,
 }: {
   data: ReplyPropsType
+  handleOpenMore: (b: boolean) => void
+  isMine: boolean
 }) => {
   return (
     <div className="pt-3 gap-3 flex">
@@ -163,7 +190,12 @@ const Reply = ({
         </div>
         <span>{content}</span>
       </div>
-      <div className="cursor-pointer">
+      <div
+        className="cursor-pointer"
+        onClick={() => {
+          handleOpenMore(isMine)
+        }}
+      >
         <Dots />
       </div>
     </div>
