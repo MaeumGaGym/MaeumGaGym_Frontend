@@ -8,10 +8,14 @@
     "service/*"
   ],
   "scripts": {
-    "build:user": "yarn workspace @service/user build"
+    "build": "turbo run build",
+    "build:user": "yarn workspace @service/user build",
+    "build:main": "yarn workspace @service/main build",
+    "build:admin": "yarn workspace @service/admin build"
   },
   "devDependencies": {
     "prettier": "^3.2.2",
+    "turbo": "^1.11.3",
     "typescript": "^5.3.3"
   },
   "dependencies": {
