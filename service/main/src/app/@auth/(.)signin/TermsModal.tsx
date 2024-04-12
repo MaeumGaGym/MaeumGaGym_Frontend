@@ -40,7 +40,8 @@ export const TermsModal = ({ nextStep, setData }: { nextStep: () => void; setDat
     </>
   )
 
-  const allHas = () => terms.has('info') && terms.has('terms') && terms.has('fourteen')
+  const isEssential = () => terms.has('info') && terms.has('terms') && terms.has('fourteen')
+  const allHas = () => isEssential() && terms.has('marketing')
 
   return (
     <div className="flex flex-col w-[480px] rounded-[24px] p-[64px_52px] gap-[12px]">
@@ -80,7 +81,7 @@ export const TermsModal = ({ nextStep, setData }: { nextStep: () => void; setDat
       </div>
       <Button
         className="w-full"
-        disabled={!allHas()}
+        disabled={!isEssential()}
         onClick={() => {
           nextStep()
           setData(terms.has('marketing'))
