@@ -1,5 +1,5 @@
 import { Timer as TimerIcon, Button, Play, Pause } from '@package/ui'
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, FormEvent, KeyboardEvent, InputHTMLAttributes } from 'react'
 
 const Timer = () => {
   const [hour, setHour] = useState<number>(0)
@@ -112,65 +112,42 @@ const Timer = () => {
     )
     return time
   }
+  const changeTimeStyle: InputHTMLAttributes<HTMLInputElement> = {
+    type: 'text',
+    className:
+      'border-none outline-none w-[44px] sm:w-[25x] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
+    minLength: 0,
+    maxLength: 2,
+    onInput: (e: FormEvent<HTMLInputElement>) => {
+      e.currentTarget.value = e.currentTarget.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
+    },
+    onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && setIsInput(false),
+  }
 
   return (
     <div className="border border-gray100 rounded-2xl px-10 flex justify-between items-center flex-1">
       <div className="flex gap-6 items-center">
         <TimerIcon className="text-gray400" />
         {isInput ? (
-          <div className="flex gap-3" ref={inputRef}>
-            <input
-              minLength={0}
-              maxLength={2}
-              type="text"
-              className="border-none outline-none text-gray400 text-titleLarge w-[44px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-              value={hour}
-              ref={hourInputRef}
-              onChange={onChangeInput}
-              name="hour"
-              onInput={e => {
-                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
-              }}
-              onKeyDown={e => e.key === 'Enter' && setIsInput(false)}
-            />
-            <p className="text-gray400 text-titleLarge">:</p>
-            <input
-              minLength={0}
-              maxLength={2}
-              type="text"
-              className="border-none outline-none text-gray400 text-titleLarge w-[44px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-              value={min}
-              onChange={onChangeInput}
-              name="min"
-              onInput={e => {
-                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
-              }}
-              onKeyDown={e => e.key === 'Enter' && setIsInput(false)}
-            />
-            <p className="text-gray400 text-titleLarge">:</p>
-            <input
-              minLength={0}
-              maxLength={2}
-              type="text"
-              className="border-none outline-none text-gray400 text-titleLarge w-[44px] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-              value={sec}
-              onChange={onChangeInput}
-              name="sec"
-              onInput={e => {
-                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1')
-              }}
-              onKeyDown={e => e.key === 'Enter' && setIsInput(false)}
-            />
+          <div className="flex gap-3 text-gray400 text-titleLarge sm:text-titleMedium transition-all" ref={inputRef}>
+            <input value={hour} ref={hourInputRef} onChange={onChangeInput} name="hour" {...changeTimeStyle} />
+            <p>:</p>
+            <input value={min} onChange={onChangeInput} name="min" {...changeTimeStyle} />
+            <p>:</p>
+            <input value={sec} onChange={onChangeInput} name="sec" {...changeTimeStyle} />
           </div>
         ) : (
-          <span className="text-gray400 text-titleLarge" onDoubleClick={() => setIsInput(true)}>
+          <span
+            className={`${isRunning ? 'text-blue500' : 'text-gray400'} text-titleLarge sm:text-titleMedium transition-all`}
+            onDoubleClick={() => setIsInput(true)}
+          >
             {String(hour).padStart(2, '0')} : {String(min).padStart(2, '0')} : {String(sec).padStart(2, '0')}
           </span>
         )}
       </div>
       <Button
         kind="primary"
-        className={isRunning ? 'h-fit px-2.5 py-2.5 bg-gray50 hover:bg-gray100' : 'h-fit px-2.5 py-2.5'}
+        className={isRunning ? 'h-fit px-[10px] py-2.5 bg-gray50 hover:bg-gray100' : 'h-fit px-[10px] py-2.5'}
         icon={isRunning ? <Pause size={20} className="text-black" /> : <Play size={20} className="text-white" isFill />}
         onClick={ToggleTimer}
       />
