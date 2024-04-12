@@ -1,5 +1,3 @@
-'use client'
-
 import BorderBox from '@/components/BorderBox'
 import { Button } from '@package/ui'
 import { MouseEvent } from 'react'

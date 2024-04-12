@@ -1,4 +1,3 @@
-'use client'
 import { Chevron } from '@package/ui'
 
 interface PoseItemProps {

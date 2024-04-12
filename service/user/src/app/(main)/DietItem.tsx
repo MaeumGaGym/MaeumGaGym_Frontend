@@ -1,5 +1,3 @@
-'use client'
-
 interface DietItemProps {
   title: string
   subTitle: string
@@ -23,7 +21,7 @@ const DietItem = ({ title, subTitle, dietInfoList }: DietItemProps) => {
       </div>
       <div className="w-full h-px rounded-[1px] bg-gray100" />
       {dietInfoList.map((v, i) => (
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center" key={i}>
           <div className="flex gap-3 items-center">
             <span className="text-gray700 text-labelSmall">{v.name}</span>
             <span className="text-gray400 text-bodySmall">{v.gram}g</span>

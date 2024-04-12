@@ -1,5 +1,3 @@
-'use client'
-
 import { GetQuotesResponse } from '@/apis/quote/getQuotes'
 
 const QuoteBanner = ({ quote, quoter }: GetQuotesResponse) => {

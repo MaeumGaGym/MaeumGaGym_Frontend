@@ -1,4 +1,3 @@
-'use client'
 import { Button, CalculatorIcon, Pickle, TimerIcon } from '@package/ui'
 import IconButton from '@/components/IconButton'
 import Timer from '@/components/timer'
@@ -64,11 +63,11 @@ const MainSection = () => {
             </Button>
           </div>
           <div className="grid grid-cols-5 gap-2 md:grid-cols-4 sm:grid-cols-3 md:[&_div:nth-child(5)]:hidden sm:[&_div:nth-child(5)]:hidden sm:[&_div:nth-child(4)]:hidden">
-            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0}/>
-            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0}/>
-            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0}/>
-            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0}/>
-            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0}/>
+            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0} />
+            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0} />
+            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0} />
+            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0} />
+            <PickleItem src={pickleTestImage.src} title="헬린이들은 꼭 해야 하는 삼두운동 4가지!!" count={0} />
           </div>
         </section>
       </section>

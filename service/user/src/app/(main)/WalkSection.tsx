@@ -1,11 +1,9 @@
-'use client'
-
-import BorderBox from "@/components/BorderBox"
-import { Run } from "@package/ui"
+import BorderBox from '@/components/BorderBox'
+import { Run } from '@package/ui'
 
 interface WalkSectionProps {
-    count: number
-    time: number
+  count: number
+  time: number
 }
 
 const WalkSection = ({ count, time }: WalkSectionProps) => {
