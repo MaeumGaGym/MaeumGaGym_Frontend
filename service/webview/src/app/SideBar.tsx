@@ -6,9 +6,10 @@ interface propsType {
   like: boolean
   setLike: () => void
   setShareOpen: () => void
+  setMoreOpen: () => void
 }
 
-const SideBar = ({ setCommentOpen, like, setLike, setShareOpen }: propsType) => {
+const SideBar = ({ setCommentOpen, like, setLike, setShareOpen, setMoreOpen }: propsType) => {
   return (
     <div className="w-[80px] h-fit py-[40px] gap-[24px] flex flex-col absolute bottom-0 right-0 items-center z-40">
       <div className="flex flex-col items-center cursor-pointer" onClick={setLike}>
@@ -29,7 +30,7 @@ const SideBar = ({ setCommentOpen, like, setLike, setShareOpen }: propsType) => 
         </div>
         <span className="text-bodySmall text-white">공유</span>
       </div>
-      <div className="flex justify-center items-center w-[48px] h-[48px] cursor-pointer">
+      <div className="flex justify-center items-center w-[48px] h-[48px] cursor-pointer" onClick={setMoreOpen}>
         <Dots className="text-white" size={32} />
       </div>
     </div>

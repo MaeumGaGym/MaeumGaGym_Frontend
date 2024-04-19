@@ -7,12 +7,14 @@ import Content from './Content'
 import SideBar from './SideBar'
 import Comments from './Comment'
 import ShareContainer from './Share'
+import More from './More'
+
+type ModalType = null | 'comment' | 'share' | 'more'
 
 const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
   const [pause, setPause] = useState<boolean>(false)
-  const [commentOpen, setCommentOpen] = useState<boolean>(false)
-  const [shareOpen, setShareOpen] = useState<boolean>(false)
   const [like, setLike] = useState<boolean>(false)
+  const [nowModalOpen, setNowModalOpen] = useState<ModalType>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const onPause = () => {
@@ -23,15 +25,23 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
   }
 
   const handleCommentOpen = () => {
-    setCommentOpen(!commentOpen)
+    setNowModalOpen('comment')
+  }
+
+  const handleShareOpen = () => {
+    setNowModalOpen('share')
+  }
+
+  const handleMoreOpen = () => {
+    setNowModalOpen('more')
+  }
+
+  const handleModalClose = () => {
+    setNowModalOpen(null)
   }
 
   const handleLike = () => {
     setLike(!like)
-  }
-
-  const handleShareOpen = () => {
-    setShareOpen(!shareOpen)
   }
 
   useEffect(() => {
@@ -65,7 +75,7 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
       <div className="loader" />
       <video
         ref={videoRef}
-        className={`w-full ${!commentOpen ? 'h-full' : 'h-1/3'} object-cover lg:rounded-[8px] md:rounded-[8px] z-10`}
+        className={`w-full ${!nowModalOpen ? 'h-full' : 'h-1/3'} object-cover lg:rounded-[8px] md:rounded-[8px] z-10`}
         loop
         onClick={onPause}
       />
@@ -84,14 +94,21 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
           <Play isFill className="text-white" />
         </div>
       ) : undefined}
-      {!commentOpen && !shareOpen && (
+      {!nowModalOpen && (
         <>
           <Content />
-          <SideBar setCommentOpen={handleCommentOpen} setLike={handleLike} like={like} setShareOpen={handleShareOpen} />
+          <SideBar
+            setCommentOpen={handleCommentOpen}
+            setLike={handleLike}
+            like={like}
+            setShareOpen={handleShareOpen}
+            setMoreOpen={handleMoreOpen}
+          />
         </>
       )}
-      {commentOpen && <Comments isOpen={commentOpen} setIsClose={handleCommentOpen} />}
-      {shareOpen && <ShareContainer setIsClose={handleShareOpen} />}
+      {nowModalOpen === 'comment' && <Comments setIsClose={handleModalClose} />}
+      {nowModalOpen === 'share' && <ShareContainer setIsClose={handleModalClose} />}
+      {nowModalOpen === 'more' && <More setIsClose={handleModalClose} owner={false} />}
     </div>
   )
 }
