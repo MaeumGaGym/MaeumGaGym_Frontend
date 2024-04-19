@@ -2,12 +2,11 @@
 
 import CommentInput from '@/components/commentInput'
 import ChatMore from '@/components/chatMore'
-import { useInput } from '@/hooks/useInput'
 import { Close, Dots } from '@package/ui'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import Modal from '@/components/modal'
 
 interface PropsType {
-  isOpen: boolean
   setIsClose: () => void
 }
 
@@ -64,7 +63,7 @@ interface OpenMoreType {
   isMine: boolean
 }
 
-const Comments = ({ isOpen, setIsClose }: PropsType) => {
+const Comments = ({ setIsClose }: PropsType) => {
   const [openMore, setOpenMore] = useState<OpenMoreType>({ open: false, isMine: false })
 
   const handleOpenMore = (isMine?: boolean) => {
@@ -76,11 +75,8 @@ const Comments = ({ isOpen, setIsClose }: PropsType) => {
   }
 
   return (
-    <>
-      <div className="flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] h-2/3 z-30 rounded-t-[10px]">
-        <div className="flex items-end justify-center h-[15px]">
-          <div className="w-16 h-[5px] rounded-sm bg-gray700"></div>
-        </div>
+    <Modal setIsClose={setIsClose}>
+      <>
         <div className="flex items-center justify-center px-5 py-3 border-b-[1px] border-gray800">
           <div className="flex justify-between w-full">
             <div className="flex gap-[14px] items-center">
@@ -98,9 +94,9 @@ const Comments = ({ isOpen, setIsClose }: PropsType) => {
           </div>
         </div>
         <CommentInput placeholder="댓글 추가..." buttonText="게시" profile_image={''} />
-      </div>
-      {openMore.open && <ChatMore setIsClose={handleOpenMore} isMine={openMore.isMine} />}
-    </>
+        {openMore.open && <ChatMore setIsClose={handleOpenMore} isMine={openMore.isMine} />}
+      </>
+    </Modal>
   )
 }
 

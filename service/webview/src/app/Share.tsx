@@ -1,14 +1,10 @@
-import Image from 'next/image'
 import { Twitter, Email, Link, Facebook } from '@package/ui'
+import Modal from '@/components/modal'
 
 const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
   return (
-    <div className="w-full h-full absolute top-0 flex flex-col">
-      <div className="bg-black grow opacity-40" onClick={setIsClose}></div>
-      <div className="flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] h-1/4 opacity-100">
-        <div className="flex items-end justify-center h-[15px]">
-          <div className="w-16 h-[5px] rounded-sm bg-gray700"></div>
-        </div>
+    <Modal setIsClose={setIsClose}>
+      <>
         <div className="flex items-center justify-center px-5 py-3">
           <div className="flex justify-between w-full">
             <div className="flex gap-[14px] items-center">
@@ -42,8 +38,8 @@ const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
             <span className="text-gray200">링크</span>
           </div>
         </div>
-      </div>
-    </div>
+      </>
+    </Modal>
   )
 }
 
