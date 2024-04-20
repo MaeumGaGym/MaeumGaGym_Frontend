@@ -1,5 +1,4 @@
 import { Dots, Heart, Message, Share } from '@package/ui'
-import { useState } from 'react'
 
 interface propsType {
   setCommentOpen: () => void
