@@ -3,6 +3,7 @@
 import Modal from '@/components/modal'
 import { Pencil, Trash, Flag } from '@package/ui'
 import { useState } from 'react'
+import Report from './Report'
 
 interface PropsType {
   setIsClose: () => void
@@ -49,6 +50,7 @@ const More = ({ setIsClose, owner }: PropsType) => {
             <Flag />
             <span className="text-white text-labelLarge">신고</span>
           </div>
+          {modal === 'report' && <Report setIsClose={handleModalClose} reportType="post" />}
         </>
       )}
     </Modal>
