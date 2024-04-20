@@ -75,7 +75,7 @@ const Comments = ({ setIsClose }: PropsType) => {
   }
 
   return (
-    <Modal setIsClose={setIsClose}>
+    <Modal setIsClose={setIsClose} modalType={'comment'}>
       <>
         <div className="flex items-center justify-center px-5 py-3 border-b-[1px] border-gray800">
           <div className="flex justify-between w-full">

@@ -75,7 +75,7 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
       <div className="loader" />
       <video
         ref={videoRef}
-        className={`w-full ${!nowModalOpen ? 'h-full' : 'h-1/3'} object-cover lg:rounded-[8px] md:rounded-[8px] z-10`}
+        className={`w-full ${nowModalOpen !== 'comment' ? 'h-full' : 'h-1/3'} object-cover lg:rounded-[8px] md:rounded-[8px] z-10`}
         loop
         onClick={onPause}
       />
