@@ -1,7 +1,0 @@
-config:
-  name: maeumgagym-admin
-  service_type: fe
-  port: 3000
-  domain:
-    prod: maeumgagym-admin.xquare.app
-    stag: maeumgagym-admin-stag.xquare.app

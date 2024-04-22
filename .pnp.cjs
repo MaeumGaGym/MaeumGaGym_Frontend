@@ -24,12 +24,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:service/admin"\
       },\
       {\
-        "name": "@service/main",\
-        "reference": "workspace:service/main"\
+        "name": "@service/client",\
+        "reference": "workspace:service/client"\
       },\
       {\
-        "name": "@service/user",\
-        "reference": "workspace:service/user"\
+        "name": "@service/main",\
+        "reference": "workspace:service/main"\
       }\
     ],\
     "enableTopLevelFallback": true,\
@@ -37,8 +37,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "fallbackExclusionList": [\
       ["@package/ui", ["workspace:packages/ui"]],\
       ["@service/admin", ["workspace:service/admin"]],\
+      ["@service/client", ["workspace:service/client"]],\
       ["@service/main", ["workspace:service/main"]],\
-      ["@service/user", ["workspace:service/user"]],\
       ["maeumgagym", ["workspace:."]]\
     ],\
     "fallbackPool": [\
@@ -726,11 +726,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
-      ["@service/main", [\
-        ["workspace:service/main", {\
-          "packageLocation": "./service/main/",\
+      ["@service/client", [\
+        ["workspace:service/client", {\
+          "packageLocation": "./service/client/",\
           "packageDependencies": [\
-            ["@service/main", "workspace:service/main"],\
+            ["@service/client", "workspace:service/client"],\
             ["@package/ui", "workspace:packages/ui"],\
             ["@reduxjs/toolkit", "virtual:41fe72e4f1f69320fab2b9b0a8de9a11b807f96dc0bdf2bac3f8aed1e8d970b37a8bc0f83fb0a695fb539d2a942d537caa95efbfb96ee4ef46b0f998b5e06f0f#npm:1.9.7"],\
             ["@tanstack/react-query", "virtual:41fe72e4f1f69320fab2b9b0a8de9a11b807f96dc0bdf2bac3f8aed1e8d970b37a8bc0f83fb0a695fb539d2a942d537caa95efbfb96ee4ef46b0f998b5e06f0f#npm:5.17.9"],\
@@ -765,11 +765,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "SOFT"\
         }]\
       ]],\
-      ["@service/user", [\
-        ["workspace:service/user", {\
-          "packageLocation": "./service/user/",\
+      ["@service/main", [\
+        ["workspace:service/main", {\
+          "packageLocation": "./service/main/",\
           "packageDependencies": [\
-            ["@service/user", "workspace:service/user"],\
+            ["@service/main", "workspace:service/main"],\
             ["@package/ui", "workspace:packages/ui"],\
             ["@reduxjs/toolkit", "virtual:41fe72e4f1f69320fab2b9b0a8de9a11b807f96dc0bdf2bac3f8aed1e8d970b37a8bc0f83fb0a695fb539d2a942d537caa95efbfb96ee4ef46b0f998b5e06f0f#npm:1.9.7"],\
             ["@tanstack/react-query", "virtual:41fe72e4f1f69320fab2b9b0a8de9a11b807f96dc0bdf2bac3f8aed1e8d970b37a8bc0f83fb0a695fb539d2a942d537caa95efbfb96ee4ef46b0f998b5e06f0f#npm:5.17.9"],\

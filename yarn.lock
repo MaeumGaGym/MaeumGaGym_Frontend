@@ -574,9 +574,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@service/main@workspace:service/main":
+"@service/client@workspace:service/client":
   version: 0.0.0-use.local
-  resolution: "@service/main@workspace:service/main"
+  resolution: "@service/client@workspace:service/client"
   dependencies:
     "@package/ui": "workspace:^"
     "@reduxjs/toolkit": 1.9.7
@@ -611,9 +611,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@service/user@workspace:service/user":
+"@service/main@workspace:service/main":
   version: 0.0.0-use.local
-  resolution: "@service/user@workspace:service/user"
+  resolution: "@service/main@workspace:service/main"
   dependencies:
     "@package/ui": "workspace:^"
     "@reduxjs/toolkit": 1.9.7
