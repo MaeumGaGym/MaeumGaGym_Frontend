@@ -77,7 +77,7 @@ const Report = ({ setIsClose, reportType }: PropsType) => {
           <div className="w-full px-5 py-3 text-titleMedium text-white">신고</div>
           <div className="overflow-y-scroll grow scrollbar-none">
             <div className="flex flex-col px-5 py-6 gap-4 ">
-              <span className="text-labelLarge">이 게시물을 신고하는 이유</span>
+              <span className="text-labelLarge">이 {reportType === 'comment' ? '댓글' : '게시물'}을 신고하는 이유</span>
               <span className="text-bodyMedium text-gray400">
                 누군가 위급한 상황에 있다고 생각된다면 즉시 현지 응급 서비스 기관에 연락하시기 바랍니다.
               </span>
