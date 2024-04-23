@@ -1,4 +1,3 @@
-'use client'
 import { Footer } from '@package/ui'
 import Banner from './Banner'
 import routineIcon from '@/assets/routineIcon.png'

@@ -1,9 +1,8 @@
+'use client'
 import { Button, Chevron } from '@package/ui'
-import { useCalendar } from '@/hooks/useClandar'
-import { monthPurposes } from '@/apis/timeline/monthPurpose'
+import { useCalendar } from '@/hooks'
 import { useEffect, useState } from 'react'
-import { monthRoutineHistorys } from '@/apis/timeline/monthRoutineHistory'
-import { monthRoutines } from '@/apis/timeline/monthRoutine'
+import { monthPurposes, monthRoutines,monthRoutineHistorys } from '@/apis'
 
 interface T_Purpose {
   title: string
