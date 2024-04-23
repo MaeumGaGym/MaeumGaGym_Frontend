@@ -16,6 +16,7 @@ const More = ({ setIsClose, owner }: PropsType) => {
   const [modal, setModal] = useState<ModalType>(null)
 
   const handleModalClose = () => {
+    setIsClose()
     setModal(null)
   }
 
