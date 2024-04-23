@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { getCookie, isLocal, setCookie } from '@/utils'
+import { isLocal, setCookie } from '@/utils'
 import { AppleLogo, GoogleLogo, KakaoLogo, WhiteLogo } from '@package/ui'
 import { useRouter } from 'next/navigation'
 import { useCallback, useEffect } from 'react'
@@ -12,26 +12,25 @@ type TokenType = {
   source?: string
 }
 
-export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setData: (v: string) => void }) => {
+export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setData: (v: loginCategory) => void }) => {
   const router = useRouter()
 
   const loginWithToken = useCallback(async (e: MessageEvent<unknown>) => {
     const data = e.data as TokenType
     if (data.source || !(data.type && data.token)) return
     if (data.type === 'kakao') {
-      kakaoCodeToToken(data.type, data.token)
+      await kakaoCodeToToken(data.token)
     } else {
       setCookie('OAUTH_TOKEN', data.token)
     }
-    const loginData = await login(data.type, data.token)
+    const loginData = await login(data.type)
     window.removeEventListener('message', loginWithToken)
 
     if (loginData) {
-      const RF_TOKEN = getCookie('RF-TOKEN') || undefined
-      console.log('success!')
-      if (RF_TOKEN) router.push(`/main`)
+      router.push(`/main`)
+      router.refresh()
     } else {
-      setData(data.token)                                                                                                                                                                             
+      setData(data.type)
       nextStep()
     }
   }, [])
@@ -64,9 +63,9 @@ export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setDat
         config = {
           client_id: process.env.NEXT_PUBLIC_APPLE_CLIENT_ID || 'undefined',
           redirect_uri: process.env.NEXT_PUBLIC_APPLE_REDIRECT_URI || 'undefined',
-          response_type: 'code',
+          response_type: 'code id_token',
           state: 'origin:web',
-          response_mode: 'query',
+          response_mode: 'fragment',
         }
         break
     }

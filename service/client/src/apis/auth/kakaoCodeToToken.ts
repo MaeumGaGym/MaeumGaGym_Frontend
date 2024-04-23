@@ -1,9 +1,8 @@
 import { instance } from '../axios'
-import { loginCategory } from '.'
 
-export const kakaoCodeToToken = async (category: loginCategory, code: string): Promise<boolean> => {
+export const kakaoCodeToToken = async (code: string): Promise<boolean> => {
   return await instance
-    .get(`${category}/token/${code}`)
+    .get(`/kakao/token/${code}`)
     .then(() => true)
     .catch(e => {
       console.error(

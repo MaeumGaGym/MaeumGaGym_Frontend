@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 export default function KakaoLogin() {
   let url = ''
-  const origin = isLocal() ? 'http://localhost:3000' : 'https://maeumgagym-main-stag.xquare.app'
+  const origin = isLocal() ? 'http://localhost:3000' : 'https://maeumgagym.xquare.app'
   useEffect(() => {
     url = window.location.href
     if (url) {

@@ -1,9 +1,10 @@
+import { loginCategory } from '.'
 import { instance } from '../axios'
 
-export const signup = async (token: string, name: string) => {
+export const signup = async (category: loginCategory, name: string) => {
   return await instance({
     method: 'POST',
-    url: `/google/signup?access_token=${token}`,
+    url: `${category}/signup`,
     data: { nickname: name },
     withCredentials: true,
   })

@@ -7,9 +7,10 @@ import { TermsModal } from './TermsModal'
 import { InfoModal } from './InfoModal'
 import { useRouter } from 'next/navigation'
 import { signup } from '@/apis/auth/signup'
+import { loginCategory } from '@/apis'
 
 interface registerProps {
-  token: string
+  category?: loginCategory
   terms: {
     marketing: boolean
   }
@@ -20,7 +21,6 @@ interface registerProps {
 
 export default function AuthModal() {
   const [registerData, setRegisterData] = useState<registerProps>({
-    token: '',
     terms: { marketing: false },
     info: { nickname: '' },
   })
@@ -30,7 +30,7 @@ export default function AuthModal() {
 
   useEffect(() => {
     const doSignup = async () => {
-      if (await signup(registerData.token, registerData.info.nickname)) {
+      if (registerData?.category && await signup(registerData.category, registerData.info.nickname)) {
         router.push(`/signin`)
       } else {
         router.refresh()
@@ -38,7 +38,7 @@ export default function AuthModal() {
       }
     }
     if (step === 'final') {
-      console.log(`nickname : ${registerData.info.nickname}, token : ${registerData.token}`)
+      // console.log(`nickname : ${registerData.info.nickname}, category : ${registerData.category}`)
       doSignup()
     }
   }, [step])
@@ -48,7 +48,7 @@ export default function AuthModal() {
       {step === 'auth' && (
         <LoginModal
           nextStep={() => setStep('terms')}
-          setData={(v: string) => setRegisterData({ ...registerData, token: v })}
+          setData={(v: loginCategory) => setRegisterData({ ...registerData, category: v })}
         />
       )}
       {step === 'terms' && (
