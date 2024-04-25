@@ -26,7 +26,7 @@ export const Header = () => {
           <Button kind="white" fontSize="small" className="h-[42px]" onClick={() => router.push('/selfcare')}>
             자기관리
           </Button>
-          <Button kind="white" fontSize="small" className="h-[42px]" onClick={() => router.push('/pose')}>
+          <Button kind="white" fontSize="small" className="h-[42px]" onClick={() => router.push('/poses')}>
             운동자세
           </Button>
           <Button kind="white" fontSize="small" className="h-[42px]" onClick={() => router.push('/pickle')}>
