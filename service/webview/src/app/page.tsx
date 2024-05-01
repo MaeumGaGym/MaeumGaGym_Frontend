@@ -5,7 +5,7 @@ import './animation.css'
 const Pickle = () => {
   return (
     <div className="dark">
-      <div className="bg-black h-[calc(100dvh-60px)] flex justify-center items-center">
+      <div className="bg-black h-[100vh] flex justify-center items-center">
         <div
           id="pickles"
           className="flex lg:gap-[24px] md:gap-[24px] sm:gap-0 flex-wrap items-center lg:w-[448px] md:w-[448px] sm:w-full h-full overflow-y-scroll lg:py-[24px] md:py-[24px]"
