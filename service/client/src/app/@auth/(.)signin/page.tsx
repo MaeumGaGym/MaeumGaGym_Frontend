@@ -8,6 +8,7 @@ import { InfoModal } from './InfoModal'
 import { useRouter } from 'next/navigation'
 import { signup } from '@/apis/auth/signup'
 import { loginCategory } from '@/apis'
+import { toast } from '@/utils'
 
 interface registerProps {
   category?: loginCategory
@@ -31,6 +32,7 @@ export default function AuthModal() {
   useEffect(() => {
     const doSignup = async () => {
       if (registerData?.category && await signup(registerData.category, registerData.info.nickname)) {
+        toast.success('회원가입에 성공하셨습니다!')
         router.push(`/signin`)
       } else {
         router.refresh()

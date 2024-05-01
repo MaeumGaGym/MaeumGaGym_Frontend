@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { title } from 'process'
 import React from 'react'
+
 interface poseProps {
   exerciseName: string
   category: string

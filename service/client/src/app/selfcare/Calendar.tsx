@@ -115,7 +115,7 @@ const Calendar = () => {
     return null
   }
 
-  const renderItem = (day: Date) => {
+  const renderItem = (day: Date, index: number) => {
     let items = []
 
     if (routines?.routineList?.length) {
@@ -136,7 +136,7 @@ const Calendar = () => {
       return [
         items[0],
         items[1],
-        <div className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">{`+${items.length - 2}`}</div>,
+        <div key={index} className="w-full px-2 py-1 text-gray700 bg-gray50 rounded truncate">{`+${items.length - 2}`}</div>,
       ]
     }
 
@@ -197,7 +197,7 @@ const Calendar = () => {
                   >
                     {day.getDate()}
                   </div>
-                  {renderItem(day)}
+                  {renderItem(day, dayIdx)}
                 </div>
               ))}
             </div>

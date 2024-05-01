@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useCallback, useEffect } from 'react'
 import * as process from 'process'
 import { kakaoCodeToToken, login, type loginCategory } from '@/apis'
+import { toast } from '@/utils'
 
 type TokenType = {
   token: string
@@ -27,6 +28,7 @@ export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setDat
     window.removeEventListener('message', loginWithToken)
 
     if (loginData) {
+      toast.success('로그인에 성공하셨습니다!')
       router.push(`/main`)
       router.refresh()
     } else {
