@@ -3,5 +3,5 @@ config:
   service_type: fe
   port: 3000
   domain:
-    prod: maeumgagym.xquare.app
+    prod: maeumgagym-prod.xquare.app
     stag: maeumgagym.xquare.app
