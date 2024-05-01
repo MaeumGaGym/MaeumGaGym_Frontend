@@ -1,0 +1,7 @@
+config:
+  name: maeumgagym-user
+  service_type: fe
+  port: 3000
+  domain:
+    prod: maeumgagym.xquare.app
+    stag: maeumgagym.xquare.app

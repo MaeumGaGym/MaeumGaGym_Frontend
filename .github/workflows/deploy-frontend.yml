@@ -1,0 +1,44 @@
+name: Deployment frontend
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - 'service/client/**'
+      - 'packages/**'
+
+jobs:
+  deploy:
+    permissions:
+      id-token: write
+      contents: read
+
+    env:
+      SERVICE_NAME: client
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Deploy to xquare
+        uses: team-xquare/xquare-deployment-action@master
+        with:
+          environment: stag
+          access_key: ${{ secrets.FRONTEND_ACCESS_KEY }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          base_url: service/${{ env.SERVICE_NAME }}
+          config_file_path: service/${{ env.SERVICE_NAME }}/.xquare/config.yaml
+          yarn_docker_build: true
+          yarn_workspace: '@service/${{ env.SERVICE_NAME }}'
+          buildargs: |
+            NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
+            NEXT_PUBLIC_GOOGLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+            NEXT_PUBLIC_GOOGLE_REDIRECT_URI=${{ secrets.NEXT_PUBLIC_GOOGLE_REDIRECT_URI }}
+            NEXT_PUBLIC_GOOGLE_SCOPE=${{ secrets.NEXT_PUBLIC_GOOGLE_SCOPE }}
+            NEXT_PUBLIC_KAKAO_CLIENT_ID=${{ secrets.NEXT_PUBLIC_KAKAO_CLIENT_ID }}
+            NEXT_PUBLIC_KAKAO_REDIRECT_URI=${{ secrets.NEXT_PUBLIC_KAKAO_REDIRECT_URI }}
+            NEXT_PUBLIC_APPLE_CLIENT_ID=${{ secrets.NEXT_PUBLIC_APPLE_CLIENT_ID }}
+            NEXT_PUBLIC_APPLE_REDIRECT_URI=${{ secrets.NEXT_PUBLIC_APPLE_REDIRECT_URI }}
