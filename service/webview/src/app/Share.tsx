@@ -1,5 +1,6 @@
 import { Twitter, Email, Link, Facebook } from '@package/ui'
 import Modal from '@/components/modal'
+import { toast } from '@/utils/toast/toast'
 
 const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
   return (
@@ -31,7 +32,13 @@ const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
             </div>
             <span className="text-gray200">이메일</span>
           </div>
-          <div className="flex flex-col items-center gap-2">
+          <div
+            className="flex flex-col items-center gap-2"
+            onClick={() => {
+              setIsClose()
+              toast('success', '링크를 복사했습니다')
+            }}
+          >
             <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-gray700">
               <Link size={36} className="text-gray300" />
             </div>
