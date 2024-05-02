@@ -16,7 +16,9 @@ export default function RootLayout({
       <body className="[&_*]:font-['Pretendard']">
         <div className="dark">
           <div className="bg-black h-[100vh] flex justify-center items-center">
-            <div className="lg:w-[448px] md:w-[448px] sm:w-full h-[100vh]">{children}</div>
+            <div className="lg:w-[448px] md:w-[448px] sm:w-full h-[100vh] overflow-y-scroll scrollbar-hide">
+              {children}
+            </div>
           </div>
         </div>
       </body>
