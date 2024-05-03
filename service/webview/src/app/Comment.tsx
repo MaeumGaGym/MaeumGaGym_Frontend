@@ -3,7 +3,7 @@
 import CommentInput from '@/components/commentInput'
 import ChatMore from '@/components/chatMore'
 import { Close, Dots } from '@package/ui'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Modal from '@/components/modal'
 
 interface PropsType {
@@ -67,8 +67,8 @@ const Comments = ({ setIsClose }: PropsType) => {
   const [openMore, setOpenMore] = useState<OpenMoreType>({ open: false, isMine: false })
 
   const handleOpenMore = (isMine?: boolean) => {
-    if (isMine == null) {
-      setOpenMore({ open: !openMore.open, isMine: openMore.isMine })
+    if (!isMine) {
+      setOpenMore({ open: !openMore.open, isMine: false })
     } else {
       setOpenMore({ open: !openMore.open, isMine: isMine })
     }
@@ -89,7 +89,7 @@ const Comments = ({ setIsClose }: PropsType) => {
         <div className="pt-3 overflow-scroll scrollbar-none grow">
           <div className="flex px-5 flex-col ">
             {commentdummy.map(comment => (
-              <Comment data={comment} key={comment.id} handleOpenMore={handleOpenMore} isMine />
+              <Comment data={comment} key={comment.id} handleOpenMore={handleOpenMore} isMine={false} />
             ))}
           </div>
         </div>
