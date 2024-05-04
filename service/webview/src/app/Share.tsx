@@ -1,15 +1,19 @@
 import { Twitter, Email, Link, Facebook } from '@package/ui'
 import Modal from '@/components/modal'
 import { toast } from '@/utils/toast/toast'
-import { usePathname } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
-  const pathName = usePathname()
+  const pickleParams = useSearchParams()
+  const shareLink = `${process.env.NEXT_PUBLIC_BASE_URL}/pickle?${pickleParams}`
   const linkCopy = () => {
-    navigator.clipboard.writeText(`${process.env.NEXT_PUBLIC_BASE_URL}${pathName}`).then(() => {
+    navigator.clipboard.writeText(shareLink).then(() => {
       setIsClose()
       toast('success', '링크를 복사했습니다')
     })
+  }
+  const facebookShare = () => {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareLink}`)
   }
 
   return (
@@ -23,7 +27,7 @@ const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
           </div>
         </div>
         <div className="flex py-[10px] px-5 gap-6">
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2" onClick={facebookShare}>
             <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-[#0866FF]">
               <Facebook size={36} />
             </div>
