@@ -15,6 +15,13 @@ const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
   const facebookShare = () => {
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareLink}`)
   }
+  const twitterShare = () => {
+    window.open(`https://www.twitter.com/intent/tweet?&url=${shareLink}`)
+  }
+  const emailShare = () => {
+    const body = encodeURIComponent(shareLink)
+    window.location.href = `mailto:?body=${body}`
+  }
 
   return (
     <Modal setIsClose={setIsClose}>
@@ -33,13 +40,13 @@ const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
             </div>
             <span className="text-gray200">Facebook</span>
           </div>
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2" onClick={twitterShare}>
             <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-[#1DA1F2]">
               <Twitter size={36} />
             </div>
             <span className="text-gray200">Twitter</span>
           </div>
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2" onClick={emailShare}>
             <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-gray700">
               <Email size={36} className="text-gray300" />
             </div>
