@@ -63,15 +63,39 @@ interface OpenMoreType {
   isMine: boolean
 }
 
+interface CommentEditType {
+  edit: boolean
+  comment?: {
+    profile_image?: string
+    content: string
+  }
+}
+
 const Comments = ({ setIsClose }: PropsType) => {
   const [openMore, setOpenMore] = useState<OpenMoreType>({ open: false, isMine: false })
+  const [commentEdit, setCommentEdit] = useState<CommentEditType>({ edit: false })
 
-  const handleOpenMore = (isMine?: boolean) => {
+  const handleOpenMore = (isMine: boolean) => {
     if (!isMine) {
       setOpenMore({ open: !openMore.open, isMine: false })
     } else {
       setOpenMore({ open: !openMore.open, isMine: isMine })
     }
+  }
+
+  const handleCommentEdit = (isEdit: boolean, content?: string, profile_img?: string) => {
+    setCommentEdit({
+      ...commentEdit,
+      edit: isEdit,
+      comment: {
+        content: content ?? (commentEdit.comment ? commentEdit.comment.content : '낄낄'),
+        profile_image: profile_img ?? undefined,
+      },
+    })
+  }
+
+  const handleCommentEditClose = () => {
+    setCommentEdit({ ...commentEdit, edit: false })
   }
 
   return (
@@ -89,12 +113,30 @@ const Comments = ({ setIsClose }: PropsType) => {
         <div className="pt-3 overflow-scroll scrollbar-none grow">
           <div className="flex px-5 flex-col ">
             {commentdummy.map(comment => (
-              <Comment data={comment} key={comment.id} handleOpenMore={handleOpenMore} isMine={false} />
+              <Comment
+                data={comment}
+                key={comment.id}
+                handleOpenMore={handleOpenMore}
+                isMine={true}
+                handleCommentOpen={handleCommentEdit}
+              />
             ))}
           </div>
         </div>
-        <CommentInput placeholder="댓글 추가..." buttonText="게시" profile_image={''} />
-        {openMore.open && <ChatMore setIsClose={handleOpenMore} isMine={openMore.isMine} />}
+        {!commentEdit.edit ? (
+          <CommentInput placeholder="댓글 추가..." buttonText="게시" profile_image={''} />
+        ) : (
+          <CommentInput
+            placeholder="댓글 수정..."
+            buttonText="수정"
+            profile_image={''}
+            value={commentEdit.comment?.content}
+            handleEditClose={handleCommentEditClose}
+          />
+        )}
+        {openMore.open && (
+          <ChatMore setIsClose={handleOpenMore} isMine={openMore.isMine} setCommentEdit={handleCommentEdit} />
+        )}
       </>
     </Modal>
   )
@@ -111,14 +153,15 @@ const Comment = ({
   },
   handleOpenMore,
   isMine,
+  handleCommentOpen,
 }: {
   data: CommentPropsType
   isMine: boolean
   handleOpenMore: (b: boolean) => void
+  handleCommentOpen: (isEdit: boolean, content?: string, profile_img?: string) => void
 }) => {
   const [openReply, setOpenReply] = useState<boolean>(false)
   const replys = replydummy.filter((reply: ReplyPropsType) => reply.parent_comment_id === id)
-
   return (
     <>
       <div className="flex gap-3 pb-6 grow">
@@ -147,13 +190,22 @@ const Comment = ({
               className="cursor-pointer"
               onClick={() => {
                 handleOpenMore(isMine)
+                handleCommentOpen(isMine, content, profile_image ?? undefined)
               }}
             >
               <Dots />
             </div>
           </div>
           {openReply &&
-            replys.map(reply => <Reply data={reply} key={reply.id} handleOpenMore={handleOpenMore} isMine={false} />)}
+            replys.map(reply => (
+              <Reply
+                data={reply}
+                key={reply.id}
+                handleOpenMore={handleOpenMore}
+                isMine={true}
+                handleCommentOpen={handleCommentOpen}
+              />
+            ))}
         </div>
       </div>
     </>
@@ -169,10 +221,12 @@ const Reply = ({
   },
   handleOpenMore,
   isMine,
+  handleCommentOpen,
 }: {
   data: ReplyPropsType
   handleOpenMore: (b: boolean) => void
   isMine: boolean
+  handleCommentOpen: (isEdit: boolean, content?: string, profile_img?: string) => void
 }) => {
   return (
     <div className="pt-3 gap-3 flex">
@@ -180,16 +234,17 @@ const Reply = ({
         {/* <Image src={profile_image} alt="profileImg" width={40} height={40} className="rounded-50%" /> */}
       </div>
       <div className="flex flex-col gap-[2px] grow">
-        <div>
-          <span>{nickname}</span>
-          <span>{created_at}</span>
+        <div className="flex gap-1">
+          <span className="text-labelSmall text-gray200">{nickname}</span>
+          <span className="text-bodyTiny text-gray400">{created_at}</span>
         </div>
-        <span>{content}</span>
+        <span className="text-bodyMedium">{content}</span>
       </div>
       <div
         className="cursor-pointer"
         onClick={() => {
           handleOpenMore(isMine)
+          handleCommentOpen(isMine, content, profile_image ?? undefined)
         }}
       >
         <Dots />

@@ -4,10 +4,16 @@ interface PropsType {
   placeholder?: string
   buttonText: string
   profile_image: string
+  value?: string
+  handleEditClose?: () => void
 }
 
-const CommentInput = ({ placeholder, buttonText, profile_image }: PropsType) => {
-  const { state: newComment, onChange: onCommentChange, setState: setNewComment } = useInput<string>({})
+const CommentInput = ({ placeholder, buttonText, profile_image, value, handleEditClose }: PropsType) => {
+  const {
+    state: newComment,
+    onChange: onCommentChange,
+    setState: setNewComment,
+  } = useInput<string>({ initalValue: value })
 
   return (
     <div className="flex gap-[18px] px-3 py-5 items-center">
@@ -19,9 +25,16 @@ const CommentInput = ({ placeholder, buttonText, profile_image }: PropsType) => 
         className="h-8 outline-none bg-transparent placeholder:text-gray400 py-[6px] w-full"
         onChange={onCommentChange}
         value={newComment}
+        defaultValue={value}
       />
-      {newComment.length !== 0 && (
-        <button className="text-labelMedium text-blue400 shrink-0" onClick={() => setNewComment('')}>
+      {newComment?.length !== 0 && (
+        <button
+          className="text-labelMedium text-blue400 shrink-0"
+          onClick={() => {
+            handleEditClose && handleEditClose()
+            setNewComment('')
+          }}
+        >
           {buttonText}
         </button>
       )}

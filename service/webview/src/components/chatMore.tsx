@@ -5,12 +5,18 @@ import { Flag, Pencil, Trash } from '@package/ui'
 import Modal from './modal'
 import Report from '@/app/Report'
 
-const ChatMore = ({ setIsClose, isMine }: { setIsClose: () => void; isMine: boolean }) => {
+interface PropsType {
+  setIsClose: (isMine: boolean) => void
+  isMine: boolean
+  setCommentEdit: (isEdit: boolean, content?: string, profile_img?: string) => void
+}
+
+const ChatMore = ({ setIsClose, isMine, setCommentEdit }: PropsType) => {
   const [openReport, setOpenReport] = useState<boolean>()
 
   const handleCloseReport = () => {
     setOpenReport(false)
-    setIsClose()
+    setIsClose(isMine)
   }
 
   const handleOpenReport = () => {
@@ -18,14 +24,20 @@ const ChatMore = ({ setIsClose, isMine }: { setIsClose: () => void; isMine: bool
   }
 
   return (
-    <Modal setIsClose={setIsClose}>
+    <Modal setIsClose={() => setIsClose(isMine)}>
       <>
         <div className="flex px-5 py-[2px]">
           <span className="text-bodyMedium text-gray300">댓글</span>
         </div>
         <div>
           {isMine ? (
-            <div className="flex pl-5 items-center py-3 gap-6">
+            <div
+              className="flex pl-5 items-center py-3 gap-6"
+              onClick={() => {
+                setIsClose(isMine)
+                setCommentEdit(true)
+              }}
+            >
               <Pencil />
               <span className="text-labelLarge">수정</span>
             </div>
