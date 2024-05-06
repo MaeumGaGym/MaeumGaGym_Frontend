@@ -1,5 +1,3 @@
-const BasketAlert = () => {
+export const BasketAlert = () => {
   return <></>
 }
-
-export default BasketAlert

@@ -1,13 +1,13 @@
 import Image from 'next/image'
 
-interface PickleItmeProps {
+export interface PickleItmeProps {
   src: string
   alt?: string
   title: string
   count: number
 }
 
-const PickleItem = ({ src, alt = 'pickle image', title, count }: PickleItmeProps) => {
+export const PickleItem = ({ src, alt = 'pickle image', title, count }: PickleItmeProps) => {
   return (
     <div className="flex flex-col gap-3 flex-1 cursor-pointer">
       <Image
@@ -32,5 +32,3 @@ const PickleItem = ({ src, alt = 'pickle image', title, count }: PickleItmeProps
     </div>
   )
 }
-
-export default PickleItem

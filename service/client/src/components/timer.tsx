@@ -1,7 +1,8 @@
+'use client'
 import { Timer as TimerIcon, Button, Play, Pause } from '@package/ui'
 import { useRef, useEffect, useState, FormEvent, KeyboardEvent, InputHTMLAttributes } from 'react'
 
-const Timer = () => {
+export const Timer = () => {
   const [hour, setHour] = useState<number>(0)
   const [min, setMin] = useState<number>(0)
   const [sec, setSec] = useState<number>(0)
@@ -154,5 +155,3 @@ const Timer = () => {
     </div>
   )
 }
-
-export default Timer

@@ -106,3 +106,5 @@ next-env.d.ts
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/yarn,git,nextjs
+
+doc/*

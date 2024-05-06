@@ -1,8 +1,7 @@
 'use client'
 
-import Banner from '@/components/banner'
+import { ItemLayout, Banner } from '@/components'
 import Slider from './Slider'
-import ItemLayout from '@/components/shop/ItemLayout'
 import { useState } from 'react'
 
 const BannerDescription = {

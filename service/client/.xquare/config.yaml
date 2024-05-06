@@ -1,5 +1,5 @@
 config:
-  name: maeumgagym-user
+  name: maeumgagym-frontend
   service_type: fe
   port: 3000
   domain:

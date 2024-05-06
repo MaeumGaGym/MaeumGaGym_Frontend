@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { Button } from '@package/ui'
-import { HeaderLogo } from '@package/ui'
+import { Button, HeaderLogo } from '@package/ui'
 import { usePathname, useRouter } from 'next/navigation'
 import { useLayoutEffect, useState } from 'react'
 import { getCookie } from '@/utils'

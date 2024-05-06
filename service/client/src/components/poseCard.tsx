@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import React from 'react'
 
-interface poseProps {
+export interface PoseCardProps {
   exerciseName: string
   category: string
   src: string[]
   onClick?: () => void
 }
-export const PoseCard = ({ exerciseName, category, src, onClick }: poseProps) => {
+
+export const PoseCard = ({ exerciseName, category, src, onClick }: PoseCardProps) => {
   return (
     <div onClick={onClick} className="gap-x-2 w-[162px] gap-[8px] flex flex-col">
       <div className="rounded-lg h-[162px] w-[162px] p-9px bg-gray25 flex items-center justify-center">

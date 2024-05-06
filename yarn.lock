@@ -351,6 +351,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@material/material-color-utilities@npm:^0.2.7":
+  version: 0.2.7
+  resolution: "@material/material-color-utilities@npm:0.2.7"
+  checksum: 445c17646488a0564b21d2949429c871963158a9636f6f2869ace614c35bbabeb6e68a51770ff7752586ecc928274db3e4345a332c94e3fc296e988b0a24d527
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:14.0.4":
   version: 14.0.4
   resolution: "@next/env@npm:14.0.4"
@@ -640,6 +647,8 @@ __metadata:
     redux-logger: ^3.0.6
     sharp: ^0.33.1
     tailwindcss: ^3.4.1
+    typedoc: ^0.25.13
+    typedoc-material-theme: ^1.0.2
     typescript: ^5.3.3
   languageName: unknown
   linkType: soft
@@ -1089,6 +1098,13 @@ __metadata:
   version: 6.0.1
   resolution: "ansi-regex@npm:6.0.1"
   checksum: 1ff8b7667cded1de4fa2c9ae283e979fc87036864317da86a2e546725f96406746411d0d85e87a2d12fa5abd715d90006de7fa4fa0477c92321ad3b4c7d4e169
+  languageName: node
+  linkType: hard
+
+"ansi-sequence-parser@npm:^1.1.0":
+  version: 1.1.1
+  resolution: "ansi-sequence-parser@npm:1.1.1"
+  checksum: ead5b15c596e8e85ca02951a844366c6776769dcc9fd1bd3a0db11bb21364554822c6a439877fb599e7e1ffa0b5f039f1e5501423950457f3dcb2f480c30b188
   languageName: node
   linkType: hard
 
@@ -3095,6 +3111,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsonc-parser@npm:^3.2.0":
+  version: 3.2.1
+  resolution: "jsonc-parser@npm:3.2.1"
+  checksum: 656d9027b91de98d8ab91b3aa0d0a4cab7dc798a6830845ca664f3e76c82d46b973675bbe9b500fae1de37fd3e81aceacbaa2a57884bf2f8f29192150d2d1ef7
+  languageName: node
+  linkType: hard
+
 "jsx-ast-utils@npm:^2.4.1 || ^3.0.0, jsx-ast-utils@npm:^3.3.5":
   version: 3.3.5
   resolution: "jsx-ast-utils@npm:3.3.5"
@@ -3206,6 +3229,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lunr@npm:^2.3.9":
+  version: 2.3.9
+  resolution: "lunr@npm:2.3.9"
+  checksum: 176719e24fcce7d3cf1baccce9dd5633cd8bdc1f41ebe6a180112e5ee99d80373fe2454f5d4624d437e5a8319698ca6837b9950566e15d2cae5f2a543a3db4b8
+  languageName: node
+  linkType: hard
+
 "maeumgagym@workspace:.":
   version: 0.0.0-use.local
   resolution: "maeumgagym@workspace:."
@@ -3233,6 +3263,15 @@ __metadata:
     promise-retry: "npm:^2.0.1"
     ssri: "npm:^10.0.0"
   checksum: 7c7a6d381ce919dd83af398b66459a10e2fe8f4504f340d1d090d3fa3d1b0c93750220e1d898114c64467223504bd258612ba83efbc16f31b075cd56de24b4af
+  languageName: node
+  linkType: hard
+
+"marked@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "marked@npm:4.3.0"
+  bin:
+    marked: bin/marked.js
+  checksum: 0db6817893952c3ec710eb9ceafb8468bf5ae38cb0f92b7b083baa13d70b19774674be04db5b817681fa7c5c6a088f61300815e4dd75a59696f4716ad69f6260
   languageName: node
   linkType: hard
 
@@ -3284,6 +3323,15 @@ __metadata:
   dependencies:
     brace-expansion: "npm:^1.1.7"
   checksum: c154e566406683e7bcb746e000b84d74465b3a832c45d59912b9b55cd50dee66e5c4b1e5566dba26154040e51672f9aa450a9aef0c97cfc7336b78b7afb9540a
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^9.0.3":
+  version: 9.0.4
+  resolution: "minimatch@npm:9.0.4"
+  dependencies:
+    brace-expansion: ^2.0.1
+  checksum: cf717f597ec3eed7dabc33153482a2e8d49f4fd3c26e58fd9c71a94c5029a0838728841b93f46bf1263b65a8010e2ee800d0dc9b004ab8ba8b6d1ec07cc115b5
   languageName: node
   linkType: hard
 
@@ -4419,6 +4467,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"shiki@npm:^0.14.7":
+  version: 0.14.7
+  resolution: "shiki@npm:0.14.7"
+  dependencies:
+    ansi-sequence-parser: ^1.1.0
+    jsonc-parser: ^3.2.0
+    vscode-oniguruma: ^1.7.0
+    vscode-textmate: ^8.0.0
+  checksum: 2aec3b3519df977c4391df9e1825cb496e9a4d7e11395f05a0da77e4fa2f7c3d9d6e6ee94029ac699533017f2b25637ee68f6d39f05f311535c2704d0329b520
+  languageName: node
+  linkType: hard
+
 "side-channel@npm:^1.0.4":
   version: 1.0.4
   resolution: "side-channel@npm:1.0.4"
@@ -4925,6 +4985,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typedoc-material-theme@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "typedoc-material-theme@npm:1.0.2"
+  dependencies:
+    "@material/material-color-utilities": ^0.2.7
+  peerDependencies:
+    typedoc: ^0.25.3
+  checksum: 987a1cd565e4cb32bc9d7db2a00db0fa62a70a5ea7bb179ced32bd4b1d65114c88b8520724c321cb41f9485fec07f2fb4990d31889f95e1fba9961657a67ff35
+  languageName: node
+  linkType: hard
+
+"typedoc@npm:^0.25.13":
+  version: 0.25.13
+  resolution: "typedoc@npm:0.25.13"
+  dependencies:
+    lunr: ^2.3.9
+    marked: ^4.3.0
+    minimatch: ^9.0.3
+    shiki: ^0.14.7
+  peerDependencies:
+    typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x
+  bin:
+    typedoc: bin/typedoc
+  checksum: 703d1f48137300b0ef3df1998a25ae745db3ca0b126f8dd1f7262918f11243a94d24dfc916cdba2baeb5a7d85d5a94faac811caf7f4fa6b7d07144dc02f7639f
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.3.3":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
@@ -5018,6 +5105,20 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 474acf1146cb2701fe3b074892217553dfcf9a031280919ba1b8d651a068c9b15d863b7303cb15bd00a862b498e6cf4ad7b4a08fb134edd5a6f7641681cb54a2
+  languageName: node
+  linkType: hard
+
+"vscode-oniguruma@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "vscode-oniguruma@npm:1.7.0"
+  checksum: 53519d91d90593e6fb080260892e87d447e9b200c4964d766772b5053f5699066539d92100f77f1302c91e8fc5d9c772fbe40fe4c90f3d411a96d5a9b1e63f42
+  languageName: node
+  linkType: hard
+
+"vscode-textmate@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "vscode-textmate@npm:8.0.0"
+  checksum: 127780dfea89559d70b8326df6ec344cfd701312dd7f3f591a718693812b7852c30b6715e3cfc8b3200a4e2515b4c96f0843c0eacc0a3020969b5de262c2a4bb
   languageName: node
   linkType: hard
 

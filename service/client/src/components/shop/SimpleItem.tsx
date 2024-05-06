@@ -1,3 +1,4 @@
+'use client'
 import { Star } from '@package/ui'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
@@ -10,13 +11,14 @@ export interface SimpleItemType {
   review: number
   image: string
 }
-interface SimpleItemProps {
+
+export interface SimpleItemProps {
   v: SimpleItemType
   idx: number
   isRank: boolean
 }
 
-const SimpleItem = ({ v: item, idx, isRank }: SimpleItemProps) => {
+export const SimpleItem = ({ v: item, idx, isRank }: SimpleItemProps) => {
   const router = useRouter()
 
   return (
@@ -41,4 +43,3 @@ const SimpleItem = ({ v: item, idx, isRank }: SimpleItemProps) => {
     </div>
   )
 }
-export default SimpleItem

@@ -1,6 +1,7 @@
+'use client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import ShowStar from './ShowStar'
+import { ShowStar } from '.'
 
 export interface DetailItemType {
   id: string
@@ -12,11 +13,11 @@ export interface DetailItemType {
   review: number
   hits?: number
 }
-interface DetailItemProps {
+export interface DetailItemProps {
   v: DetailItemType
 }
 
-const DetailItem = ({ v: item }: DetailItemProps) => {
+export const DetailItem = ({ v: item }: DetailItemProps) => {
   const router = useRouter()
   return (
     <div className="flex flex-col gap-2 cursor-pointer" onClick={() => router.push(`/shop/${item.id}`)}>
@@ -37,5 +38,3 @@ const DetailItem = ({ v: item }: DetailItemProps) => {
     </div>
   )
 }
-
-export default DetailItem

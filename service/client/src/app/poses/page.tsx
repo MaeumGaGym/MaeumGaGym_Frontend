@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { PoseCard } from '@/components/poseCard'
+import { PoseCard } from '@/components'
 import PoseSearchModal from './PoseSearchModal'
 import { getPoses } from '@/apis/pose/getPoses'
 import Image from 'next/image'

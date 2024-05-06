@@ -1,4 +1,4 @@
-import BorderBox from '@/components/BorderBox'
+import { BorderBox } from '@/components'
 import { Run } from '@package/ui'
 
 interface WalkSectionProps {
