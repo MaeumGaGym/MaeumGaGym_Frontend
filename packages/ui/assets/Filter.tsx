@@ -17,9 +17,9 @@ export const Filter = ({ size = 24, onClick, className }: PropsType) => {
     >
       <path
         fill="currentColor"
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M7 2a1 1 0 0 0-1 1v7.126a4.002 4.002 0 0 0 0 7.748V21a1 1 0 1 0 2 0v-3.126a4.002 4.002 0 0 0 0-7.748V3a1 1 0 0 0-1-1Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM17 2a1 1 0 0 0-1 1v3.126a4.002 4.002 0 0 0 0 7.748V21a1 1 0 1 0 2 0v-7.126a4.002 4.002 0 0 0 0-7.748V3a1 1 0 0 0-1-1Zm0 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       />
     </svg>
   )
