@@ -1,6 +1,6 @@
 'use client'
 
-import { Heart, Pause, Play, Share } from '@package/ui'
+import { Heart, Pause, Play } from '@package/ui'
 import Hls from 'hls.js'
 import { useEffect, useRef, useState } from 'react'
 import Content from './Content'

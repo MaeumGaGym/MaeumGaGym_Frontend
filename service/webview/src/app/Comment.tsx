@@ -3,7 +3,7 @@
 import CommentInput from '@/components/commentInput'
 import ChatMore from '@/components/chatMore'
 import { Close, Dots } from '@package/ui'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Modal from '@/components/modal'
 
 interface PropsType {
