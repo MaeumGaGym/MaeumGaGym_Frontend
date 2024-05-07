@@ -13,6 +13,6 @@ export const getPoses = async (access_token: string) => {
   })
     .then(res => res.data)
     .catch(err => {
-      console.log('이런', err)
+      console.log('error:', err)
     })
 }
