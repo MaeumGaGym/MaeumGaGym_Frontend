@@ -1,3 +1,4 @@
+'use client'
 import { Footer } from '@package/ui'
 import Banner from './Banner'
 import routineIcon from '@/assets/routineIcon.png'
@@ -6,8 +7,11 @@ import dietIcon from '@/assets/dietIcon.png'
 import pictureIcon from '@/assets/pictureIcon.png'
 import IconButton from '@/components/IconButton'
 import Calendar from './Calendar'
+import { useRouter } from 'next/navigation'
 
 const selfcare = () => {
+  const router = useRouter()
+
   return (
     <div>
       <Banner />
@@ -15,27 +19,23 @@ const selfcare = () => {
         <div className="w-[1200px] flex flex-col gap-16">
           <div className="flex gap-6">
             <IconButton
+              onClick={() => router.push('/selfcare/myroutine')}
               src={routineIcon}
-              alt='루틴 icon'
-              title='내 루틴'
+              alt="루틴 icon"
+              title="내 루틴"
               text={['나만의 루틴을 구성하여', '규칙적인 운동을 해보세요.']}
             />
-            <IconButton
-              src={goalIcon}
-              alt='목표 icon'
-              title='목표'
-              text='나만의 목표를 세워보세요'
-            />
+            <IconButton src={goalIcon} alt="목표 icon" title="목표" text="나만의 목표를 세워보세요" />
             <IconButton
               src={dietIcon}
-              alt='식단 icon'
-              title='식단'
+              alt="식단 icon"
+              title="식단"
               text={['나만의 식단을 구성하여', '규칙적인 식사를 해보세요.']}
             />
             <IconButton
               src={pictureIcon}
-              alt='오운완 icon'
-              title='오운완'
+              alt="오운완 icon"
+              title="오운완"
               text={['오늘의 운동을 완료하고,', '내 모습을 사진으로 남겨보세요.']}
             />
           </div>
