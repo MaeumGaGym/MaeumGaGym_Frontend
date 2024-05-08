@@ -9,9 +9,10 @@ interface PropsType {
   setIsClose: (isMine: boolean) => void
   isMine: boolean
   setCommentEdit: (isEdit: boolean, content?: string, profile_img?: string) => void
+  setDelModal: () => void
 }
 
-const ChatMore = ({ setIsClose, isMine, setCommentEdit }: PropsType) => {
+const ChatMore = ({ setIsClose, isMine, setCommentEdit, setDelModal }: PropsType) => {
   const [openReport, setOpenReport] = useState<boolean>()
 
   const handleCloseReport = () => {
@@ -21,6 +22,11 @@ const ChatMore = ({ setIsClose, isMine, setCommentEdit }: PropsType) => {
 
   const handleOpenReport = () => {
     setOpenReport(true)
+  }
+
+  const handleDelModalOpen = () => {
+    setDelModal()
+    setIsClose(isMine)
   }
 
   return (
@@ -50,7 +56,7 @@ const ChatMore = ({ setIsClose, isMine, setCommentEdit }: PropsType) => {
               {openReport && <Report setIsClose={handleCloseReport} reportType="comment" />}
             </>
           )}
-          <div className="flex pl-5 items-center py-3 gap-6">
+          <div className="flex pl-5 items-center py-3 gap-6" onClick={handleDelModalOpen}>
             <Trash />
             <span className="text-labelLarge">삭제</span>
           </div>

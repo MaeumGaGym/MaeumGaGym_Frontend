@@ -5,6 +5,7 @@ import ChatMore from '@/components/chatMore'
 import { Close, Dots } from '@package/ui'
 import { useState } from 'react'
 import Modal from '@/components/modal'
+import DeleteModal from './DeleteModal'
 
 interface PropsType {
   setIsClose: () => void
@@ -74,6 +75,7 @@ interface CommentEditType {
 const Comments = ({ setIsClose }: PropsType) => {
   const [openMore, setOpenMore] = useState<OpenMoreType>({ open: false, isMine: false })
   const [commentEdit, setCommentEdit] = useState<CommentEditType>({ edit: false })
+  const [openDelModal, setOpenDelModal] = useState<boolean>(false)
 
   const handleOpenMore = (isMine: boolean) => {
     if (!isMine) {
@@ -98,47 +100,59 @@ const Comments = ({ setIsClose }: PropsType) => {
     setCommentEdit({ ...commentEdit, edit: false })
   }
 
+  const handleDelModal = () => {
+    setOpenDelModal(!openDelModal)
+  }
+
   return (
-    <Modal setIsClose={setIsClose} modalType={'comment'}>
-      <>
-        <div className="flex items-center justify-center px-5 py-3 border-b-[1px] border-gray800">
-          <div className="flex justify-between w-full">
-            <div className="flex gap-[14px] items-center">
-              <span className="text-titleMedium">댓글</span>
-              <span className="text-gray300">3.4천</span>
+    <>
+      <Modal setIsClose={setIsClose} modalType={'comment'}>
+        <>
+          <div className="flex items-center justify-center px-5 py-3 border-b-[1px] border-gray800">
+            <div className="flex justify-between w-full">
+              <div className="flex gap-[14px] items-center">
+                <span className="text-titleMedium">댓글</span>
+                <span className="text-gray300">3.4천</span>
+              </div>
+              <Close onClick={setIsClose} />
             </div>
-            <Close onClick={setIsClose} />
           </div>
-        </div>
-        <div className="pt-3 overflow-scroll scrollbar-none grow">
-          <div className="flex px-5 flex-col ">
-            {commentdummy.map(comment => (
-              <Comment
-                data={comment}
-                key={comment.id}
-                handleOpenMore={handleOpenMore}
-                isMine={true}
-                handleCommentOpen={handleCommentEdit}
-              />
-            ))}
+          <div className="pt-3 overflow-scroll scrollbar-none grow">
+            <div className="flex px-5 flex-col ">
+              {commentdummy.map(comment => (
+                <Comment
+                  data={comment}
+                  key={comment.id}
+                  handleOpenMore={handleOpenMore}
+                  isMine={true}
+                  handleCommentOpen={handleCommentEdit}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-        {!commentEdit.edit ? (
-          <CommentInput placeholder="댓글 추가..." buttonText="게시" profile_image={''} />
-        ) : (
-          <CommentInput
-            placeholder="댓글 수정..."
-            buttonText="수정"
-            profile_image={''}
-            value={commentEdit.comment?.content}
-            handleEditClose={handleCommentEditClose}
-          />
-        )}
-        {openMore.open && (
-          <ChatMore setIsClose={handleOpenMore} isMine={openMore.isMine} setCommentEdit={handleCommentEdit} />
-        )}
-      </>
-    </Modal>
+          {!commentEdit.edit ? (
+            <CommentInput placeholder="댓글 추가..." buttonText="게시" profile_image={''} />
+          ) : (
+            <CommentInput
+              placeholder="댓글 수정..."
+              buttonText="수정"
+              profile_image={''}
+              value={commentEdit.comment?.content}
+              handleEditClose={handleCommentEditClose}
+            />
+          )}
+          {openMore.open && (
+            <ChatMore
+              setIsClose={handleOpenMore}
+              isMine={openMore.isMine}
+              setCommentEdit={handleCommentEdit}
+              setDelModal={handleDelModal}
+            />
+          )}
+        </>
+      </Modal>
+      {openDelModal && <DeleteModal setModalClose={handleDelModal} />}
+    </>
   )
 }
 
