@@ -88,7 +88,7 @@ const Comments = ({ setIsClose }: PropsType) => {
       ...commentEdit,
       edit: isEdit,
       comment: {
-        content: content ?? (commentEdit.comment ? commentEdit.comment.content : '낄낄'),
+        content: content ?? (commentEdit.comment ? commentEdit.comment.content : ''),
         profile_image: profile_img ?? undefined,
       },
     })
@@ -190,7 +190,7 @@ const Comment = ({
               className="cursor-pointer"
               onClick={() => {
                 handleOpenMore(isMine)
-                handleCommentOpen(isMine, content, profile_image ?? undefined)
+                handleCommentOpen(false, content, profile_image ?? undefined)
               }}
             >
               <Dots />
@@ -244,7 +244,7 @@ const Reply = ({
         className="cursor-pointer"
         onClick={() => {
           handleOpenMore(isMine)
-          handleCommentOpen(isMine, content, profile_image ?? undefined)
+          handleCommentOpen(false, content, profile_image ?? undefined)
         }}
       >
         <Dots />
