@@ -33,7 +33,7 @@ const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
             </div>
           </div>
         </div>
-        <div className="flex py-[10px] px-5 gap-6 justify-center">
+        <div className="flex py-[10px] px-5 gap-6 justify-start">
           <div className="flex flex-col items-center gap-2" onClick={facebookShare}>
             <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-[#0866FF]">
               <Facebook size={36} />
