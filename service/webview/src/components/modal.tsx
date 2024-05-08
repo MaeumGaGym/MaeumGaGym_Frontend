@@ -11,7 +11,7 @@ const ModalHeight = {
 const Modal = ({ setIsClose, children, modalType }: PropsType) => {
   const heightStyle = modalType ? ModalHeight[modalType] : ''
   return (
-    <div className="w-full h-full absolute top-0 flex flex-col z-50">
+    <div className="w-full h-full absolute top-0 flex flex-col z-30">
       <div className="bg-black grow opacity-40" onClick={setIsClose}></div>
       <div
         className={`flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] pb-[34px] opacity-100 rounded-t-[10px] ${heightStyle}`}

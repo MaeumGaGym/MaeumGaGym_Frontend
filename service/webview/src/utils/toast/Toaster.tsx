@@ -21,7 +21,7 @@ const Toast = () => {
   }, [data])
 
   return (
-    <div className="fixed w-full h-full top-0 flex flex-col items-center pointer-events-none box-border">
+    <div className="fixed w-full h-full top-0 flex flex-col items-center pointer-events-none box-border z-50">
       {data.map(item => {
         return (
           <div className="px-6 py-4 absolute top-6 bg-gray800 text-white text-labelMedium rounded-lg w-[95%] mx-[2.5%] max-w-[425px]">
