@@ -21,10 +21,9 @@ export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setDat
     if (data.source || !(data.type && data.token)) return
     if (data.type === 'kakao') {
       await kakaoCodeToToken(data.token)
-    } else {
-      setCookie('OAUTH_TOKEN', data.token)
     }
-    const loginData = await login(data.type)
+
+    const loginData = await login(data.type, data.token)
     window.removeEventListener('message', loginWithToken)
 
     if (loginData) {
@@ -32,6 +31,9 @@ export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setDat
       router.push(`/main`)
       router.refresh()
     } else {
+      if (data.type === 'kakao') {
+        setCookie('OAUTH_TOKEN', data.token)
+      }
       setData(data.type)
       nextStep()
     }

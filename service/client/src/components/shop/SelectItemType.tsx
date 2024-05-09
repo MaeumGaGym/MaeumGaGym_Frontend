@@ -37,6 +37,7 @@ const itemTypeArr = [
   { title: '비타민', type: 'vita32min' },
   { title: '보호대', type: 'boho5dae' },
 ]
+
 export interface SelectItemTypeProps {
   type: string
   setType: React.Dispatch<React.SetStateAction<string>>

@@ -2,9 +2,13 @@ import { instance } from '../axios'
 
 export type loginCategory = 'google' | 'kakao' | 'apple'
 
-export const login = async (category: loginCategory): Promise<string | undefined> => {
+export const login = async (category: loginCategory, token: string): Promise<string | undefined> => {
   return await instance
-    .get(`${category}/login`)
+    .get(`${category}/login`, {
+      headers: category !== 'kakao' ? {
+        "oauth-token": token
+      }:{}
+    })
     .then(res => res.headers['authorization'].split(' ')[1])
     .catch(e => {
       console.error(

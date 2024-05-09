@@ -1,12 +1,14 @@
 import { loginCategory } from '.'
 import { instance } from '../axios'
 
-export const signup = async (category: loginCategory, name: string) => {
+export const signup = async (category: loginCategory, name: string, token: string) => {
   return await instance({
     method: 'POST',
     url: `${category}/signup`,
     data: { nickname: name },
-    withCredentials: true,
+    headers: category !== 'kakao' ? {
+      "oauth-token": token
+    } : {}
   })
     .then(() => 1)
     .catch(e => {
