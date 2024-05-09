@@ -54,6 +54,15 @@
   }
 }
 
+@keyframes toastShowDown {
+  0% {
+    transform: translate(0, -30px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
 #pickles::-webkit-scrollbar {
   width: 0;
   height: 0;
