@@ -9,7 +9,7 @@ import { IconButton } from '@/components'
 import Calendar from './Calendar'
 import { useRouter } from 'next/navigation'
 
-const selfcare = () => {
+const Selfcare = () => {
   const router = useRouter()
 
   return (
@@ -47,4 +47,4 @@ const selfcare = () => {
   )
 }
 
-export default selfcare
+export default Selfcare
