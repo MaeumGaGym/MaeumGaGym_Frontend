@@ -12,25 +12,40 @@ import router from 'next/router'
 
 interface Pose {
   id: string
+  simple_name?: string
   exact_name: string
   thumbnail: string
-  pose_images: string[]
+  video?: string
   simple_part: string
   exact_part: string
-  start_pose: string
-  exercise_way: string
-  breathe_way: string
-  caution: string
+  start_pose?: string
+  exercise_way?: string
+  breathe_way?: string
+  caution?: string
+  need_machine?: boolean
 }
 
-const Poses = () => {
+const asdf: string[] = []
+
+const Pose = () => {
   const [poseList, setPoseList] = useState<Pose[]>([])
   const [visible, setVisible] = useState<boolean>(false)
+  const [clickPoseList, setClickPoseList] = useState<Number>(0)
+  const [poseFilter, setPoseFilter] = useState<Boolean>([true, true])
+
+  const togglePoseFilter = index => {
+    const newPoseFilter = [...poseFilter]
+    newPoseFilter[index] = !newPoseFilter[index]
+    if (!newPoseFilter[0] && !newPoseFilter[1]) {
+      newPoseFilter[index] = true
+    }
+    console.log(newPoseFilter)
+    setPoseFilter(newPoseFilter)
+  }
 
   const modalVisible = () => {
     setVisible(!visible)
   }
-
   const bodyCategory: string[] = ['전체', '가슴', '어깨', '팔', '복근', '등', '하체']
 
   const getPoseData = async () => {
@@ -42,8 +57,6 @@ const Poses = () => {
   useEffect(() => {
     getPoseData()
   }, [])
-
-  console.log(poseList)
 
   return (
     <div>
@@ -63,12 +76,17 @@ const Poses = () => {
           <div className="w-full h-12 flex px-2 items-center rounded-lg">
             <p className="text-labelSmall text-gray600">운동 부위</p>
           </div>
-          {bodyCategory.map((i: string) => (
+          {bodyCategory.map((i: string, j) => (
             <div
+              onClick={() => setClickPoseList(j)}
               key={i}
-              className="w-full h-12 flex px-[12px] items-center rounded-lg group hover:bg-blue50 cursor-pointer select-none"
+              className={`w-full h-12 flex px-[12px] items-center rounded-lg group ${clickPoseList == j ? 'bg-blue50' : 'bg-white'} hover:bg-blue50 cursor-pointer select-none`}
             >
-              <p className="text-bodyMedium text-gray900 group-hover:text-blue500 group-hover:text-labelMedium">{i}</p>
+              <p
+                className={`${clickPoseList == j ? 'text-blue500 text-labelMedium' : 'text-gray900 text-bodyMedium'} group-hover:text-blue500`}
+              >
+                {i}
+              </p>
             </div>
           ))}
         </div>
@@ -76,17 +94,27 @@ const Poses = () => {
           <div className="px-[4px] justify-between flex w-full items-center select-none">
             <div className="gap-2 items-center flex">
               <p className="text-labelLarge text-black">전체</p>
-              <p className="text-labelLarge text-blue500">16</p>
+              <p className="text-labelLarge text-blue500">{poseList ? poseList.length : 0}</p>
             </div>
             <div className="items-center flex gap-2">
               <Filter size={16} className="text-gray900" />
               <p className="text-gray800 text-bodySmall">필터</p>
               <div className="flex items-center gap-2 pr-[24px] pl-[12px]">
-                <div className="rounded-lg flex items-center justify-center gap-2 px-[12px] py-2 border border-gray200 cursor-pointer group hover:bg-blue50 hover:border-blue500">
-                  <p className="text-labelSmall text-gray600 group-hover:text-blue500">맨몸 운동</p>
+                <div
+                  className={`rounded-lg flex items-center justify-center gap-2 px-[12px] py-2 border ${
+                    poseFilter[0] ? 'bg-blue50 border-blue500' : 'border-gray200'
+                  } cursor-pointer `}
+                  onClick={() => togglePoseFilter(0)}
+                >
+                  <p className={`text-labelSmall text-gray600 ${poseFilter[0] && 'text-blue500'}`}>맨몸 운동</p>
                 </div>
-                <div className="rounded-lg flex items-center justify-center gap-2 px-[12px] py-2 border border-gray200 cursor-pointer group hover:bg-blue50 hover:border-blue500">
-                  <p className="text-labelSmall text-gray600 group-hover:text-blue500">기구 운동</p>
+                <div
+                  className={`rounded-lg flex items-center justify-center gap-2 px-[12px] py-2 border ${
+                    poseFilter[1] ? 'bg-blue50 border-blue500' : 'border-gray200'
+                  } cursor-pointer `}
+                  onClick={() => togglePoseFilter(1)}
+                >
+                  <p className={`text-labelSmall text-gray600 ${poseFilter[1] && 'text-blue500'}`}>기구 운동</p>
                 </div>
               </div>
               <div
@@ -99,17 +127,17 @@ const Poses = () => {
             </div>
           </div>
           <div className="w-full flex-wrap gap-x-[11px] gap-y-[32px]">
-            {poseList
-              ? poseList.map((pose: Pose) => (
-                  <PoseCard
-                    key={pose.id}
-                    exerciseName={pose.exact_name}
-                    category={pose.simple_part}
-                    src={pose.pose_images}
-                    onClick={() => router.push(`/poses/${pose.id}`)}
-                  />
-                ))
-              : null}
+            {poseList &&
+              poseList.map((pose: Pose) => (
+                <PoseCard
+                  key={pose.id}
+                  exact_name={pose.exact_name}
+                  simple_part={pose.simple_part}
+                  exact_part={pose.exact_part}
+                  thumbnail={pose.thumbnail}
+                  onClick={() => router.push(`/poses/${pose.id}`)}
+                />
+              ))}
           </div>
         </div>
         <div className="w-full max-w-[166px] flex h-[48px]" />
@@ -120,4 +148,4 @@ const Poses = () => {
   )
 }
 
-export default Poses
+export default Pose
