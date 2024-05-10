@@ -1,4 +1,4 @@
-import BorderBox from '@/components/BorderBox'
+import { BorderBox } from '@/components'
 import { Button } from '@package/ui'
 import { MouseEvent } from 'react'
 

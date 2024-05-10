@@ -1,11 +1,9 @@
 import { Button, CalculatorIcon, Pickle, TimerIcon } from '@package/ui'
-import IconButton from '@/components/IconButton'
-import Timer from '@/components/timer'
+import { IconButton, PickleItem, Timer } from '@/components'
 import pickleTestImage from '../../assets/pickleTestImage.png'
 import TodaySection from './TodaySection'
 import PoseItem from './PoseItem'
 import DietItem from './DietItem'
-import PickleItem from '@/components/PickleItem'
 import WalkSection from './WalkSection'
 
 const MainSection = () => {

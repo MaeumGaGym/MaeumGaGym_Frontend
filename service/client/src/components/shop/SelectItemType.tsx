@@ -37,12 +37,13 @@ const itemTypeArr = [
   { title: '비타민', type: 'vita32min' },
   { title: '보호대', type: 'boho5dae' },
 ]
-interface SelectItemTypeProps {
+
+export interface SelectItemTypeProps {
   type: string
   setType: React.Dispatch<React.SetStateAction<string>>
 }
 
-const SelectItemType = ({ type, setType }: SelectItemTypeProps) => {
+export const SelectItemType = ({ type, setType }: SelectItemTypeProps) => {
   useEffect(() => {
     setType(itemTypeArr[0].type)
   }, [])
@@ -65,4 +66,3 @@ const SelectItemType = ({ type, setType }: SelectItemTypeProps) => {
     </div>
   )
 }
-export default SelectItemType

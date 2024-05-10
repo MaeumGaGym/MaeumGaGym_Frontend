@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from 'next/image'
-import BorderBox from './BorderBox'
+import { BorderBox } from '.'
 
-interface PropsType {
+export interface IconButtonProps {
   src?: StaticImageData
   icon?: React.ReactNode
   alt?: string
@@ -10,7 +10,7 @@ interface PropsType {
   onClick?: () => void
 }
 
-const IconButton = ({ src, icon, alt, title, text, onClick }: PropsType) => {
+export const IconButton = ({ src, icon, alt, title, text, onClick }: IconButtonProps) => {
   return (
     <BorderBox className="px-8 py-10 flex flex-col justify-between w-60 h-60 sm:w-20 flex-1 cursor-pointer break-keep">
       {icon || (src && <Image src={src} alt={alt || '이미지'} width={40} height={40} />)}
@@ -32,5 +32,3 @@ const IconButton = ({ src, icon, alt, title, text, onClick }: PropsType) => {
     </BorderBox>
   )
 }
-
-export default IconButton

@@ -1,14 +1,12 @@
 'use client'
 import React from 'react'
 
-interface PropsType {
+export interface BorderBoxProps {
   children?: React.ReactNode
   className?: string
   onClick?: () => void
 }
 
-const BorderBox = ({ children, className, onClick }: PropsType) => {
+export const BorderBox = ({ children, className }: BorderBoxProps) => {
   return <div className={`border border-gray100 rounded-2xl ${className}`}>{children}</div>
 }
-
-export default BorderBox

@@ -5,11 +5,11 @@ import routineIcon from '@/assets/routineIcon.png'
 import goalIcon from '@/assets/goalIcon.png'
 import dietIcon from '@/assets/dietIcon.png'
 import pictureIcon from '@/assets/pictureIcon.png'
-import IconButton from '@/components/IconButton'
+import { IconButton } from '@/components'
 import Calendar from './Calendar'
 import { useRouter } from 'next/navigation'
 
-const selfcare = () => {
+const Selfcare = () => {
   const router = useRouter()
 
   return (
@@ -47,4 +47,4 @@ const selfcare = () => {
   )
 }
 
-export default selfcare
+export default Selfcare

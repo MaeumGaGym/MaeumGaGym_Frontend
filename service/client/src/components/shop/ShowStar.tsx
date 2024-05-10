@@ -1,9 +1,10 @@
 import { Star, HalfStar } from '@package/ui'
 
-interface ShowStarProps {
+export interface ShowStarProps {
   rating: string
 }
-const ShowStar = ({ rating }: ShowStarProps) => {
+
+export const ShowStar = ({ rating }: ShowStarProps) => {
   return (
     <div className="flex">
       {Array.from({ length: Math.floor(Number(rating)) }, (v, i) => i).map((_, idx) => (
@@ -18,5 +19,3 @@ const ShowStar = ({ rating }: ShowStarProps) => {
     </div>
   )
 }
-
-export default ShowStar

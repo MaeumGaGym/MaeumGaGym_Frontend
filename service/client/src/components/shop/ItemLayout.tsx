@@ -2,11 +2,9 @@
 
 import { Chevron } from '@package/ui'
 import { useRouter } from 'next/navigation'
-import SimpleItem, { SimpleItemType } from './SimpleItem'
-import SelectItemType from './SelectItemType'
-import DetailItem, { DetailItemType } from './DetailItem'
+import { SimpleItem, type SimpleItemType, SelectItemType, DetailItem, type DetailItemType } from '.'
 
-interface ItemLayoutProps {
+export interface ItemLayoutProps {
   title: string
   items: SimpleItemType[] | DetailItemType[]
   isDetail?: boolean
@@ -16,7 +14,8 @@ interface ItemLayoutProps {
   type?: string
   setType?: React.Dispatch<React.SetStateAction<string>>
 }
-const ItemLayout = ({ title, items, isRank = false, isDetail, type, setType }: ItemLayoutProps) => {
+
+export const ItemLayout = ({ title, items, isRank = false, isDetail, type, setType }: ItemLayoutProps) => {
   const router = useRouter()
 
   return (
@@ -49,5 +48,3 @@ const ItemLayout = ({ title, items, isRank = false, isDetail, type, setType }: I
     </div>
   )
 }
-
-export default ItemLayout

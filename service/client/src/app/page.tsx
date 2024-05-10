@@ -1,4 +1,4 @@
-import { Header } from '@/components/Header'
+import { Header } from '@/components'
 import { Footer } from '@package/ui'
 import { cookies } from 'next/headers'
 

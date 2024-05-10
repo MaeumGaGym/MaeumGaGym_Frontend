@@ -2,10 +2,10 @@
 import { Add, Arrow, Button, Chevron, Earth, Routine } from '@package/ui'
 import React, { useState } from 'react'
 
-function myRoutine() {
+function MyRoutine() {
   const [clickDays, setClickDays] = useState([false, false, false, false, false, false, false])
 
-  const handleClick = (i: any) => {
+  const handleClick = (i: number) => {
     const newClickDays = [...clickDays] // Create a copy of clickDays array
     newClickDays[i] = !newClickDays[i] // Toggle the value of clicked day
     setClickDays(newClickDays) // Update the state with the new array
@@ -29,6 +29,7 @@ function myRoutine() {
               <div className="flex gap-1 p-1 rounded-xl border border-gray100 bg-gray25">
                 {days.map((i, j) => (
                   <div
+                    key={i}
                     onClick={() => handleClick(j)}
                     className={`flex transition-all px-4 py-3 ${clickDays[j] ? 'bg-blue400 text-white hover:bg-blue500' : 'bg-gray25 text-black hover:bg-gray50'} text-bodyMedium rounded-lg cursor-pointer`}
                   >
@@ -75,4 +76,4 @@ function myRoutine() {
   )
 }
 
-export default myRoutine
+export default MyRoutine
