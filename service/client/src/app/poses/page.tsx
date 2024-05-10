@@ -25,16 +25,14 @@ interface Pose {
   need_machine?: boolean
 }
 
-const asdf: string[] = []
-
 const Pose = () => {
   const [poseList, setPoseList] = useState<Pose[]>([])
   const [visible, setVisible] = useState<boolean>(false)
-  const [clickPoseList, setClickPoseList] = useState<Number>(0)
-  const [poseFilter, setPoseFilter] = useState<Boolean>([true, true])
+  const [clickPoseList, setClickPoseList] = useState<number>(0)
+  const [poseFilter, setPoseFilter] = useState<[boolean, boolean]>([true, true])
 
-  const togglePoseFilter = index => {
-    const newPoseFilter = [...poseFilter]
+  const togglePoseFilter = (index: number) => {
+    const newPoseFilter: [boolean, boolean] = [...poseFilter]
     newPoseFilter[index] = !newPoseFilter[index]
     if (!newPoseFilter[0] && !newPoseFilter[1]) {
       newPoseFilter[index] = true

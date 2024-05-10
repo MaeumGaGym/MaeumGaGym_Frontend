@@ -1,25 +1,15 @@
 import Image from 'next/image'
 import React from 'react'
 
-<<<<<<<< HEAD:service/client/src/components/PoseCard.tsx
-export interface PoseCardProps {
-  exerciseName: string
-  category: string
-  src: string[]
-  onClick?: () => void
-}
-
-export const PoseCard = ({ exerciseName, category, src, onClick }: PoseCardProps) => {
-========
-interface poseProps {
+export interface poseProps {
   exact_name: string
   simple_part: string
   exact_part: string
   thumbnail: string
   onClick?: () => void
 }
+
 export const PoseCard = ({ exact_name, simple_part, exact_part, thumbnail, onClick }: poseProps) => {
->>>>>>>> feature/#61-pose:service/client/src/app/poses/poseCard.tsx
   return (
     <div onClick={onClick} className="gap-x-2 w-[162px] gap-[8px] flex flex-col">
       <div className="rounded-lg h-[162px] w-[162px] p-9px bg-gray25 flex items-center justify-center">
