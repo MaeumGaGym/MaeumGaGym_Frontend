@@ -43,8 +43,6 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
       <div
         className={`flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] pb-[34px] opacity-100 rounded-t-[10px] ${heightStyle}`}
         ref={modalEl}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
         style={{ height: modalHeight }}
       >
         <div className="flex items-end justify-center h-[15px]">
