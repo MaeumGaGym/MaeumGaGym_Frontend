@@ -19,22 +19,63 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
   const [startY, setStartY] = useState(0)
   const [modalHeight, setModalHeight] = useState<string>('')
   const [initHeight, setInitHeight] = useState<number | undefined>(undefined)
+  const [defaultModalPx, setDefaultModalPx] = useState<number | undefined>(0)
 
   useEffect(() => {
     setModalHeight(modalType ? ModalHeight[modalType] : '')
     setInitHeight(modalEl.current?.offsetHeight)
-    modalEl.current?.addEventListener('touchstart', handleTouchStart)
-    modalEl.current?.addEventListener('touchmove', handleTouchMove, { passive: false })
+    setDefaultModalPx(modalEl.current?.offsetHeight)
   }, [])
 
+  useEffect(() => {
+    modalEl.current?.addEventListener('touchstart', handleTouchStart)
+    modalEl.current?.addEventListener('touchmove', handleTouchMove, { passive: false })
+    modalEl.current?.addEventListener('touchend', handleTouchEnd)
+    return () => {
+      modalEl.current?.removeEventListener('touchstart', handleTouchStart)
+      modalEl.current?.removeEventListener('touchmove', handleTouchMove)
+      modalEl.current?.removeEventListener('touchend', handleTouchEnd)
+    }
+  }, [modalEl.current?.offsetHeight])
+
   const handleTouchStart = (e: TouchEvent) => {
-    setStartY(e.touches[0].clientY)
+    if (modalType === 'comment') {
+      setStartY(e.changedTouches[0].clientY)
+    }
   }
 
   const handleTouchMove = (e: TouchEvent) => {
-    if (e.cancelable) e.preventDefault()
-    const deltaY = startY - e.touches[0].clientY
-    setModalHeight(initHeight ? `${initHeight + deltaY}px` : '')
+    if (modalType === 'comment') {
+      if (e.cancelable) e.preventDefault()
+      const deltaY = startY - e.changedTouches[0].clientY
+      setModalHeight(initHeight ? `${initHeight + deltaY}px` : '')
+    }
+  }
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    if (modalType === 'comment') {
+      if (initHeight && defaultModalPx) {
+        if (startY - e.changedTouches[0].clientY > 50) {
+          const changeHeight =
+            initHeight < defaultModalPx
+              ? defaultModalPx
+              : initHeight === defaultModalPx
+                ? defaultModalPx + defaultModalPx / 3
+                : initHeight
+          setInitHeight(changeHeight)
+          setModalHeight(`${changeHeight}px`)
+        } else if (startY - e.changedTouches[0].clientY < -50) {
+          const changeHeight =
+            initHeight > defaultModalPx
+              ? defaultModalPx
+              : initHeight === defaultModalPx
+                ? defaultModalPx - defaultModalPx / 3
+                : initHeight
+          setInitHeight(changeHeight)
+          setModalHeight(`${changeHeight}px`)
+        }
+      }
+    }
   }
 
   return (
