@@ -162,6 +162,7 @@ module.exports = {
       ],
     },
     screens: {
+      fold: { max: '375px' },
       sm: { max: '719px' },
       md: { min: '720px', max: '1419px' },
       lg: { min: '1420px' },

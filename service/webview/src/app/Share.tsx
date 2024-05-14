@@ -23,6 +23,11 @@ const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
     window.location.href = `mailto:?body=${body}`
   }
 
+  const buttonSize = {
+    default: 36,
+    min: 24,
+  }
+
   return (
     <Modal setIsClose={setIsClose}>
       <>
@@ -33,28 +38,28 @@ const ShareContainer = ({ setIsClose }: { setIsClose: () => void }) => {
             </div>
           </div>
         </div>
-        <div className="flex py-[10px] px-5 gap-6 justify-start">
+        <div className="flex py-[10px] px-5 gap-6 justify-start fold:gap-4">
           <div className="flex flex-col items-center gap-2" onClick={facebookShare}>
-            <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-[#0866FF]">
-              <Facebook size={36} />
+            <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-[#0866FF] fold:w-12 fold:h-12">
+              <Facebook size={window.innerWidth < 375 ? buttonSize.min : buttonSize.default} />
             </div>
             <span className="text-gray200">Facebook</span>
           </div>
           <div className="flex flex-col items-center gap-2" onClick={twitterShare}>
-            <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-[#1DA1F2]">
-              <Twitter size={36} />
+            <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-[#1DA1F2] fold:w-12 fold:h-12">
+              <Twitter size={window.innerWidth < 375 ? buttonSize.min : buttonSize.default} />
             </div>
             <span className="text-gray200">Twitter</span>
           </div>
           <div className="flex flex-col items-center gap-2" onClick={emailShare}>
-            <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-gray700">
-              <Email size={36} className="text-gray300" />
+            <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-gray700 fold:w-12 fold:h-12">
+              <Email size={window.innerWidth < 375 ? buttonSize.min : buttonSize.default} className="text-gray300" />
             </div>
             <span className="text-gray200">이메일</span>
           </div>
           <div className="flex flex-col items-center gap-2" onClick={linkCopy}>
-            <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-gray700">
-              <Link size={36} className="text-gray300" />
+            <div className="w-16 h-16 rounded-[50%] flex justify-center items-center bg-gray700 fold:w-12 fold:h-12">
+              <Link size={window.innerWidth < 375 ? buttonSize.min : buttonSize.default} className="text-gray300" />
             </div>
             <span className="text-gray200">링크</span>
           </div>
