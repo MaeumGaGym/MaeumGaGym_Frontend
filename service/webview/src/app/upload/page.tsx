@@ -1,8 +1,8 @@
-import Title from './title'
-import SelectMedia from './selectMidea'
-import ContentInput from './contentInput'
-import Tags from './tag'
-import Submit from './submit'
+import Title from './Title'
+import SelectMedia from './SelectMidea'
+import ContentInput from './ContentInput'
+import Tags from './Tag'
+import Submit from './Submit'
 import Loading from './Loading'
 
 const Upload = () => {

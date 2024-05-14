@@ -1,7 +1,5 @@
-import { useDispatch } from 'react-redux'
 import Result from './Result'
 import SearchInput from './SearchInput'
-import { createToast } from '@/utils/store/modules/toast'
 
 const Search = () => {
   return (

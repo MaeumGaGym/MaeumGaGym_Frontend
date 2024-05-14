@@ -1,4 +1,4 @@
-import Title from '../title'
+import Title from '../Title'
 import Media from './Media'
 
 const Select = () => {

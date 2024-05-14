@@ -29,7 +29,7 @@ const Article = ({ title }: ArticleProps) => {
   }
   return (
     <div className="flex justify-between px-5 py-4 text-bodyMedium cursor-pointer" onClick={onClickArticle}>
-      <p>{title}</p>
+      <p className="text-white">{title}</p>
       <p className="text-gray400">팔</p>
     </div>
   )
