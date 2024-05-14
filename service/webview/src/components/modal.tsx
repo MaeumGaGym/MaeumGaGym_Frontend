@@ -5,16 +5,11 @@ import { useState, useRef, useEffect } from 'react'
 interface PropsType {
   setIsClose: () => void
   children: React.JSX.Element
-  modalType?: keyof typeof ModalHeight
-}
-
-const ModalHeight = {
-  comment: '67%',
+  modalType?: 'comment'
 }
 
 const Modal = ({ setIsClose, children, modalType }: PropsType) => {
   const modalEl = useRef<HTMLDivElement>(null)
-  const heightStyle = `h-[${modalType ? ModalHeight[modalType] : 'auto'}]`
 
   const [startY, setStartY] = useState(0)
   const [modalHeight, setModalHeight] = useState<string>('')
@@ -22,9 +17,7 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
   const [defaultModalPx, setDefaultModalPx] = useState<number | undefined>(0)
 
   useEffect(() => {
-    setModalHeight(modalType ? ModalHeight[modalType] : '')
-    setInitHeight(modalEl.current?.offsetHeight)
-    setDefaultModalPx(modalEl.current?.offsetHeight)
+    setModalHeight(modalType ? '67%' : '')
   }, [])
 
   useEffect(() => {
@@ -40,14 +33,16 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
 
   const handleTouchStart = (e: TouchEvent) => {
     if (modalType === 'comment') {
-      setStartY(e.changedTouches[0].clientY)
+      setStartY(e.touches[0].clientY)
+      console.log('start:', e.touches[0].clientY)
     }
   }
 
   const handleTouchMove = (e: TouchEvent) => {
     if (modalType === 'comment') {
       if (e.cancelable) e.preventDefault()
-      const deltaY = startY - e.changedTouches[0].clientY
+      console.log(e.changedTouches[0].clientY)
+      const deltaY = startY - ~~e.changedTouches[0].clientY
       setModalHeight(initHeight ? `${initHeight + deltaY}px` : '')
     }
   }
@@ -73,6 +68,8 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
                 : initHeight
           setInitHeight(changeHeight)
           setModalHeight(`${changeHeight}px`)
+        } else {
+          setModalHeight(`${initHeight}px`)
         }
       }
     }
@@ -82,9 +79,13 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
     <div className="w-full h-full absolute top-0 flex flex-col z-30">
       <div className="bg-black grow opacity-40" onClick={setIsClose}></div>
       <div
-        className={`flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] pb-[34px] opacity-100 rounded-t-[10px] ${heightStyle}`}
+        className={`flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] pb-[34px] opacity-100 rounded-t-[10px] will-change-[height]`}
         ref={modalEl}
         style={{ height: modalHeight }}
+        onAnimationEnd={e => {
+          setInitHeight(e.currentTarget.clientHeight)
+          setDefaultModalPx(e.currentTarget.clientHeight)
+        }}
       >
         <div className="flex items-end justify-center h-[15px]">
           <div className="w-16 h-[5px] rounded-sm bg-gray700"></div>
