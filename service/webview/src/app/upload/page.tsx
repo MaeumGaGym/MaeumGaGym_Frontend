@@ -1,5 +1,5 @@
 import Title from './Title'
-import SelectMedia from './SelectMidea'
+import SelectMedia from './SelectMedia'
 import ContentInput from './ContentInput'
 import Tags from './Tag'
 import Submit from './Submit'
