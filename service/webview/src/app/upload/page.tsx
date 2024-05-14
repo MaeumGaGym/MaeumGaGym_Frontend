@@ -15,9 +15,11 @@ const Upload = () => {
       ) : (
         <>
           <Title title="새로운 피클" type="goBack" />
-          <SelectMedia />
-          <ContentInput />
-          <Tags />
+          <div className="flex flex-col mt-12 ">
+            <SelectMedia />
+            <ContentInput />
+            <Tags />
+          </div>
         </>
       )}
       <Submit type={loading ? 'loading' : 'submit'} />

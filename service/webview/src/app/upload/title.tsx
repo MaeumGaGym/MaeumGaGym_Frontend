@@ -16,7 +16,7 @@ const Title = ({ title, type }: PropsType) => {
   }
 
   return (
-    <div className="w-full py-2 px-5 flex gap-6 items-center">
+    <div className="w-full py-2 px-5 flex gap-6 items-center fixed top-0 z-10 bg-black">
       <Close className="text-white" onClick={typeOnClick} size={32} />
       <p className="text-white text-titleMedium">{title}</p>
     </div>
