@@ -10,6 +10,7 @@ interface PropsType {
 
 const Modal = ({ setIsClose, children, modalType }: PropsType) => {
   const modalEl = useRef<HTMLDivElement>(null)
+  const scrollEl = useRef<HTMLDivElement>(null)
 
   const [startY, setStartY] = useState(0)
   const [modalHeight, setModalHeight] = useState<string>('')
@@ -21,27 +22,25 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
   }, [])
 
   useEffect(() => {
-    modalEl.current?.addEventListener('touchstart', handleTouchStart)
-    modalEl.current?.addEventListener('touchmove', handleTouchMove, { passive: false })
-    modalEl.current?.addEventListener('touchend', handleTouchEnd)
+    scrollEl.current?.addEventListener('touchstart', handleTouchStart)
+    scrollEl.current?.addEventListener('touchmove', handleTouchMove, { passive: false })
+    scrollEl.current?.addEventListener('touchend', handleTouchEnd)
     return () => {
-      modalEl.current?.removeEventListener('touchstart', handleTouchStart)
-      modalEl.current?.removeEventListener('touchmove', handleTouchMove)
-      modalEl.current?.removeEventListener('touchend', handleTouchEnd)
+      scrollEl.current?.removeEventListener('touchstart', handleTouchStart)
+      scrollEl.current?.removeEventListener('touchmove', handleTouchMove)
+      scrollEl.current?.removeEventListener('touchend', handleTouchEnd)
     }
   }, [modalEl.current?.offsetHeight])
 
   const handleTouchStart = (e: TouchEvent) => {
     if (modalType === 'comment') {
       setStartY(e.touches[0].clientY)
-      console.log('start:', e.touches[0].clientY)
     }
   }
 
   const handleTouchMove = (e: TouchEvent) => {
     if (modalType === 'comment') {
       if (e.cancelable) e.preventDefault()
-      console.log(e.changedTouches[0].clientY)
       const deltaY = startY - ~~e.changedTouches[0].clientY
       setModalHeight(initHeight ? `${initHeight + deltaY}px` : '')
     }
@@ -77,7 +76,7 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
 
   return (
     <div className="w-full h-full absolute top-0 flex flex-col z-30">
-      <div className="bg-black grow opacity-40" onClick={setIsClose}></div>
+      <div className="bg-black grow opacity-40" onTouchEnd={setIsClose}></div>
       <div
         className={`flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] pb-[34px] opacity-100 rounded-t-[10px] will-change-[height]`}
         ref={modalEl}
@@ -87,7 +86,7 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
           setDefaultModalPx(e.currentTarget.clientHeight)
         }}
       >
-        <div className="flex items-end justify-center h-[15px]">
+        <div className="flex items-end justify-center h-[15px]" ref={scrollEl}>
           <div className="w-16 h-[5px] rounded-sm bg-gray700"></div>
         </div>
         {children}
