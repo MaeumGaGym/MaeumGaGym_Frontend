@@ -12,7 +12,7 @@ export const Close = ({ size = 24, onClick, className = '' }: PropsType) => {
       height={size}
       viewBox="0 0 24 24"
       fill="none"
-      onClick={onClick}
+      onTouchEnd={onClick}
       className={`${onClick ? 'cursor-pointer' : ''} ${className}`}
     >
       <path

@@ -18,13 +18,13 @@ const DeleteModal = ({ setModalClose }: PropsType) => {
         <div className="mt-3 flex gap-2 justify-between">
           <button
             className="rounded-lg px-2 py-3 flex justify-center items-center bg-red50 text-red500 grow text-labelLarge outline-none"
-            onClick={handleModalClose}
+            onTouchEnd={handleModalClose}
           >
             취소
           </button>
           <button
             className="rounded-lg px-2 py-3 flex justify-center items-center bg-red500 text-red50 grow text-labelLarge outline-none"
-            onClick={() => {
+            onTouchEnd={() => {
               handleModalClose()
               toast('success', '댓글을 삭제했습니다')
             }}

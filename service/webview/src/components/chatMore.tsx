@@ -39,7 +39,7 @@ const ChatMore = ({ setIsClose, isMine, setCommentEdit, setDelModal }: PropsType
           {isMine ? (
             <div
               className="flex pl-5 items-center py-3 gap-6"
-              onClick={() => {
+              onTouchEnd={() => {
                 setIsClose(isMine)
                 setCommentEdit(true)
               }}
@@ -49,14 +49,14 @@ const ChatMore = ({ setIsClose, isMine, setCommentEdit, setDelModal }: PropsType
             </div>
           ) : (
             <>
-              <div className="flex pl-5 items-center py-3 gap-6" onClick={handleOpenReport}>
+              <div className="flex pl-5 items-center py-3 gap-6" onTouchEnd={handleOpenReport}>
                 <Flag />
                 <span className="text-labelLarge">신고</span>
               </div>
               {openReport && <Report setIsClose={handleCloseReport} reportType="comment" />}
             </>
           )}
-          <div className="flex pl-5 items-center py-3 gap-6" onClick={handleDelModalOpen}>
+          <div className="flex pl-5 items-center py-3 gap-6" onTouchEnd={handleDelModalOpen}>
             <Trash />
             <span className="text-labelLarge">삭제</span>
           </div>

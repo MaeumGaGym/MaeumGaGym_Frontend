@@ -65,7 +65,7 @@ const Report = ({ setIsClose, reportType }: PropsType) => {
 
   const [reportReason, setReportReason] = useState<ReportReason | null>(null)
   const renderReasonBox = reportReasons[reportType].map(reason => (
-    <div className="px-5 py-[14px]" onClick={() => setReportReason(reason)}>
+    <div className="px-5 py-[14px]" onTouchEnd={() => setReportReason(reason)}>
       {reason}
     </div>
   ))

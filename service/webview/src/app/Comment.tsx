@@ -193,7 +193,7 @@ const Comment = ({
               <span className="pt-1 text-gray600 text-bodySmall cursor-pointer">답글달기</span>
               {replys.length !== 0 && (
                 <div className="pt-[6px]">
-                  <div className="flex gap-2" onClick={() => setOpenReply(!openReply)}>
+                  <div className="flex gap-2" onTouchEnd={() => setOpenReply(!openReply)}>
                     <div className="w-[22px] h-[1px] bg-blue500 relative top-[7px]" />
                     <span className="text-blue500 text-bodySmall">{`답글 ${replys.length}개 모두숨기기`}</span>
                   </div>
@@ -202,7 +202,8 @@ const Comment = ({
             </div>
             <div
               className="cursor-pointer"
-              onClick={() => {
+              onTouchStart={() => {
+                console.log('히히 열려라')
                 handleOpenMore(isMine)
                 handleCommentOpen(false, content, profile_image ?? undefined)
               }}
@@ -256,7 +257,7 @@ const Reply = ({
       </div>
       <div
         className="cursor-pointer"
-        onClick={() => {
+        onTouchStart={() => {
           handleOpenMore(isMine)
           handleCommentOpen(false, content, profile_image ?? undefined)
         }}

@@ -36,18 +36,18 @@ const More = ({ setIsClose, owner }: PropsType) => {
     <Modal setIsClose={setIsClose}>
       {owner ? (
         <>
-          <div className="bg-gray900 h-[52px] w-full flex items-center px-5 py-3 gap-6" onClick={handleModalEdit}>
+          <div className="bg-gray900 h-[52px] w-full flex items-center px-5 py-3 gap-6" onTouchEnd={handleModalEdit}>
             <Pencil />
             <span className="text-white text-labelLarge">수정</span>
           </div>
-          <div className="bg-gray900 h-[52px] w-full flex items-center px-5 py-3 gap-6" onClick={handleModalDelete}>
+          <div className="bg-gray900 h-[52px] w-full flex items-center px-5 py-3 gap-6" onTouchEnd={handleModalDelete}>
             <Trash />
             <span className="text-white text-labelLarge">삭제</span>
           </div>
         </>
       ) : (
         <>
-          <div className="bg-gray900 h-[52px] w-full flex items-center px-5 py-3 gap-6" onClick={handleModalReport}>
+          <div className="bg-gray900 h-[52px] w-full flex items-center px-5 py-3 gap-6" onTouchEnd={handleModalReport}>
             <Flag />
             <span className="text-white text-labelLarge">신고</span>
           </div>

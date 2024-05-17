@@ -77,7 +77,7 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
         ref={videoRef}
         className={`w-full ${nowModalOpen !== 'comment' ? 'h-full' : 'h-1/3'} object-cover lg:rounded-[8px] md:rounded-[8px] z-10`}
         loop
-        onClick={onPause}
+        onTouchEnd={onPause}
       />
       {like ? (
         <div className="absolute w-[80px] h-[80px] bg-[rgba(0,0,0,0.4)] top-[calc(50%-40px)] left-[calc(50%-40px)] rounded-full flex justify-center items-center animate-[likeShowUp_0.5s_ease-out_forwards] z-20">

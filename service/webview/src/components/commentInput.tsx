@@ -30,7 +30,7 @@ const CommentInput = ({ placeholder, buttonText, profile_image, value, handleEdi
       {newComment?.length !== 0 && (
         <button
           className="text-labelMedium text-blue400 shrink-0"
-          onClick={() => {
+          onTouchEnd={() => {
             handleEditClose && handleEditClose()
             setNewComment('')
           }}
