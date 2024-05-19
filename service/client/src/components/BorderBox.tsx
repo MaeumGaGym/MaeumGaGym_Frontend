@@ -7,6 +7,10 @@ export interface BorderBoxProps {
   onClick?: () => void
 }
 
-export const BorderBox = ({ children, className }: BorderBoxProps) => {
-  return <div className={`border border-gray100 rounded-2xl ${className}`}>{children}</div>
+export const BorderBox = ({ children, className, onClick }: BorderBoxProps) => {
+  return (
+    <div onClick={onClick} className={`border border-gray100 rounded-2xl ${className}`}>
+      {children}
+    </div>
+  )
 }

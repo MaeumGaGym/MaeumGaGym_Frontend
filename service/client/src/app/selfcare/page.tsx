@@ -19,20 +19,28 @@ const Selfcare = () => {
         <div className="w-[1200px] flex flex-col gap-16">
           <div className="flex gap-6">
             <IconButton
-              onClick={() => router.push('/selfcare/myroutine')}
+              onClick={() => router.push('selfcare/my')}
               src={routineIcon}
               alt="루틴 icon"
               title="내 루틴"
               text={['나만의 루틴을 구성하여', '규칙적인 운동을 해보세요.']}
             />
-            <IconButton src={goalIcon} alt="목표 icon" title="목표" text="나만의 목표를 세워보세요" />
             <IconButton
+              onClick={() => router.push('selfcare/goal')}
+              src={goalIcon}
+              alt="목표 icon"
+              title="목표"
+              text="나만의 목표를 세워보세요"
+            />
+            <IconButton
+              onClick={() => router.push('selfcare/meal')}
               src={dietIcon}
               alt="식단 icon"
               title="식단"
               text={['나만의 식단을 구성하여', '규칙적인 식사를 해보세요.']}
             />
             <IconButton
+              onClick={() => router.push('selfcare/picture')}
               src={pictureIcon}
               alt="오운완 icon"
               title="오운완"
