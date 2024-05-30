@@ -2,7 +2,7 @@
 
 import { Heart, Pause, Play } from '@package/ui'
 import Hls from 'hls.js'
-import { useEffect, useRef, useState } from 'react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
 import Content from './Content'
 import SideBar from './SideBar'
 import Comments from './Comment'
@@ -11,7 +11,12 @@ import More from './More'
 
 type ModalType = null | 'comment' | 'share' | 'more'
 
-const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
+interface PropsType {
+  src: string
+  videoId: string
+}
+
+const VideoPlayer = forwardRef<HTMLDivElement, PropsType>(({ src, videoId }: PropsType, ref) => {
   const [pause, setPause] = useState<boolean>(false)
   const [like, setLike] = useState<boolean>(false)
   const [nowModalOpen, setNowModalOpen] = useState<ModalType>(null)
@@ -71,6 +76,7 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
     <div
       className={`bg-cover rounded-[8px] lg:aspect-[9/16] md:aspect-[9/16] w-full sm:h-full relative`}
       style={{ backgroundImage: `url('https://storage.pokabook.kr/maeumgagym/${videoId}/thumbnail.png')` }}
+      ref={ref}
     >
       <div className="loader" />
       <video
@@ -111,6 +117,6 @@ const VideoPlayer = ({ src, videoId }: { src: string; videoId: string }) => {
       {nowModalOpen === 'more' && <More setIsClose={handleModalClose} owner={false} />}
     </div>
   )
-}
+})
 
 export default VideoPlayer
