@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className="[&_*]:font-['Pretendard']">
+      <body className="[&_*]:font-['Pretendard'] h-full">
         <QueryProvider>
           <ReduxProvider>
             <div className="dark">

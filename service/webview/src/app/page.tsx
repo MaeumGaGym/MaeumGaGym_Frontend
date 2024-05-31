@@ -11,38 +11,36 @@ const Pickle = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = document.querySelector('#pickles')?.scrollTop
-      console.log(currentScrollY)
+      console.log(beforeVideo.current?.getBoundingClientRect().bottom)
       console.log(lastScrollPos)
-      if (currentScrollY && currentScrollY >= lastScrollPos) {
-        afterVideo.current?.scrollIntoView()
-        setLastScrollPos(0)
+      if (lastScrollPos > (beforeVideo.current?.getBoundingClientRect().bottom as number)) {
+        afterVideo.current?.scrollIntoView({ behavior: 'smooth' })
       }
-      if (currentScrollY && currentScrollY < lastScrollPos) {
-        beforeVideo.current?.scrollIntoView()
-        setLastScrollPos(220)
+      if (lastScrollPos < (beforeVideo.current?.getBoundingClientRect().bottom as number)) {
+        beforeVideo.current?.scrollIntoView({ behavior: 'smooth' })
       }
+      setLastScrollPos(beforeVideo.current?.getBoundingClientRect().bottom as number)
     }
-    document.querySelector('#pickles')?.addEventListener('scroll', handleScroll, { capture: true })
+    document.querySelector('#pickles')?.addEventListener('touchend', handleScroll, { capture: true })
     return () => {
-      document.querySelector('#pickles')?.removeEventListener('scroll', handleScroll, { capture: true })
+      document.querySelector('#pickles')?.removeEventListener('touchend', handleScroll, { capture: true })
     }
   }, [])
 
   return (
     <div
       id="pickles"
-      className="flex lg:gap-[24px] md:gap-[24px] sm:gap-0 flex-wrap items-center lg:py-[24px] md:py-[24px] h-[100vh] overflow-y-scroll scrollbar-none"
+      className="flex lg:gap-[24px] md:gap-[24px] sm:gap-0 flex-wrap items-center lg:py-[24px] md:py-[24px] h-[100vh] overflow-y-visible scrollbar-none"
     >
       <UploadFile />
       <VideoPlayer
-        src="https://video-macos.pokabook.kr/9ecf46bb/index.m3u8?scale=1080p"
-        videoId="9ecf46bb"
+        src="https://video-macos.pokabook.kr/8d5ec6cc/index.m3u8?scale=1080p"
+        videoId="8d5ec6cc"
         ref={beforeVideo}
       />
       <VideoPlayer
-        src="https://video-macos.pokabook.kr/9ecf46bb/index.m3u8?scale=1080p"
-        videoId="9ecf46bb"
+        src="https://video-macos.pokabook.kr/8d5ec6cc/index.m3u8?scale=1080p"
+        videoId="8d5ec6cc"
         ref={afterVideo}
       />
     </div>
