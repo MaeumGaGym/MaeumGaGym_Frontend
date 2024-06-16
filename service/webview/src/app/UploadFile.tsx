@@ -5,7 +5,7 @@ const UploadFile = () => {
   const linkUploadPage = () => {}
 
   return (
-    <div className="lg:w-[448px] md:w-[448px] sm:w-full flex justify-end px-5 py-3 fixed top-0">
+    <div className="lg:w-[448px] md:w-[448px] sm:w-full flex justify-end px-5 py-3 fixed top-0 z-20">
       <Camera className="text-white cursor-pointer" size={28} onClick={linkUploadPage} />
     </div>
   )
