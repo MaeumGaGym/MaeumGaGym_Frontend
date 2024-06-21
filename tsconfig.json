@@ -1,0 +1,14 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./service/client"
+    },
+    {
+      "path": "./service/webview"
+    },
+    {
+      "path": "./packages/ui"
+    }
+  ]
+}
