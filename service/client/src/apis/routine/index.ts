@@ -1,1 +1,2 @@
-export * from './getRoutineToday'
+export * from './my/getRoutineToday'
+export * from './my/getMyRoutine'

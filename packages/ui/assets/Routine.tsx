@@ -12,9 +12,9 @@ export const Routine = ({ size = 24, onClick, className = '' }: PropsType) => {
       <rect width="7" height="2" x="12" y="12" fill="#C6C8CC" rx="1" />
       <path
         stroke="#0A7FF5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
         d="m4 6 2 2 3-3m-5 7 2 2 3-3"
       />
       <rect width="6" height="10" x="7" y="18" fill="#3193F5" rx="2" />
