@@ -1,10 +1,11 @@
 'use client'
-import { Add, Arrow, Button, Chevron, Earth, Routine } from '@package/ui'
+import { Add, Button, Chevron, Earth, Routine } from '@package/ui'
 import React, { useState, useEffect } from 'react'
 import { getMyRoutine } from '@/apis'
 import { getCookie } from '@/utils'
 import { useRouter } from 'next/navigation'
-import DetailPage from './DetailPage'
+// import DetailPage from './DetailPage'
+// 지금은 안써서 build error 나기 때문에 위의 import 막아둠
 
 interface GetMyRoutineResponse {
   id: number
@@ -30,6 +31,10 @@ function My() {
     const RF_TOKEN = getCookie('RF-TOKEN') || 'undefined'
     const ACCESS_TOKEN = getCookie('access_token') || 'undefined'
     setRoutineList(await getMyRoutine(ACCESS_TOKEN, RF_TOKEN))
+
+    // build error 나서 임시로 설정해둠
+    // 나중에 사용하면 지워둘 것
+    return routineList
   }
 
   useEffect(() => {

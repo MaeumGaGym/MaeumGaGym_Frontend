@@ -907,19 +907,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./service/docs/",\
           "packageDependencies": [\
             ["@service/docs", "workspace:service/docs"],\
-            ["@types/add", "npm:2.0.3"],\
             ["@types/express", "npm:4.17.21"],\
             ["@types/node", "npm:20.14.1"],\
-            ["add", "npm:2.0.6"],\
             ["express", "npm:4.19.2"],\
             ["http-server", "npm:14.1.1"],\
             ["nodemon", "npm:3.1.3"],\
             ["ts-node", "virtual:e37fd80a52c493a5a1a94590794feab12d6d974d5df0516b09df1bbcef073dda1ceee6626bbf8a762e380f578cd33e2cffb4b73134b2abd231fcc82d3a747460#npm:10.9.2"],\
             ["tsconfig-paths", "npm:4.2.0"],\
-            ["typescript", "patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>::version=5.4.5&hash=e012d7"],\
-            ["yarn", "npm:1.22.22"]\
+            ["typedoc", "virtual:e37fd80a52c493a5a1a94590794feab12d6d974d5df0516b09df1bbcef073dda1ceee6626bbf8a762e380f578cd33e2cffb4b73134b2abd231fcc82d3a747460#npm:0.26.3"],\
+            ["typedoc-material-theme", "virtual:e37fd80a52c493a5a1a94590794feab12d6d974d5df0516b09df1bbcef073dda1ceee6626bbf8a762e380f578cd33e2cffb4b73134b2abd231fcc82d3a747460#npm:1.0.3"],\
+            ["typescript", "patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=e012d7"]\
           ],\
           "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@shikijs/core", [\
+        ["npm:1.10.0", {\
+          "packageLocation": "./.yarn/cache/@shikijs-core-npm-1.10.0-e1f0bd6f03-8b63ca5364.zip/node_modules/@shikijs/core/",\
+          "packageDependencies": [\
+            ["@shikijs/core", "npm:1.10.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["@swc/counter", [\
@@ -1133,15 +1141,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@tsconfig-node16-npm-1.0.4-b7cb87d859-2023197859.zip/node_modules/@tsconfig/node16/",\
           "packageDependencies": [\
             ["@tsconfig/node16", "npm:1.0.4"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["@types/add", [\
-        ["npm:2.0.3", {\
-          "packageLocation": "./.yarn/cache/@types-add-npm-2.0.3-965be1f3d8-c15815ef0e.zip/node_modules/@types/add/",\
-          "packageDependencies": [\
-            ["@types/add", "npm:2.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1792,15 +1791,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/acorn-walk-npm-8.3.2-df039a42bf-3626b9d26a.zip/node_modules/acorn-walk/",\
           "packageDependencies": [\
             ["acorn-walk", "npm:8.3.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["add", [\
-        ["npm:2.0.6", {\
-          "packageLocation": "./.yarn/cache/add-npm-2.0.6-c96b78d852-e2d23d4049.zip/node_modules/add/",\
-          "packageDependencies": [\
-            ["add", "npm:2.0.6"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2945,6 +2935,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["enhanced-resolve", "npm:5.15.0"],\
             ["graceful-fs", "npm:4.2.11"],\
             ["tapable", "npm:2.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["entities", [\
+        ["npm:4.5.0", {\
+          "packageLocation": "./.yarn/cache/entities-npm-4.5.0-7cdb83b832-853f8ebd5b.zip/node_modules/entities/",\
+          "packageDependencies": [\
+            ["entities", "npm:4.5.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5230,6 +5229,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["linkify-it", [\
+        ["npm:5.0.0", {\
+          "packageLocation": "./.yarn/cache/linkify-it-npm-5.0.0-adb5f9c96f-b0b86cadaf.zip/node_modules/linkify-it/",\
+          "packageDependencies": [\
+            ["linkify-it", "npm:5.0.0"],\
+            ["uc.micro", "npm:2.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["locate-path", [\
         ["npm:6.0.0", {\
           "packageLocation": "./.yarn/cache/locate-path-npm-6.0.0-06a1e4c528-72eb661788.zip/node_modules/locate-path/",\
@@ -5339,11 +5348,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["markdown-it", [\
+        ["npm:14.1.0", {\
+          "packageLocation": "./.yarn/cache/markdown-it-npm-14.1.0-e337d75bfe-07296b45eb.zip/node_modules/markdown-it/",\
+          "packageDependencies": [\
+            ["markdown-it", "npm:14.1.0"],\
+            ["argparse", "npm:2.0.1"],\
+            ["entities", "npm:4.5.0"],\
+            ["linkify-it", "npm:5.0.0"],\
+            ["mdurl", "npm:2.0.0"],\
+            ["punycode.js", "npm:2.3.1"],\
+            ["uc.micro", "npm:2.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["marked", [\
         ["npm:4.3.0", {\
           "packageLocation": "./.yarn/cache/marked-npm-4.3.0-e7ef9e874f-0db6817893.zip/node_modules/marked/",\
           "packageDependencies": [\
             ["marked", "npm:4.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["mdurl", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/mdurl-npm-2.0.0-3259713daf-880bc289ef.zip/node_modules/mdurl/",\
+          "packageDependencies": [\
+            ["mdurl", "npm:2.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5444,6 +5477,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/minimatch-npm-9.0.4-7be5a33efc-cf717f597e.zip/node_modules/minimatch/",\
           "packageDependencies": [\
             ["minimatch", "npm:9.0.4"],\
+            ["brace-expansion", "npm:2.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:9.0.5", {\
+          "packageLocation": "./.yarn/cache/minimatch-npm-9.0.5-9aa93d97fa-2c035575ed.zip/node_modules/minimatch/",\
+          "packageDependencies": [\
+            ["minimatch", "npm:9.0.5"],\
             ["brace-expansion", "npm:2.0.1"]\
           ],\
           "linkType": "HARD"\
@@ -6486,6 +6527,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["punycode.js", [\
+        ["npm:2.3.1", {\
+          "packageLocation": "./.yarn/cache/punycode.js-npm-2.3.1-9084ecbbf5-13466d7ed5.zip/node_modules/punycode.js/",\
+          "packageDependencies": [\
+            ["punycode.js", "npm:2.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["qs", [\
         ["npm:6.11.0", {\
           "packageLocation": "./.yarn/cache/qs-npm-6.11.0-caf1bc9dea-6e1f29dd53.zip/node_modules/qs/",\
@@ -7146,6 +7196,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vscode-textmate", "npm:8.0.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:1.10.0", {\
+          "packageLocation": "./.yarn/cache/shiki-npm-1.10.0-a2b8995e82-457f771b75.zip/node_modules/shiki/",\
+          "packageDependencies": [\
+            ["shiki", "npm:1.10.0"],\
+            ["@shikijs/core", "npm:1.10.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["side-channel", [\
@@ -7784,7 +7842,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["create-require", "npm:1.1.1"],\
             ["diff", "npm:4.0.2"],\
             ["make-error", "npm:1.3.6"],\
-            ["typescript", "patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>::version=5.4.5&hash=e012d7"],\
+            ["typescript", "patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
             ["v8-compile-cache-lib", "npm:3.0.1"],\
             ["yn", "npm:3.1.1"]\
           ],\
@@ -7990,6 +8048,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["npm:0.26.3", {\
+          "packageLocation": "./.yarn/cache/typedoc-npm-0.26.3-3bc7ca9258-3e4fc7cbd4.zip/node_modules/typedoc/",\
+          "packageDependencies": [\
+            ["typedoc", "npm:0.26.3"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:e37fd80a52c493a5a1a94590794feab12d6d974d5df0516b09df1bbcef073dda1ceee6626bbf8a762e380f578cd33e2cffb4b73134b2abd231fcc82d3a747460#npm:0.26.3", {\
+          "packageLocation": "./.yarn/__virtual__/typedoc-virtual-bf7f3ca1a4/0/cache/typedoc-npm-0.26.3-3bc7ca9258-3e4fc7cbd4.zip/node_modules/typedoc/",\
+          "packageDependencies": [\
+            ["typedoc", "virtual:e37fd80a52c493a5a1a94590794feab12d6d974d5df0516b09df1bbcef073dda1ceee6626bbf8a762e380f578cd33e2cffb4b73134b2abd231fcc82d3a747460#npm:0.26.3"],\
+            ["@types/typescript", null],\
+            ["lunr", "npm:2.3.9"],\
+            ["markdown-it", "npm:14.1.0"],\
+            ["minimatch", "npm:9.0.5"],\
+            ["shiki", "npm:1.10.0"],\
+            ["typescript", "patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=e012d7"],\
+            ["yaml", "npm:2.4.5"]\
+          ],\
+          "packagePeers": [\
+            "@types/typescript",\
+            "typescript"\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["virtual:e74acb837ee3ead9333c7b0affbd5de89ceb95eed946b736b3ed2eda48a7c4171485bd61383cd5a81ef679417461bf52d53a5ce113d5035cb7c5e0b694d02376#npm:0.25.13", {\
           "packageLocation": "./.yarn/__virtual__/typedoc-virtual-2f2f56d103/0/cache/typedoc-npm-0.25.13-6a1fb5bfd8-703d1f4813.zip/node_modules/typedoc/",\
           "packageDependencies": [\
@@ -8015,6 +8098,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["typedoc-material-theme", "npm:1.0.2"]\
           ],\
           "linkType": "SOFT"\
+        }],\
+        ["npm:1.0.3", {\
+          "packageLocation": "./.yarn/cache/typedoc-material-theme-npm-1.0.3-27b020c44c-8faab9e2ba.zip/node_modules/typedoc-material-theme/",\
+          "packageDependencies": [\
+            ["typedoc-material-theme", "npm:1.0.3"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:e37fd80a52c493a5a1a94590794feab12d6d974d5df0516b09df1bbcef073dda1ceee6626bbf8a762e380f578cd33e2cffb4b73134b2abd231fcc82d3a747460#npm:1.0.3", {\
+          "packageLocation": "./.yarn/__virtual__/typedoc-material-theme-virtual-44af8c7748/0/cache/typedoc-material-theme-npm-1.0.3-27b020c44c-8faab9e2ba.zip/node_modules/typedoc-material-theme/",\
+          "packageDependencies": [\
+            ["typedoc-material-theme", "virtual:e37fd80a52c493a5a1a94590794feab12d6d974d5df0516b09df1bbcef073dda1ceee6626bbf8a762e380f578cd33e2cffb4b73134b2abd231fcc82d3a747460#npm:1.0.3"],\
+            ["@material/material-color-utilities", "npm:0.2.7"],\
+            ["@types/typedoc", null],\
+            ["typedoc", "virtual:e37fd80a52c493a5a1a94590794feab12d6d974d5df0516b09df1bbcef073dda1ceee6626bbf8a762e380f578cd33e2cffb4b73134b2abd231fcc82d3a747460#npm:0.26.3"]\
+          ],\
+          "packagePeers": [\
+            "@types/typedoc",\
+            "typedoc"\
+          ],\
+          "linkType": "HARD"\
         }],\
         ["virtual:e74acb837ee3ead9333c7b0affbd5de89ceb95eed946b736b3ed2eda48a7c4171485bd61383cd5a81ef679417461bf52d53a5ce113d5035cb7c5e0b694d02376#npm:1.0.2", {\
           "packageLocation": "./.yarn/__virtual__/typedoc-material-theme-virtual-6386bdfae1/0/cache/typedoc-material-theme-npm-1.0.2-2b816c5bd9-987a1cd565.zip/node_modules/typedoc-material-theme/",\
@@ -8060,11 +8164,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["typescript", "patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=e012d7"]\
           ],\
           "linkType": "HARD"\
-        }],\
-        ["patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>::version=5.4.5&hash=e012d7", {\
-          "packageLocation": "./.yarn/cache/typescript-patch-d8c05cccce-2373c693f3.zip/node_modules/typescript/",\
+        }]\
+      ]],\
+      ["uc.micro", [\
+        ["npm:2.1.0", {\
+          "packageLocation": "./.yarn/cache/uc.micro-npm-2.1.0-c45282c865-3719735824.zip/node_modules/uc.micro/",\
           "packageDependencies": [\
-            ["typescript", "patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>::version=5.4.5&hash=e012d7"]\
+            ["uc.micro", "npm:2.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -8434,13 +8540,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["yaml", "npm:2.3.4"]\
           ],\
           "linkType": "HARD"\
-        }]\
-      ]],\
-      ["yarn", [\
-        ["npm:1.22.22", {\
-          "packageLocation": "./.yarn/unplugged/yarn-npm-1.22.22-cb63c707fe/node_modules/yarn/",\
+        }],\
+        ["npm:2.4.5", {\
+          "packageLocation": "./.yarn/cache/yaml-npm-2.4.5-4752f3d852-f8efd407c0.zip/node_modules/yaml/",\
           "packageDependencies": [\
-            ["yarn", "npm:1.22.22"]\
+            ["yaml", "npm:2.4.5"]\
           ],\
           "linkType": "HARD"\
         }]\

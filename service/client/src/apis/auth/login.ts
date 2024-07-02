@@ -6,7 +6,7 @@ export const login = async (category: loginCategory, token: string): Promise<str
   return await instance
     .get(`${category}/login`, {
       headers: category !== 'kakao' ? {
-        "oauth-token": token
+        "OAUTH-TOKEN": token
       }:{}
     })
     .then(res => res.headers['authorization'].split(' ')[1])
