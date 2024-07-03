@@ -28,7 +28,6 @@ jobs:
         with:
           environment: stag
           access_key: ${{ secrets.FRONTEND_ACCESS_KEY }}
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           base_url: service/${{ env.SERVICE_NAME }}
           config_file_path: service/${{ env.SERVICE_NAME }}/.xquare/config.yaml
           yarn_docker_build: true
