@@ -1,0 +1,9 @@
+{
+  "entryPoints": ["packages/*", "service/*"],
+  "name": "maeumgagym",
+  "entryPointStrategy": "packages",
+  "plugin": ["typedoc-material-theme"],
+  "includeVersion": false,
+  "exclude": ["service/docs"],
+  "out": "./service/docs/src"
+}

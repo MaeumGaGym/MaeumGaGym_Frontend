@@ -14,11 +14,15 @@
     "types": ["node"],
     "jsx": "preserve",
     "incremental": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"]

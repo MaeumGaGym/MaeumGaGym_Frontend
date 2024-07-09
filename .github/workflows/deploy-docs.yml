@@ -1,10 +1,11 @@
-name: Deployment webview
+name: Deployment docs
 
 on:
   push:
     branches:
       - develop
     paths:
+      - 'service/client/**'
       - 'service/webview/**'
       - 'packages/**'
 
@@ -15,7 +16,7 @@ jobs:
       contents: read
 
     env:
-      SERVICE_NAME: webview
+      SERVICE_NAME: docs
 
     runs-on: ubuntu-latest
 
@@ -23,14 +24,15 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
+      - name: base build
+        run: docker build -t base .
+
       - name: Deploy to xquare
         uses: team-xquare/xquare-deployment-action@master
         with:
           environment: stag
-          access_key: ${{ secrets.WEBVIEW_ACCESS_KEY }}
+          access_key: ${{ secrets.DOCS_ACCESS_KEY }}
           base_url: service/${{ env.SERVICE_NAME }}
           config_file_path: service/${{ env.SERVICE_NAME }}/.xquare/config.yaml
           yarn_docker_build: true
           yarn_workspace: '@service/${{ env.SERVICE_NAME }}'
-          buildargs: |
-            NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}

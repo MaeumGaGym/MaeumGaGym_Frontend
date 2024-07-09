@@ -1,0 +1,23 @@
+FROM base AS builder
+WORKDIR /app
+
+RUN apk add --no-cache libc6-compat
+
+COPY manifests ./
+
+RUN yarn install --immutable
+
+ENV NODE_ENV production
+
+RUN cd ../../ \
+    yarn build:doc
+
+FROM node:20.10.0-alpine AS runner
+WORKDIR /app
+
+COPY --from=builder app/./ ./
+
+COPY packs ./
+
+CMD yarn workspace @service/docs rundemon
+EXPOSE 3000

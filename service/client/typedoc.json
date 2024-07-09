@@ -1,8 +1,5 @@
 {
-  "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./src/typedoc/index.ts"],
-  "plugin": ["typedoc-material-theme"],
-  "themeColor": "#0A7FF5",
-  "out": "doc",
-  "name": "maeumgagym"
+  "extends": ["../../typedoc.base.json"],
+  "entryPoints": ["src/typedoc/index.ts"],
+  "name": "client"
 }

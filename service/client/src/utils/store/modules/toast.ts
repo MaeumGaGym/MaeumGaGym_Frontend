@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 
 export type ToastmessageType = 'success' | 'error' | 'loading'
 
-interface ToastStateType {
+export interface ToastStateType {
   id: string
   message: string
   type: ToastmessageType

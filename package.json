@@ -9,16 +9,19 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "build:user": "yarn workspace @service/user build",
-    "build:main": "yarn workspace @service/main build",
-    "build:admin": "yarn workspace @service/admin build"
+    "build:client": "yarn workspace @service/client build",
+    "build:webview": "yarn workspace @service/webview build",
+    "build:doc": "typedoc"
   },
   "devDependencies": {
     "prettier": "^3.2.2",
     "turbo": "^1.11.3",
+    "typedoc": "^0.25.13",
+    "typedoc-material-theme": "^1.0.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "next": "^14.0.4"
+    "next": "^14.0.4",
+    "typedoc-plugin-merge-modules": "^5.1.0"
   }
 }
