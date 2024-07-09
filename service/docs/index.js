@@ -5,13 +5,17 @@ const app = express()
 const port = 3000
 
 app.use(express.static(path.resolve(__dirname, 'src')))
-app.use((req, res) => {
-    res.redirect('/index.html')
+// 애초에 잘못된 경로를 참조하면 오청이 너무 많이 가니 잠깐 막아둠
+// app.use((req, res) => {
+//     res.redirect('/index.html')
+// })
+
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public/favicon.ico'))
 })
 
 app.get(['/:path', '/:path/:a'], (req, res) => {
-    const dataPath = path.resolve(__dirname, 'src', `${req.params.path}${req.params.a ? ' ' + req.params.a : ''}`)
-
+    const dataPath = path.resolve(__dirname, 'src', `${req.params.path}${req.params.a ? '/' + req.params.a : ''}`)
     const statsObj = fs.statSync(dataPath)
 
     if (statsObj.isFile() && dataPath.split('/').at(-1).split('.').at(-1) === 'html') {
