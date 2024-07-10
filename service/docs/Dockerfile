@@ -11,13 +11,8 @@ COPY packs ./
 
 ENV NODE_ENV production
 
-RUN cd ../../ \
-    yarn build:docs
-
 FROM node:20.10.0-alpine AS runner
 WORKDIR /app
-
-COPY . .
 
 COPY --from=builder app/./ ./
 
