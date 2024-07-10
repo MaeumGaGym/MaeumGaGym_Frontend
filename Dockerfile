@@ -11,3 +11,5 @@ RUN yarn set version 3.6.4
 RUN yarn install
 
 COPY . .
+
+RUN yarn build:docs
