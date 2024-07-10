@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "tsc && node dist",
-    "start": "node index.js",
-    "lint": "next lint",
-    "rundemon": "yarn nodemon index.js localhost 3000"
+    "start": "yarn nodemon start index.js",
+    "dev": "yarn nodemon index.js"
   },
   "dependencies": {
     "express": "^4.19.2",
