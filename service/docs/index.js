@@ -1,8 +1,8 @@
-let fs = require('fs');
+const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(express.static(path.resolve(__dirname, 'src')))
 // 애초에 잘못된 경로를 참조하면 오청이 너무 많이 가니 잠깐 막아둠
