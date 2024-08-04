@@ -40,6 +40,30 @@ const commentdummy: Array<CommentPropsType> = [
     },
     created_at: '1일',
   },
+  {
+    id: 3,
+    content: '그쪽도 냥뇽녕냥을 아세요?',
+    user_response: {
+      nickname: 'TaeYoung',
+    },
+    created_at: '1일',
+  },
+  {
+    id: 4,
+    content: '그쪽도 냥뇽녕냥을 아세요?',
+    user_response: {
+      nickname: 'TaeYoung',
+    },
+    created_at: '1일',
+  },
+  {
+    id: 5,
+    content: '그쪽도 냥뇽녕냥을 아세요?',
+    user_response: {
+      nickname: 'TaeYoung',
+    },
+    created_at: '1일',
+  },
 ]
 
 const replydummy: Array<ReplyPropsType> = [
@@ -118,7 +142,7 @@ const Comments = ({ setIsClose }: PropsType) => {
             </div>
           </div>
           <div className="pt-3 overflow-scroll scrollbar-none grow">
-            <div className="flex px-5 flex-col ">
+            <div className="flex px-5 flex-col">
               {commentdummy.map(comment => (
                 <Comment
                   data={comment}

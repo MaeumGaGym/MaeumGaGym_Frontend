@@ -11,6 +11,7 @@ interface PropsType {
 const Modal = ({ setIsClose, children, modalType }: PropsType) => {
   const modalEl = useRef<HTMLDivElement>(null)
   const scrollEl = useRef<HTMLDivElement>(null)
+  const backgroundEl = useRef<HTMLDivElement>(null)
 
   const [startY, setStartY] = useState(0)
   const [modalHeight, setModalHeight] = useState<string>('')
@@ -22,6 +23,50 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
   }, [])
 
   useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      if (modalType === 'comment') {
+        setStartY(e.touches[0].clientY)
+      }
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      // e.stopPropagation()
+      if (modalType === 'comment') {
+        // if (e.cancelable) e.preventDefault()
+        const deltaY = startY - ~~e.changedTouches[0].clientY
+        setModalHeight(initHeight ? `${initHeight + deltaY}px` : '')
+      }
+    }
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      // e.stopPropagation()
+      if (modalType === 'comment') {
+        if (initHeight && defaultModalPx) {
+          if (startY - e.changedTouches[0].clientY > 50) {
+            const changeHeight =
+              initHeight < defaultModalPx
+                ? defaultModalPx
+                : initHeight === defaultModalPx
+                  ? defaultModalPx + defaultModalPx / 3
+                  : initHeight
+            setInitHeight(changeHeight)
+            setModalHeight(`${changeHeight}px`)
+          } else if (startY - e.changedTouches[0].clientY < -50) {
+            const changeHeight =
+              initHeight > defaultModalPx
+                ? defaultModalPx
+                : initHeight === defaultModalPx
+                  ? defaultModalPx - defaultModalPx / 3
+                  : initHeight
+            setInitHeight(changeHeight)
+            setModalHeight(`${changeHeight}px`)
+          } else {
+            setModalHeight(`${initHeight}px`)
+          }
+        }
+      }
+    }
+
     scrollEl.current?.addEventListener('touchstart', handleTouchStart)
     scrollEl.current?.addEventListener('touchmove', handleTouchMove, { passive: false })
     scrollEl.current?.addEventListener('touchend', handleTouchEnd)
@@ -32,51 +77,30 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
     }
   }, [modalEl.current?.offsetHeight])
 
-  const handleTouchStart = (e: TouchEvent) => {
-    if (modalType === 'comment') {
-      setStartY(e.touches[0].clientY)
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      // e.preventDefault()
     }
-  }
 
-  const handleTouchMove = (e: TouchEvent) => {
-    if (modalType === 'comment') {
-      if (e.cancelable) e.preventDefault()
-      const deltaY = startY - ~~e.changedTouches[0].clientY
-      setModalHeight(initHeight ? `${initHeight + deltaY}px` : '')
+    const handleTouchEnd = (e: TouchEvent, isBackground: boolean) => {
+      e.preventDefault()
+      isBackground && setIsClose()
     }
-  }
-
-  const handleTouchEnd = (e: TouchEvent) => {
-    if (modalType === 'comment') {
-      if (initHeight && defaultModalPx) {
-        if (startY - e.changedTouches[0].clientY > 50) {
-          const changeHeight =
-            initHeight < defaultModalPx
-              ? defaultModalPx
-              : initHeight === defaultModalPx
-                ? defaultModalPx + defaultModalPx / 3
-                : initHeight
-          setInitHeight(changeHeight)
-          setModalHeight(`${changeHeight}px`)
-        } else if (startY - e.changedTouches[0].clientY < -50) {
-          const changeHeight =
-            initHeight > defaultModalPx
-              ? defaultModalPx
-              : initHeight === defaultModalPx
-                ? defaultModalPx - defaultModalPx / 3
-                : initHeight
-          setInitHeight(changeHeight)
-          setModalHeight(`${changeHeight}px`)
-        } else {
-          setModalHeight(`${initHeight}px`)
-        }
-      }
+    backgroundEl.current?.addEventListener('touchstart', handleTouchStart)
+    backgroundEl.current?.addEventListener('touchend', e => handleTouchEnd(e, true))
+    modalEl.current?.addEventListener('touchstart', handleTouchStart)
+    modalEl.current?.addEventListener('touchend', e => handleTouchEnd(e, false))
+    return () => {
+      backgroundEl.current?.removeEventListener('touchstart', handleTouchStart)
+      backgroundEl.current?.removeEventListener('touchend', e => handleTouchEnd(e, true))
+      modalEl.current?.removeEventListener('touchstart', handleTouchStart)
+      modalEl.current?.removeEventListener('touchend', e => handleTouchEnd(e, false))
     }
-  }
+  }, [])
 
   return (
     <div className="w-full h-full absolute top-0 flex flex-col z-30">
-      <div className="bg-black grow opacity-40" onTouchEnd={setIsClose}></div>
+      <div className="bg-black grow opacity-40 overflow-hidden" ref={backgroundEl}></div>
       <div
         className={`flex flex-col text-white bg-gray900 w-full absolute bottom-0 animate-[commentPullUp_80ms_linear_forwards] pb-[34px] opacity-100 rounded-t-[10px] will-change-[height]`}
         ref={modalEl}
@@ -86,7 +110,7 @@ const Modal = ({ setIsClose, children, modalType }: PropsType) => {
           setDefaultModalPx(e.currentTarget.clientHeight)
         }}
       >
-        <div className="flex items-end justify-center h-[15px]" ref={scrollEl}>
+        <div className="flex items-end justify-center h-[15px] min-h-[15px]" ref={scrollEl}>
           <div className="w-16 h-[5px] rounded-sm bg-gray700"></div>
         </div>
         {children}

@@ -6,38 +6,51 @@ import { useEffect, useRef, useState } from 'react'
 
 const Pickle = () => {
   const picklesRef = useRef<HTMLDivElement>(null)
-  const beforeVideo = useRef<HTMLDivElement>(null)
-  const afterVideo = useRef<HTMLDivElement>(null)
-  const [videoPlayerHeight, setVideoPlayerHeight] = useState<number>(0)
-  const [startY, setStartY] = useState<number>(0)
+  const videoRef = useRef<HTMLDivElement>(null)
   const [pickleIndex, setPickleIndex] = useState<number>(0)
-  const [isScrollingDisabled, setIsScrollingDisabled] = useState<boolean>(true)
+  const [startY, setStartY] = useState<number>(0)
+  const [videoPlayerHeight, setVideoPlayerHeight] = useState<number>(0)
+  const [videoIds, setVideoIds] = useState<Array<string>>(['8d5ec6cc', '8d5ec6cc', '8d5ec6cc', '8d5ec6cc', '8d5ec6cc'])
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+  const handleModalOpen = (b: boolean) => {
+    setIsModalOpen(b)
+  }
 
   useEffect(() => {
-    setVideoPlayerHeight(beforeVideo.current?.getBoundingClientRect().height as number)
-  }, [beforeVideo.current])
+    setVideoPlayerHeight(videoRef.current?.getBoundingClientRect().height as number)
+    console.log(videoPlayerHeight)
+  }, [videoRef.current])
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
-      setIsScrollingDisabled(false)
       setStartY(e.touches[0].clientY)
     }
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isModalOpen) return
+      picklesRef.current?.scrollTo({ top: videoPlayerHeight * pickleIndex + startY - e.changedTouches[0].clientY })
+    }
+
     const handleTouchEnd = (e: TouchEvent) => {
-      setIsScrollingDisabled(true)
+      if (isModalOpen) return
       if (startY - e.changedTouches[0].clientY > 50 && pickleIndex < 5) {
         picklesRef.current?.scrollTo({ top: (pickleIndex + 1) * videoPlayerHeight, behavior: 'smooth' })
         setPickleIndex(pickleIndex + 1)
       } else if (startY - e.changedTouches[0].clientY < -50 && pickleIndex > 0) {
         picklesRef.current?.scrollTo({ top: (pickleIndex - 1) * videoPlayerHeight, behavior: 'smooth' })
         setPickleIndex(pickleIndex - 1)
+      } else {
+        picklesRef.current?.scrollTo({ top: pickleIndex * videoPlayerHeight, behavior: 'smooth' })
       }
     }
 
     picklesRef.current?.addEventListener('touchstart', handleTouchStart)
+    picklesRef.current?.addEventListener('touchmove', handleTouchMove, { passive: false })
     picklesRef.current?.addEventListener('touchend', handleTouchEnd)
     return () => {
       picklesRef.current?.removeEventListener('touchstart', handleTouchStart)
+      picklesRef.current?.removeEventListener('touchmove', handleTouchMove)
       picklesRef.current?.removeEventListener('touchend', handleTouchEnd)
     }
   }, [startY])
@@ -45,35 +58,22 @@ const Pickle = () => {
   return (
     <div
       id="pickles"
-      className={`flex lg:gap-[24px] md:gap-[24px] sm:gap-0 flex-wrap items-center lg:py-[24px] md:py-[24px] h-[100vh] scrollbar-none transition-transform ${isScrollingDisabled ? 'overflow-hidden' : 'overflow-hidden'}`}
+      className={`lg:gap-[24px] md:gap-[24px] sm:gap-0 lg:py-[24px] md:py-[24px] h-[100vh] scrollbar-none transition-transform overflow-hidden`}
       ref={picklesRef}
     >
       <UploadFile />
-      <VideoPlayer
-        src="https://video-macos.pokabook.kr/8d5ec6cc/index.m3u8?scale=1080p"
-        videoId="8d5ec6cc"
-        ref={beforeVideo}
-      />
-      <VideoPlayer
-        src="https://video-macos.pokabook.kr/8d5ec6cc/index.m3u8?scale=1080p"
-        videoId="8d5ec6cc"
-        ref={afterVideo}
-      />
-      <VideoPlayer
-        src="https://video-macos.pokabook.kr/8d5ec6cc/index.m3u8?scale=1080p"
-        videoId="8d5ec6cc"
-        ref={afterVideo}
-      />
-      <VideoPlayer
-        src="https://video-macos.pokabook.kr/8d5ec6cc/index.m3u8?scale=1080p"
-        videoId="8d5ec6cc"
-        ref={afterVideo}
-      />
-      <VideoPlayer
-        src="https://video-macos.pokabook.kr/8d5ec6cc/index.m3u8?scale=1080p"
-        videoId="8d5ec6cc"
-        ref={afterVideo}
-      />
+      {videoIds.map((id, idx) => {
+        return (
+          <VideoPlayer
+            src={`https://video-macos.pokabook.kr/${id}/index.m3u8?scale=1080p`}
+            videoId={id}
+            ref={videoRef}
+            isPlay={idx === pickleIndex ? true : false}
+            setIsModalOpen={handleModalOpen}
+            key={idx}
+          ></VideoPlayer>
+        )
+      })}
     </div>
   )
 }

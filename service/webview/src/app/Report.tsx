@@ -1,7 +1,7 @@
 'use client'
 
 import Modal from '@/components/modal'
-import { useState } from 'react'
+import { TouchEvent, useEffect, useRef, useState } from 'react'
 import { CheckCircle, Button } from '@package/ui'
 
 interface PropsType {
@@ -63,19 +63,39 @@ const Report = ({ setIsClose, reportType }: PropsType) => {
     ],
   }
 
+  const reportsRef = useRef<HTMLDivElement>(null)
   const [reportReason, setReportReason] = useState<ReportReason | null>(null)
-  const renderReasonBox = reportReasons[reportType].map(reason => (
-    <div className="px-5 py-[14px]" onTouchEnd={() => setReportReason(reason)}>
+  const renderReasonBox = reportReasons[reportType].map((reason, idx) => (
+    <div
+      className="px-5 py-[14px]"
+      onTouchEnd={e => {
+        const finalScrollTop = reportsRef.current?.scrollTop as number
+        const finalTouchY = e.changedTouches[0].clientY
+        !(initScrollTop !== finalScrollTop || initTouchY !== finalTouchY) && setReportReason(reason)
+      }}
+      key={idx}
+    >
       {reason}
     </div>
   ))
+  const [initScrollTop, setInitScrollTop] = useState(0)
+  const [initTouchY, setInitTouchY] = useState(0)
+
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    setInitScrollTop(reportsRef.current?.scrollTop as number)
+    setInitTouchY(e.touches[0].clientY)
+  }
 
   return (
     <Modal setIsClose={setIsClose}>
       <>
         <div className="h-[75vh] relative flex flex-col">
           <div className="w-full px-5 py-3 text-titleMedium text-white">신고</div>
-          <div className="overflow-y-scroll grow scrollbar-none">
+          <div
+            className="overflow-y-scroll grow scrollbar-none"
+            ref={reportsRef}
+            onTouchStart={e => handleTouchStart(e)}
+          >
             <div className="flex flex-col px-5 py-6 gap-4 ">
               <span className="text-labelLarge">이 {reportType === 'comment' ? '댓글' : '게시물'}을 신고하는 이유</span>
               <span className="text-bodyMedium text-gray400">
@@ -110,7 +130,7 @@ const ThanksReport = ({ setIsClose }: { setIsClose: () => void }) => {
           </div>
         </div>
         <div className="absolute bottom-[54px] w-full px-5">
-          <Button className="px-3 py-2 w-full" onClick={setIsClose}>
+          <Button className="px-3 py-2 w-full" onTouchEnd={setIsClose}>
             확인
           </Button>
         </div>

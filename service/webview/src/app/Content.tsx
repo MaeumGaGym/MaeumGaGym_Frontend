@@ -17,8 +17,8 @@ const Content = () => {
   }
 
   const moreText = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-    e.stopPropagation()
     if (textRef.current && (isEllipsisActive(textRef.current) || more)) {
+      e.stopPropagation()
       setMore(v => !v)
     }
   }

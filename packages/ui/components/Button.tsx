@@ -1,4 +1,4 @@
-import { MouseEvent, ReactNode } from 'react'
+import { MouseEvent, ReactNode, TouchEvent } from 'react'
 
 interface ButtonProps {
   className?: string
@@ -8,6 +8,7 @@ interface ButtonProps {
   children?: ReactNode
   fontSize?: keyof typeof FontSize
   onClick?: (event: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
+  onTouchEnd?: (event: TouchEvent<HTMLButtonElement>) => void
 }
 
 const ButtonColor = {
@@ -55,6 +56,7 @@ export const Button = ({
   children,
   fontSize,
   onClick = () => {},
+  onTouchEnd = () => {},
 }: ButtonProps) => {
   const color = ButtonColor[kind][disabled ? 'disabled' : 'enabled']
   const font = FontSize[fontSize ?? 'large']
@@ -62,6 +64,7 @@ export const Button = ({
     <button
       className={`select-none w-fit h-12 px-3 py-2 gap-2 flex items-center justify-center ${children ? 'rounded-lg' : 'rounded-full'} ${color} ${className ?? ''}`}
       onClick={onClick}
+      onTouchEnd={onTouchEnd}
       disabled={disabled}
     >
       {icon}
