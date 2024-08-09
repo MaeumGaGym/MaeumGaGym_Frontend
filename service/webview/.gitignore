@@ -62,7 +62,7 @@ next-env.d.ts
 /coverage
 
 # next.js
-/.next/
+/.next/*
 /out/
 
 # production
