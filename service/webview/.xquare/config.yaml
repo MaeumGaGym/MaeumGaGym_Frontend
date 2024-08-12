@@ -1,0 +1,7 @@
+config:
+  name: maeumgagym-webview
+  service_type: fe
+  port: 3000
+  domain:
+    prod: maeumgagym-webview-prod.xquare.app
+    stag: maeumgagym-webview.xquare.app
