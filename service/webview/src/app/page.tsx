@@ -34,7 +34,7 @@ const Pickle = () => {
 
     const handleTouchEnd = (e: TouchEvent) => {
       if (isModalOpen) return
-      if (startY - e.changedTouches[0].clientY > 50 && pickleIndex < 5) {
+      if (startY - e.changedTouches[0].clientY > 50 && pickleIndex < videoIds.length - 1) {
         picklesRef.current?.scrollTo({ top: (pickleIndex + 1) * videoPlayerHeight, behavior: 'smooth' })
         setPickleIndex(pickleIndex + 1)
       } else if (startY - e.changedTouches[0].clientY < -50 && pickleIndex > 0) {
