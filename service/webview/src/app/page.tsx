@@ -5,16 +5,6 @@ import UploadFile from './UploadFile'
 import { useEffect, useRef, useState } from 'react'
 import { getAllPickleIds } from '@/apis/pickle'
 
-export interface heart {
-  postMessage(string: string): void
-}
-
-declare global {
-  interface Window {
-    heart?: heart
-  }
-}
-
 const Pickle = () => {
   const picklesRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLDivElement>(null)
