@@ -3,6 +3,17 @@ import VideoPlayer from './VideoPlayer'
 import './animation.css'
 import UploadFile from './UploadFile'
 import { useEffect, useRef, useState } from 'react'
+import { getAllPickleIds } from '@/apis/pickle'
+
+export interface heart {
+  postMessage(string: string): void
+}
+
+declare global {
+  interface Window {
+    heart?: heart
+  }
+}
 
 const Pickle = () => {
   const picklesRef = useRef<HTMLDivElement>(null)
@@ -12,10 +23,15 @@ const Pickle = () => {
   const [videoPlayerHeight, setVideoPlayerHeight] = useState<number>(0)
   const [videoIds, setVideoIds] = useState<Array<string>>(['8d5ec6cc', '8d5ec6cc', '8d5ec6cc', '8d5ec6cc', '8d5ec6cc'])
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const { data: pickleIds } = getAllPickleIds(0)
 
   const handleModalOpen = (b: boolean) => {
     setIsModalOpen(b)
   }
+
+  useEffect(() => {
+    console.log(pickleIds)
+  }, [pickleIds])
 
   useEffect(() => {
     setVideoPlayerHeight(videoRef.current?.getBoundingClientRect().height as number)
