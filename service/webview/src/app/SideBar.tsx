@@ -1,6 +1,16 @@
 import { Dots, Heart, Message, Share } from '@package/ui'
 import { useEffect } from 'react'
 
+export interface Heart {
+  postMessage(message: string): void
+}
+
+declare global {
+  interface Window {
+    Heart?: Heart
+  }
+}
+
 interface propsType {
   setCommentOpen: () => void
   like: boolean
@@ -11,8 +21,10 @@ interface propsType {
 
 const SideBar = ({ setCommentOpen, like, setLike, setShareOpen, setMoreOpen }: propsType) => {
   const sendMessageToFlutter = (message: string) => {
-    if (window.heart && window.heart.postMessage) {
-      window.heart.postMessage(message)
+    console.log('Attempting to send message:', message) // 디버깅용 로그
+    if (window.Heart && window.Heart.postMessage) {
+      window.Heart.postMessage(message)
+      console.log('Message sent successfully') // 성공 로그
     } else {
       console.log('Flutter app interface is not available')
     }
@@ -22,6 +34,15 @@ const SideBar = ({ setCommentOpen, like, setLike, setShareOpen, setMoreOpen }: p
     setLike()
     sendMessageToFlutter('heart')
   }
+
+  useEffect(() => {
+    // 컴포넌트 마운트 시 window.Heart 객체 확인
+    if (window.Heart) {
+      console.log('Heart interface is available')
+    } else {
+      console.log('Heart interface is not available')
+    }
+  }, [])
 
   return (
     <div className="w-[80px] h-fit py-[40px] gap-[24px] flex flex-col absolute bottom-0 right-0 items-center z-40">
