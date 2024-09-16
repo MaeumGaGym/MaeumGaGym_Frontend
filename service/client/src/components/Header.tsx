@@ -3,12 +3,12 @@ import Image from 'next/image'
 import { Button, HeaderLogo } from '@package/ui'
 import { usePathname, useRouter } from 'next/navigation'
 import { useLayoutEffect, useState } from 'react'
-import { getCookie } from '@/utils'
 
 export const Header = () => {
   const [hasToken, setHasToken] = useState<boolean>(false)
   const router = useRouter()
   const pathName = usePathname()
+
   useLayoutEffect(() => {
     console.log(pathName)
     if (pathName.split('/')[1] === 'pickle') {
@@ -16,13 +16,16 @@ export const Header = () => {
     } else {
       document.documentElement.classList.remove('dark')
     }
-    setHasToken(!!getCookie('access_token'))
+    setHasToken(!!localStorage.getItem('access_token'))
   }, [pathName])
 
   return (
     <header className="transition-all flex w-full h-[60px] items-center justify-between lg:px-[170px] md:px-[64px] sm:px-[20px] bg-white dark:bg-gray900 border-b border-gray100 fixed z-50">
       <div className="flex items-center gap-8">
-        <div className="flex items-center gap-[2px] cursor-pointer" onClick={() => router.push(hasToken ? '/main' : '/')}>
+        <div
+          className="flex items-center gap-[2px] cursor-pointer"
+          onClick={() => router.push(hasToken ? '/main' : '/')}
+        >
           <Image src={HeaderLogo} alt="logo image" width={42} height={42} priority />
           <span className="text-[20px] font-bold leading-[24px] text-gray800 dark:text-gray100">마음가짐</span>
         </div>

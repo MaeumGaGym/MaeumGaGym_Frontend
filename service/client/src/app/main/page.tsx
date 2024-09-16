@@ -1,7 +1,6 @@
 'use client'
 import { Footer } from '@package/ui'
 // import { useLayoutEffect, useState } from 'react'
-// import { useRouter, useSearchParams } from 'next/navigation'
 // import { GetQuotesResponse } from '@/apis/quote/getQuotes'
 import QuoteBanner from './QuoteBanner'
 import MainSection from './/MainSection'
@@ -9,7 +8,6 @@ import MainSection from './/MainSection'
 
 const Home = () => {
   // const [quoteData, setQuoteData] = useState<GetQuotesResponse>({ quote: '', quoter: '' })
-  // const router = useRouter()
   // const params = useSearchParams()
   // useLayoutEffect(() => {
   //   const RF_TOKEN = params.get('refresh')

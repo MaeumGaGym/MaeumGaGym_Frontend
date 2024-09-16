@@ -1,9 +1,13 @@
 import { Header } from '@/components'
 import { Footer } from '@package/ui'
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export default function LandingPage() {
-  console.log(cookies().get('RF-TOKEN'))
+  // console.log(cookies().get('RF-TOKEN'))
+
+  if (cookies().get('access_token') !== undefined) redirect('/main')
+
   return (
     <>
       <Header />

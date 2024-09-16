@@ -14,29 +14,37 @@ type TokenType = {
 }
 
 export const LoginModal = ({ nextStep, setData }: { nextStep: () => void; setData: (v: loginCategory) => void }) => {
+  const origin = location.origin
   const router = useRouter()
 
   const loginWithToken = useCallback(async (e: MessageEvent<unknown>) => {
     const data = e.data as TokenType
+
     if (data.source || !(data.type && data.token)) return
     if (data.type === 'kakao') {
-      await kakaoCodeToToken(data.token)
-    }
-
-    const loginData = await login(data.type, data.token)
-    window.removeEventListener('message', loginWithToken)
-
-    if (loginData) {
-      toast.success('로그인에 성공하셨습니다!')
-      router.push(`/main`)
-      router.refresh()
-    } else {
-      if (data.type === 'kakao') {
-        setCookie('OAUTH_TOKEN', data.token)
+      const isSuccess = await kakaoCodeToToken(data.token)
+      if (!isSuccess) {
+        window.removeEventListener('message', loginWithToken)
+        toast.error('카카오 로그인에 문제가 있어요. 관리자에게 문의해 주세요.')
+        router.back()
+        return
       }
-      setData(data.type)
-      nextStep()
     }
+
+    await login(data.type, data.token)
+      .then(token => {
+        localStorage.setItem('access_token', token!)
+        setCookie('access_token', token!)
+        location.href = origin + '/main'
+      })
+      .catch(() => {
+        if (data.type === 'kakao') {
+          setCookie('OAUTH_TOKEN', data.token)
+        }
+        setData(data.type)
+        nextStep()
+      })
+      .finally(() => window.removeEventListener('message', loginWithToken))
   }, [])
 
   const oauthParams = useCallback((oauth: 'google' | 'kakao' | 'apple') => {
