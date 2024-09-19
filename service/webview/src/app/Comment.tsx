@@ -138,7 +138,7 @@ const Comments = ({ setIsClose }: PropsType) => {
                 <span className="text-titleMedium">댓글</span>
                 <span className="text-gray300">3.4천</span>
               </div>
-              <Close onClick={setIsClose} />
+              <Close onTouchEnd={setIsClose} />
             </div>
           </div>
           <div className="pt-3 overflow-scroll scrollbar-none grow">
